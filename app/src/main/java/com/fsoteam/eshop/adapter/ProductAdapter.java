@@ -95,8 +95,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     private void goDetailsPage(int position) {
+        Product product = productList.get(position);
         Intent intent = new Intent(ctx, ProductDetailsActivity.class);
-        intent.putExtra("ProductIndex", position);
+        intent.putExtra("ProductID", product.getProductId());
         intent.putExtra("ProductFrom", "New");
         ctx.startActivity(intent);
     }

@@ -99,9 +99,10 @@ public class SaleProductAdapter extends RecyclerView.Adapter<SaleProductAdapter.
     }
 
     private void goDetailsPage(int position) {
+        Product product = saleProductList.get(position);
         Intent intent = new Intent(ctx, ProductDetailsActivity.class);
-        intent.putExtra("ProductIndex", position);
-        intent.putExtra("ProductFrom", "Cover");
+        intent.putExtra("ProductID", product.getProductId());
+        intent.putExtra("ProductFrom", "New");
         ctx.startActivity(intent);
     }
 }
