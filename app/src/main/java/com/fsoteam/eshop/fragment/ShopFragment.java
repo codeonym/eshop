@@ -38,6 +38,7 @@ public class ShopFragment extends Fragment {
     private CoverOfferAdapter coverOfferAdapter;
     private FirebaseDatabase db = FirebaseDatabase.getInstance();
     private DatabaseReference offersRef = db.getReference(DbCollections.OFFERS);
+    private DatabaseReference categoriesRef = db.getReference(DbCollections.CATEGORIES);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,8 +68,21 @@ public class ShopFragment extends Fragment {
     }
 
     private void setCategoryData() {
-        cateList.add(new Category("22586","Clothing","", "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=649&q=80", 154));
-        // Add the rest of your categories here...
+        categoriesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot categorySnapshot: dataSnapshot.getChildren()) {
+                    Category category = categorySnapshot.getValue(Category.class);
+                    cateList.add(category);
+                }
+                categoryAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("ShopFragment", "Error getting documents: ", databaseError.toException());
+            }
+        });
     }
 
     private String getJsonData(Context context, String fileName) {

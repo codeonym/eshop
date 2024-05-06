@@ -60,7 +60,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/metropolis_regular"
                     android:gravity="center"
-                    android:text="View all"
+                    android:text="All products"
                     android:textColor="@color/mainText"
                     android:textSize="12sp" />
 
