@@ -1,0 +1,51 @@
+{
+  "categories": [
+    {
+      "categoryId": "category1",
+      "name": "Electronics",
+      "image": "https://www.pngitem.com/pimgs/m/247-2474633_transparent-electronics-items-png-png-download.png",
+      "categoryDescription": "All electronic items"
+    },
+    {
+      "categoryId": "category2",
+      "name": "Books",
+      "image": "https://hd.wallpaperswide.com/thumbs/books_3-t2.jpg",
+      "categoryDescription": "All types of books"
+    }
+  ],
+  "offers": [
+    {
+      "offerId": "offer1",
+      "offerTitle": "Summer Sale",
+      "offerDescription": "Up to 50% off on all items",
+      "offerImage": "https://img.freepik.com/premium-photo/watercolor-light-red-white-background_168501-4517.jpg",
+      "offerStartDate": "2024-06-01T00:00:00",
+      "offerEndDate": "2024-06-30T23:59:59"
+    },
+    {
+      "offerId": "offer2",
+      "offerTitle": "April Sale",
+      "offerDescription": "Up to 40% off on all items",
+      "offerImage": "https://img.freepik.com/premium-photo/watercolor-light-red-white-background_168501-4517.jpg",
+      "offerStartDate": "2024-05-01T00:00:00",
+      "offerEndDate": "2024-05-30T23:59:59"
+    }
+  ],
+  "products": [
+    {
+      "productId": "product1",
+      "productName": "iPhone 12",
+      "productDes": "Latest iPhone model, 512gb storage, 5G, 6.1 inch display, 4gb ram",
+      "productPrice": 999.99,
+      "productImage": "https://i5.walmartimages.com/seo/Apple-iPhone-12-Pro-Max-128GB-256GB-512GB-Factory-Unlocked-Good-Condition-Refurbished_56085d5e-e4d9-4b53-9739-cf8bcf7011df.8985be480ed01ba2a71a618e2517b753.jpeg",
+      "productCategoryId": "category1",
+      "productQuantity": 1000,
+      "productRating": 4.5,
+      "productHave": true,
+      "productBrand": "Apple",
+      "productNote": "Comes in 3 colors",
+      "productSales": 10,
+      "productDisCount": 10
+    }
+  ]
+}
