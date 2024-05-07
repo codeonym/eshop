@@ -42,6 +42,7 @@
             android:layout_height="22dp"
             android:src="@drawable/ic_search"
             app:tint="@color/mainText"
+            android:visibility="gone"
             />
 
     </LinearLayout>
@@ -299,7 +300,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/metropolis_regular"
-                        android:text="Promo codes"
+                        android:text="Your purchase history"
                         android:textColor="@color/mainText"
                         android:textSize="16sp" />
 
@@ -309,7 +310,7 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/metropolis_regular"
                         android:textColor="@color/textAd"
-                        android:text="You have special promo codes"
+                        android:text="Follow your purchase history"
                         android:textSize="12sp" />
 
                 </LinearLayout>
