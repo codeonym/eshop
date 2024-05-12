@@ -1,6 +1,7 @@
 package com.fsoteam.eshop.model;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class Offer {
     private String offerId;
@@ -10,7 +11,7 @@ public class Offer {
     private long offerStartDate;
     private long offerEndDate;
     public Offer() {
-        this.offerId = "";
+        this.offerId = UUID.randomUUID().toString();
         this.offerTitle = "";
         this.offerDescription = "";
         this.offerImage = "";

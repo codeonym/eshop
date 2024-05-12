@@ -2,20 +2,21 @@ package com.fsoteam.eshop.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Cart {
     private String cartId;
-    private List<Product> cartProducts;
+    private List<OrderItem> cartItems;
     private float cartTotal;
 
     public Cart() {
-        this.cartId = "";
-        this.cartProducts = new ArrayList<>();
+        this.cartId = UUID.randomUUID().toString();
+        this.cartItems = new ArrayList<OrderItem>();
         this.cartTotal = 0.0f;
     }
-    public Cart(String cartId, List<Product> cartProducts, float cartTotal) {
+    public Cart(String cartId, List<OrderItem> cartItems, float cartTotal) {
         this.cartId = cartId;
-        this.cartProducts = cartProducts;
+        this.cartItems = cartItems;
         this.cartTotal = cartTotal;
     }
 
@@ -27,21 +28,26 @@ public class Cart {
         this.cartId = cartId;
     }
 
-    public List<Product> getCartProducts() {
-        return cartProducts;
+    public List<OrderItem> getCartItems() {
+        return cartItems;
     }
-    public boolean isCartEmpty() {
-        return cartProducts.isEmpty();
-    }
-    public boolean addProduct(Product product) {
-        return this.cartProducts.add(product);
+    public boolean addProduct(OrderItem product) {
+        return this.cartItems.add(product);
     }
 
     public boolean removeProduct(Product product) {
-        return this.cartProducts.remove(product);
+        return this.cartItems.remove(product);
     }
-    public void setCartProducts(List<Product> cartProducts) {
-        this.cartProducts = cartProducts;
+    public boolean removeProductById(String productId) {
+        for (OrderItem item : this.cartItems) {
+            if (item.getProduct().getProductId().equals(productId)) {
+                return this.cartItems.remove(item);
+            }
+        }
+        return false;
+    }
+    public void setCartItems(List<OrderItem> cartItems) {
+        this.cartItems = cartItems;
     }
 
     public float getCartTotal() {

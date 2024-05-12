@@ -67,4 +67,6 @@ dependencies {
     implementation libs.tensorflow.lite.support.v020
     implementation libs.tensorflow.lite.task.vision
     annotationProcessor libs.tensorflow.lite.support
+
+    implementation libs.commons.csv
 }

@@ -1,18 +1,22 @@
 package com.fsoteam.eshop.model;
 
+import java.util.UUID;
+
 public class Category {
     private String categoryId;
     private String name;
     private String categoryDescription;
     private String image;
+    private boolean selected;
     private int productCount;
 
     public Category() {
-        this.categoryId = "";
+        this.categoryId = UUID.randomUUID().toString();
         this.name = "";
         this.categoryDescription = "";
         this.image = "";
         this.productCount = 0;
+        this.selected = false;
     }
 
     public Category(String categoryId, String name, String categoryDescription, String image, int productCount) {
@@ -64,7 +68,13 @@ public class Category {
     public void setCategoryDescription(String categoryDescription) {
         this.categoryDescription = categoryDescription;
     }
-    public boolean isCategoryEmpty() {
-        return this.name.isEmpty() || this.productCount == 0;
+
+    public boolean isSelected() {
+        return selected;
     }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".presentation.activity.ProductDetailsActivity">
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,50 +20,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-            <ImageView
-                android:id="@+id/productImage_ProductDetailsPage"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/productDetailsImagesRecyclerView"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_product_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="450dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <LinearLayout
-                android:id="@+id/topBarLayout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <ImageView
-                    android:id="@+id/backIv_ProfileFrag"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/white" />
-
-                <androidx.legacy.widget.Space
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"/>
-                <ImageView
-                    android:id="@+id/searchIv_ProfileFrag"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_search"
-                    app:tint="@color/white"
-                    />
-
-            </LinearLayout>
+                android:scaleType="centerCrop" />
 
             <LinearLayout
                 android:id="@+id/linearLayout6"
@@ -72,8 +39,27 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/productImage_ProductDetailsPage">
-
+                app:layout_constraintTop_toBottomOf="@+id/productDetailsImagesRecyclerView">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text=""
+                        android:id="@+id/totalLikes_productDetails"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_fav_added"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp" />
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,10 +86,20 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:fontFamily="@font/metropolis_semibold"
-                        android:gravity="end"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@color/golden"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/productPriceRaw_ProductDetailsPage"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/metropolis_semibold"
+                        android:gravity="start"
                         android:text=""
                         android:textColor="@color/mainText"
-                        android:textSize="25sp" />
+                        android:textSize="11sp" />
                 </LinearLayout>
 
                 <TextView
@@ -303,11 +299,13 @@
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginBottom="20dp"
                     android:id="@+id/RecomRecView_ProductDetailsPage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/single_product">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>

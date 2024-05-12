@@ -1,5 +1,7 @@
 package com.fsoteam.eshop.fragment;
 
+import static com.fsoteam.eshop.utils.CustomUtils.populateDB;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,11 +18,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.fsoteam.eshop.adapter.CoverOfferAdapter;
 import com.fsoteam.eshop.adapter.ProductAdapter;
-import com.fsoteam.eshop.adapter.SaleProductAdapter;
 import com.fsoteam.eshop.R;
 import com.fsoteam.eshop.model.Category;
 import com.fsoteam.eshop.model.Offer;
 import com.fsoteam.eshop.model.Product;
+import com.fsoteam.eshop.model.ProductImage;
+import com.fsoteam.eshop.utils.CustomUtils;
 import com.fsoteam.eshop.utils.DbCollections;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,9 +35,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.InputStream;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class HomeFragment extends Fragment {
 
@@ -47,7 +50,7 @@ public class HomeFragment extends Fragment {
 
     private CoverOfferAdapter coverOfferAdapter;
     private ProductAdapter newProductAdapter;
-    private SaleProductAdapter saleProductAdapter;
+    private ProductAdapter saleProductAdapter;
 
     private LottieAnimationView animationView;
 
@@ -62,6 +65,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        //populateDB(getActivity());
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         coverOffer = new ArrayList<>();
@@ -92,11 +96,13 @@ public class HomeFragment extends Fragment {
 
         saleRecView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         saleRecView.setHasFixedSize(true);
-        saleProductAdapter = new SaleProductAdapter(saleProduct, getActivity());
+        saleProductAdapter = new ProductAdapter(saleProduct, getActivity());
         saleRecView.setAdapter(saleProductAdapter);
         showLayout();
-
-
+        View newProductsTv = view.findViewById(R.id.product_GroupViewAll);
+        View saleProductsTv = view.findViewById(R.id.saleProduct_ViewAll);
+        CustomUtils.setProductsFragmentFilter(getActivity(), newProductsTv, null, true, false);
+        CustomUtils.setProductsFragmentFilter(getActivity(), saleProductsTv, null, false, true);
         return view;
     }
 
@@ -150,6 +156,8 @@ public class HomeFragment extends Fragment {
                             Product product = productSnapshot.getValue(Product.class);
                             newProduct.add(product);
                         }
+
+                        Collections.reverse(newProduct);
                         newProductAdapter.notifyDataSetChanged();
                     }
 
@@ -160,17 +168,21 @@ public class HomeFragment extends Fragment {
                 });
     }
     private void setSaleProductData() {
-        productsRef.orderByChild("productRating").limitToFirst(10)
+        productsRef.orderByChild("likesCount").limitToFirst(10)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot productSnapshot: dataSnapshot.getChildren()) {
                             Product product = productSnapshot.getValue(Product.class);
-                            saleProduct.add(product);
+                            if(product != null)
+                                saleProduct.add(product);
+                            System.out.println(product.toString());
                         }
+
+                        Collections.reverse(saleProduct);
+
                         saleProductAdapter.notifyDataSetChanged();
                     }
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                         Log.d("HomeFragment", "Error getting documents: ", databaseError.toException());
@@ -240,7 +252,7 @@ public class HomeFragment extends Fragment {
                 product.setProductDisCount(productObject.getString("productDisCount"));
                 product.setProductHave(productObject.getBoolean("productHave"));
                 product.setProductBrand(productObject.getString("productBrand"));
-                product.setProductImage(productObject.getString("productImage"));
+                product.setProductImages(new ArrayList<ProductImage>());
                 Category cat = new Category();
                 cat.setCategoryId(productObject.getString("productCategoryId"));
                 product.setProductCategory(cat);

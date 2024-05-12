@@ -24,10 +24,10 @@ public class User {
         this.userAddress = "";
         this.userPhone = "";
         this.userCart = new Cart();
-        this.userOrders = new ArrayList<>();
-        this.userPaymentMethods = new ArrayList<>();
+        this.userOrders = new ArrayList<Order>();
+        this.userPaymentMethods = new ArrayList<PaymentMethod>();
         this.userWishlist = new Wishlist();
-        this.userCreditCard = new ArrayList<>();
+        this.userCreditCard = new ArrayList<CreditCard>();
     }
     public User(String userName, String userImage, String userUid, String userEmail, String userAddress, String userPhone, Cart userCart, List<Order> userOrders, List<PaymentMethod> userPaymentMethods, Wishlist userWishlist, List<CreditCard> userCreditCard) {
         this.userName = userName;

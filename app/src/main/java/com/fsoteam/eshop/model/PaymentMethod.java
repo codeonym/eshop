@@ -1,12 +1,14 @@
 package com.fsoteam.eshop.model;
 
+import java.util.UUID;
+
 public class PaymentMethod {
     private String paymentMethodId;
     private String paymentMethodName;
     private String paymentMethodDetails;
 
     public PaymentMethod() {
-        this.paymentMethodId = "";
+        this.paymentMethodId = UUID.randomUUID().toString();
         this.paymentMethodName = "";
         this.paymentMethodDetails = "";
     }

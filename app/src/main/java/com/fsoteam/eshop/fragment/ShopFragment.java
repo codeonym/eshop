@@ -7,7 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.TextView;
+
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +20,7 @@ import com.fsoteam.eshop.model.Category;
 import com.fsoteam.eshop.model.Offer;
 import com.fsoteam.eshop.model.Product;
 import com.fsoteam.eshop.R;
+import com.fsoteam.eshop.utils.CustomUtils;
 import com.fsoteam.eshop.utils.DbCollections;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -64,6 +68,9 @@ public class ShopFragment extends Fragment {
         categoryAdapter = new CategoryAdapter(getActivity(), cateList);
         categoriesRecView.setAdapter(categoryAdapter);
 
+        TextView allProductsTv = view.findViewById(R.id.shop_fragment_all_products);
+
+        CustomUtils.setProductsFragmentFilter(getActivity(), allProductsTv, null, false, false);
         return view;
     }
 

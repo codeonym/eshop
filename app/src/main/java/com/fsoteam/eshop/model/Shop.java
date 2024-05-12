@@ -14,7 +14,7 @@ public class Shop {
         this.shopName = "";
         this.shopImage = "";
         this.shopAddress = "";
-        this.shopProducts = new ArrayList<>();
+        this.shopProducts = new ArrayList<Product>();
         this.shopWebsite = "";
     }
 
@@ -53,9 +53,6 @@ public class Shop {
 
     public List<Product> getShopProducts() {
         return shopProducts;
-    }
-    public boolean isShopEmpty() {
-        return shopProducts.isEmpty();
     }
     public boolean addProduct(Product product) {
         return this.shopProducts.add(product);

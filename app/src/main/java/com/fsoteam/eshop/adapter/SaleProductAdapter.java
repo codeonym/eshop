@@ -17,7 +17,6 @@ import com.fsoteam.eshop.R;
 import com.fsoteam.eshop.model.Product;
 import com.fsoteam.eshop.ProductDetailsActivity;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SaleProductAdapter extends RecyclerView.Adapter<SaleProductAdapter.ViewHolder> {
 
@@ -45,8 +44,8 @@ public class SaleProductAdapter extends RecyclerView.Adapter<SaleProductAdapter.
         holder.productRating_singleProduct.setRating(product.getProductRating());
 
         Glide.with(ctx)
-                .load(product.getProductImage())
-                .placeholder(R.drawable.bn)
+                .load(product.getProductImages())
+                .placeholder(R.drawable.no_product)
                 .into(holder.productImage_singleProduct);
 
         if (product.isProductHave()) {

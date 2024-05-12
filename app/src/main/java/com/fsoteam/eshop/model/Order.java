@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class Order {
     private String orderId;
@@ -14,8 +15,8 @@ public class Order {
     private String orderStatus;
     private LocalDate orderDate;
     public Order() {
-        this.orderId = "";
-        this.orderProducts = new ArrayList<>();
+        this.orderId = UUID.randomUUID().toString();
+        this.orderProducts = new ArrayList<Product>();
         this.orderTotalAmount = 0.0f;
         this.orderStatus = "";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -50,9 +51,6 @@ public class Order {
 
     public List<Product> getOrderProducts() {
         return orderProducts;
-    }
-    public boolean isOrderEmpty() {
-        return orderProducts.isEmpty();
     }
 
     public boolean addProduct(Product product) {

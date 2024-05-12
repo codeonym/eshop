@@ -1,5 +1,7 @@
 package com.fsoteam.eshop.model;
 
+import java.util.UUID;
+
 public class CreditCard {
     private String cardId;
     private String cardNumber;
@@ -8,7 +10,7 @@ public class CreditCard {
     private String cardCVV;
 
     public CreditCard() {
-        this.cardId = "";
+        this.cardId = UUID.randomUUID().toString();
         this.cardNumber = "";
         this.cardHolderName = "";
         this.cardExpiryDate = "";

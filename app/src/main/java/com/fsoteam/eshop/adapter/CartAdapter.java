@@ -9,18 +9,31 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.fsoteam.eshop.R;
+import com.fsoteam.eshop.model.OrderItem;
 import com.fsoteam.eshop.model.Product;
+import com.fsoteam.eshop.utils.DbCollections;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
 
     private Context ctx;
-    private List<Product> cartList;
+    private List<OrderItem> cartItemsList;
 
-    public CartAdapter(Context ctx) {
+    private String userId = FirebaseAuth.getInstance().getUid();
+    private FirebaseDatabase db = FirebaseDatabase.getInstance();
+    private DatabaseReference cartRef = db.getReference(DbCollections.USERS).child(userId).child("userCart").child("cartItems");
+
+    public CartAdapter(Context ctx, List<OrderItem> cartItemsList) {
         this.ctx = ctx;
-        this.cartList = new ArrayList<>();
+        this.cartItemsList = cartItemsList;
     }
 
     @Override
@@ -31,47 +44,78 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     @Override
     public void onBindViewHolder(CartViewHolder holder, int position) {
-        Product cartItem = cartList.get(position);
+        OrderItem cartItem = cartItemsList.get(holder.getAdapterPosition());
 
-        holder.cartName.setText(cartItem.getProductName());
-        holder.cartPrice.setText("$" + cartItem.getProductPrice());
-        // Assuming you have a getQuantity method in your Product model
-        holder.quantityTvCart.setText(String.valueOf(cartItem.getProductQuantity()));
+        holder.cartName.setText(cartItem.getProduct().getProductName());
+        holder.cartPrice.setText(cartItem.getProduct().getProductPrice() + cartItem.getProduct().getProductCurrency());
+        updateTotalPrice(holder, cartItem);
+        holder.cartItemPLus.setOnClickListener(v -> {
+
+            Product product = cartItem.getProduct();
+            float availableQuantity = product.getProductQuantity() - product.getProductSales();
+            if(cartItem.getQuantity() < product.getProductMaxPurchasePerUser() && availableQuantity > 0){
+                cartItem.setQuantity(cartItem.getQuantity() + 1);
+                holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));
+                updateTotalPrice(holder, cartItem);
+            }
+        });
+        holder.cartItemMinus.setOnClickListener(v -> {
+
+            if(cartItem.getQuantity() > 1){
+                cartItem.setQuantity(cartItem.getQuantity() - 1);
+                holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));
+                holder.cartPrice.setText(cartItem.getProduct().getProductPrice() * cartItem.getQuantity() + "DH");
+                updateTotalPrice(holder, cartItem);
+            }
+        });
+
+        holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));
 
         Glide.with(ctx)
-                .load(cartItem.getProductImage())
+                .load(cartItem.getProduct().getProductImage())
                 .into(holder.cartImage);
 
-        holder.cartMore.setOnClickListener(v -> {
-            // Handle item delete click
+        holder.cartRemove.setOnClickListener(v -> {
+            for(OrderItem i: cartItemsList){
+                if(i.getProduct().getProductId().equals(cartItem.getProduct().getProductId())){
+                    cartItemsList.remove(i);
+                    cartRef.setValue(cartItemsList);
+                    notifyDataSetChanged();
+                    break;
+                }
+            }
         });
+    }
+
+    private void updateTotalPrice(CartViewHolder holder, OrderItem cartItem){
+        holder.cartPrice.setText(cartItem.getProduct().getProductPrice() * cartItem.getQuantity() + "DH");
+        cartRef.setValue(cartItemsList);
     }
 
     @Override
     public int getItemCount() {
-        return cartList.size();
+        return cartItemsList.size();
     }
 
-    public void updateList(List<Product> newList) {
-        cartList.clear();
-        cartList.addAll(newList);
-        notifyDataSetChanged();
-    }
 
     public static class CartViewHolder extends RecyclerView.ViewHolder {
         ImageView cartImage;
-        ImageView cartMore;
+        ImageView cartRemove;
         TextView cartName;
         TextView cartPrice;
         TextView quantityTvCart;
+        ImageView cartItemPLus;
+        ImageView cartItemMinus;
 
         public CartViewHolder(View itemView) {
             super(itemView);
             cartImage = itemView.findViewById(R.id.cartImage);
-            cartMore = itemView.findViewById(R.id.cartMore);
+            cartRemove = itemView.findViewById(R.id.cartRemove);
             cartName = itemView.findViewById(R.id.cartName);
             cartPrice = itemView.findViewById(R.id.cartPrice);
             quantityTvCart = itemView.findViewById(R.id.quantityTvCart);
+            cartItemPLus = itemView.findViewById(R.id.cartItemPLus);
+            cartItemMinus = itemView.findViewById(R.id.cartItemMinus);
         }
     }
 }
