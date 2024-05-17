@@ -5,6 +5,251 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:id="@+id/loginLayout"
     >
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/metropolis_bold"
+        android:text="Shipping address"
+        android:textColor="@color/mainText"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        <EditText
+            android:id="@+id/shipmentTitleEt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="15sp"
+            android:paddingLeft="20dp"
+            android:drawableRight="@null"
+            android:paddingRight="20dp"
+            android:textColor="@color/mainText"
+            android:background="@drawable/edit_text_bg"
+            android:fontFamily="@font/metropolis_regular"
+            android:hint="Title"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/shipmentTitleError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="invalid title"
+            android:visibility="gone"
+            android:fontFamily="@font/metropolis_regular"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/receiverNameEt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="15sp"
+            android:paddingLeft="20dp"
+            android:drawableRight="@null"
+            android:paddingRight="20dp"
+            android:textColor="@color/mainText"
+            android:background="@drawable/edit_text_bg"
+            android:fontFamily="@font/metropolis_regular"
+            android:hint="Reciever name"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/receiverNameError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="invalid name"
+            android:visibility="gone"
+            android:fontFamily="@font/metropolis_regular"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:layout_marginTop="5dp"
+            />
+
+        <EditText
+            android:id="@+id/receiverEmailEt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="15sp"
+            android:paddingLeft="20dp"
+            android:drawableRight="@null"
+            android:paddingRight="20dp"
+            android:textColor="@color/mainText"
+            android:background="@drawable/edit_text_bg"
+            android:fontFamily="@font/metropolis_regular"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/receiverEmailError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="invalid email address"
+            android:visibility="gone"
+            android:fontFamily="@font/metropolis_regular"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/receiverPhoneEt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="15sp"
+            android:paddingLeft="20dp"
+            android:drawableRight="@null"
+            android:paddingRight="20dp"
+            android:textColor="@color/mainText"
+            android:background="@drawable/edit_text_bg"
+            android:fontFamily="@font/metropolis_regular"
+            android:hint="Phone"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/receiverPhoneError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="invalid phone number"
+            android:visibility="gone"
+            android:fontFamily="@font/metropolis_regular"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/receiverCountryEt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="15sp"
+            android:paddingLeft="20dp"
+            android:drawableRight="@null"
+            android:paddingRight="20dp"
+            android:textColor="@color/mainText"
+            android:background="@drawable/edit_text_bg"
+            android:fontFamily="@font/metropolis_regular"
+            android:hint="Country"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/receiverCountryError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="invalid country"
+            android:visibility="gone"
+            android:fontFamily="@font/metropolis_regular"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/receiverCityEt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="15sp"
+            android:paddingLeft="20dp"
+            android:drawableRight="@null"
+            android:paddingRight="20dp"
+            android:textColor="@color/mainText"
+            android:background="@drawable/edit_text_bg"
+            android:fontFamily="@font/metropolis_regular"
+            android:hint="City"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/receiverCityError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="invalid city"
+            android:visibility="gone"
+            android:fontFamily="@font/metropolis_regular"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/receiverZipCodeEt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="15sp"
+            android:paddingLeft="20dp"
+            android:drawableRight="@null"
+            android:paddingRight="20dp"
+            android:textColor="@color/mainText"
+            android:background="@drawable/edit_text_bg"
+            android:fontFamily="@font/metropolis_regular"
+            android:hint="ZIP"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/receiverZipCodeError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="invalid zip code"
+            android:visibility="gone"
+            android:fontFamily="@font/metropolis_regular"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/receiverAddressEt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="15sp"
+            android:paddingLeft="20dp"
+            android:drawableRight="@null"
+            android:paddingRight="20dp"
+            android:textColor="@color/mainText"
+            android:background="@drawable/edit_text_bg"
+            android:fontFamily="@font/metropolis_regular"
+            android:hint="Address"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/receiverAddressError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email Error"
+            android:visibility="gone"
+            android:fontFamily="@font/metropolis_regular"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:layout_marginTop="5dp"
+            />
+
+        <Button
+            android:id="@+id/addShippingAddressBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg"
+            android:text="Add Address"
+            android:layout_marginTop="40dp"
+            android:elevation="10dp"
+            />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

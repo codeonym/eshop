@@ -32,6 +32,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 
 public class ProductsFragment extends Fragment {
@@ -54,8 +55,6 @@ public class ProductsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_products_list, container, false);
-
-        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         productList = new ArrayList<>();
         categoryList = new ArrayList<>();
@@ -185,6 +184,9 @@ public class ProductsFragment extends Fragment {
                         }
                     }
                 }
+
+                if(newestFirst || bestSelling)
+                    Collections.reverse(productList);
 
                 productAdapter.notifyDataSetChanged();
             }

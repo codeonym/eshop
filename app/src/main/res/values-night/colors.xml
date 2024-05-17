@@ -10,6 +10,7 @@
     <color name="sale">#DB3022</color>
     <color name="black">#222222</color>
     <color name="mainText">#FFFFFFFF</color>
+    <color name="secondaryText">#ccc</color>
     <color name="golden">#FFC107</color>
     <color name="textAd">#9B9B9B</color>
     <color name="white">#FFFFFFFF</color>

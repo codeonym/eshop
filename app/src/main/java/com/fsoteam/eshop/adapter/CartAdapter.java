@@ -13,13 +13,9 @@ import com.fsoteam.eshop.model.OrderItem;
 import com.fsoteam.eshop.model.Product;
 import com.fsoteam.eshop.utils.DbCollections;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
@@ -48,7 +44,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
         holder.cartName.setText(cartItem.getProduct().getProductName());
         holder.cartPrice.setText(cartItem.getProduct().getProductPrice() + cartItem.getProduct().getProductCurrency());
-        updateTotalPrice(holder, cartItem);
         holder.cartItemPLus.setOnClickListener(v -> {
 
             Product product = cartItem.getProduct();
@@ -56,7 +51,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             if(cartItem.getQuantity() < product.getProductMaxPurchasePerUser() && availableQuantity > 0){
                 cartItem.setQuantity(cartItem.getQuantity() + 1);
                 holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));
-                updateTotalPrice(holder, cartItem);
+                updateCartItem(holder, cartItem);
             }
         });
         holder.cartItemMinus.setOnClickListener(v -> {
@@ -65,7 +60,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 cartItem.setQuantity(cartItem.getQuantity() - 1);
                 holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));
                 holder.cartPrice.setText(cartItem.getProduct().getProductPrice() * cartItem.getQuantity() + "DH");
-                updateTotalPrice(holder, cartItem);
+                updateCartItem(holder, cartItem);
             }
         });
 
@@ -76,20 +71,19 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 .into(holder.cartImage);
 
         holder.cartRemove.setOnClickListener(v -> {
-            for(OrderItem i: cartItemsList){
-                if(i.getProduct().getProductId().equals(cartItem.getProduct().getProductId())){
-                    cartItemsList.remove(i);
-                    cartRef.setValue(cartItemsList);
-                    notifyDataSetChanged();
-                    break;
-                }
+            int pos = holder.getAdapterPosition();
+            if(pos != -1){
+                OrderItem removedItem = cartItemsList.remove(pos);
+                cartRef.child(removedItem.getItemId()).removeValue();
+                notifyItemRemoved(pos);
             }
         });
     }
 
-    private void updateTotalPrice(CartViewHolder holder, OrderItem cartItem){
+    private void updateCartItem(CartViewHolder holder, OrderItem cartItem){
+
         holder.cartPrice.setText(cartItem.getProduct().getProductPrice() * cartItem.getQuantity() + "DH");
-        cartRef.setValue(cartItemsList);
+        cartRef.child(cartItem.getItemId()).setValue(cartItem);
     }
 
     @Override

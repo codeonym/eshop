@@ -9,9 +9,9 @@
     <ImageView
         android:id="@+id/offerImage_coverPage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="300dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/no_img_banner"
+        android:src="@drawable/offer_banner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,14 +19,15 @@
     </ImageView>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/offerImage_coverPage"
+        android:padding="10dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/primary"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/offerImage_coverPage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="40dp"
-        >
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/offerNoteCover"
@@ -38,16 +39,16 @@
             android:maxLines="2"
             android:text="E-shop Top Offers"
             android:textColor="@color/white"
-            android:textSize="40dp">
-        </TextView>
+            android:textSize="32dp"></TextView>
+
         <Button
             android:id="@+id/offerCheck_coverPage"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Check"
-            android:background="@drawable/btn_bg"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_bg"
+            android:text="Check" />
     </LinearLayout>
 
 

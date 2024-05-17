@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.fsoteam.eshop.OfferDetailsActivity;
 import com.fsoteam.eshop.R;
 import com.fsoteam.eshop.model.Offer;
 import com.fsoteam.eshop.model.Product;
@@ -39,6 +40,15 @@ public class CoverOfferAdapter extends RecyclerView.Adapter<CoverOfferAdapter.Vi
         Glide.with(ctx)
                 .load(coverOffer.getOfferImage())
                 .into(holder.offerImage_coverPage);
+        holder.offerCheck_coverPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    goDetailsPage(position);
+                }
+            }
+        });
 
         holder.offerCheck_coverPage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,9 +80,9 @@ public class CoverOfferAdapter extends RecyclerView.Adapter<CoverOfferAdapter.Vi
     }
 
     private void goDetailsPage(int position) {
-        Intent intent = new Intent(ctx, ProductDetailsActivity.class);
-        intent.putExtra("ProductIndex", position);
-        intent.putExtra("ProductFrom", "Cover");
+        Intent intent = new Intent(ctx, OfferDetailsActivity.class);
+        intent.putExtra("OfferId", coverOfferList.get(position).getOfferId());
+        intent.putExtra("OfferFrom", "Cover");
         ctx.startActivity(intent);
     }
 }

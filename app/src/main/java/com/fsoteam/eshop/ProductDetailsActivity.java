@@ -1,9 +1,11 @@
 package com.fsoteam.eshop;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,10 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fsoteam.eshop.adapter.ProductAdapter;
 import com.fsoteam.eshop.adapter.ProductImagesAdapter;
+import com.fsoteam.eshop.fragment.BagFragment;
 import com.fsoteam.eshop.model.Cart;
 import com.fsoteam.eshop.model.OrderItem;
 import com.fsoteam.eshop.model.Product;
 import com.fsoteam.eshop.model.User;
+import com.fsoteam.eshop.model.Wishlist;
 import com.fsoteam.eshop.utils.DbCollections;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +31,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
@@ -35,6 +40,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private Product product;
     ProductAdapter productAdapter;
     private ProductImagesAdapter productImagesAdapter;
+    private ImageView likeButton_ProductDetailsPage;
     private TextView productName_ProductDetailsPage;
     private TextView productPrice_ProductDetailsPage;
     private TextView productBrand_ProductDetailsPage;
@@ -45,19 +51,23 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private TextView RatingProductDetails;
     private String pid;
     private ArrayList<Product> recomProducts;
+    private ArrayList<OrderItem> cartItems;
     private Button addToCart_ProductDetailsPage;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference productsRef = database.getReference(DbCollections.PRODUCTS);
-    private DatabaseReference usersRef = database.getReference(DbCollections.USERS);
     private String userId = FirebaseAuth.getInstance().getUid();
+    private DatabaseReference userRef = database.getReference(DbCollections.USERS).child(userId);
+    private Wishlist userWishlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
         recomProducts = new ArrayList<>();
+        userWishlist = new Wishlist();
 
+        likeButton_ProductDetailsPage = findViewById(R.id.productDetailsPageLikeBtn);
         productImagesRecyclerView = findViewById(R.id.productDetailsImagesRecyclerView);
         productImagesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
@@ -68,7 +78,44 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         Log.d("ProductDetailsActivity", "Product ID: " + pid);
         if (pid != null) {
-            fetchProductData();
+            getUserWishlist();
+            likeButton_ProductDetailsPage.setOnClickListener(v -> {
+                // Like the product
+                if(product.isProductLiked()){
+
+                    product.setProductLiked(false);
+                    int likesCount = product.getLikesCount();
+                    likesCount--;
+                    product.setLikesCount(likesCount);
+                    productsRef.child(product.getProductId()).setValue(product);
+                    totalLikes_productDetails.setText(String.valueOf(likesCount));
+                    likeButton_ProductDetailsPage.setImageDrawable(getResources().getDrawable(R.drawable.ic_fav));
+                    ArrayList<Product> tmpList= new ArrayList<>();
+                    tmpList.addAll(userWishlist.getWishlistProducts());
+
+                    for(Product tmp: userWishlist.getWishlistProducts()){
+                        if(tmp.getProductId() != null && tmp.getProductId().equals(product.getProductId())){
+                            tmpList.remove(tmp);
+                            break;
+                        }
+                    }
+                    userWishlist.setWishlistProducts(tmpList);
+                    userRef.child("userWishlist").setValue(userWishlist);
+
+                }else {
+                    product.setProductLiked(true);
+                    int likesCount = product.getLikesCount();
+                    likesCount++;
+                    product.setLikesCount(likesCount);
+                    productsRef.child(product.getProductId()).setValue(product);
+                    totalLikes_productDetails.setText(String.valueOf(likesCount));
+                    likeButton_ProductDetailsPage.setImageDrawable(getResources().getDrawable(R.drawable.ic_fav_added));
+                    List<Product> tmp = userWishlist.getWishlistProducts();
+                    tmp.add(product);
+                    userWishlist.setWishlistProducts(tmp);
+                    userRef.child("userWishlist").setValue(userWishlist);
+                }
+            });
         } else {
             Toast.makeText(this, "Product not found", Toast.LENGTH_SHORT).show();
             finish();
@@ -92,53 +139,46 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
     }
 
-    private void addToBag() {
-        usersRef.child(userId).addValueEventListener(new ValueEventListener() {
+    private void getUserWishlist(){
+        userRef.child("userWishlist").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get the user's cart
-                Log.d("ProductDetailsActivity", "Event listener triggered!");
-                OrderItem orderItem = new OrderItem();
-                orderItem.setProduct(product);
-                User currentUser = dataSnapshot.getValue(User.class);
-                if (currentUser != null && currentUser.getUserCart() != null) {
-
-                    Log.d("ProductDetailsActivity", "User's cart found!");
-                    ArrayList<OrderItem> tempCartItems = new ArrayList<>();
-                    for(OrderItem item : currentUser.getUserCart().getCartItems()) {
-                        if (item.getProduct().getProductId() != null && item.getProduct().getProductId().equals(orderItem.getProduct().getProductId())) {
-                            return;
-                        }
-                        tempCartItems.add(item);
-                    }
-
-                    // Add the product to the cart
-                    tempCartItems.add(orderItem);
-                    currentUser.getUserCart().setCartItems(tempCartItems);
-                    Log.d("ProductDetailsActivity", "bag was set, Product added to cart!");
-                    // Update the user's cart
-                    usersRef.child(userId).setValue(currentUser);
-                    addToCart_ProductDetailsPage.setText("Product is in cart");
-                }
+                Wishlist wishlist = dataSnapshot.getValue(Wishlist.class);
+                userWishlist = wishlist;
+                fetchProductData();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ProductDetailsActivity.this, "Failed to add product to cart", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProductDetailsActivity.this, "Failed to load user wishlist.", Toast.LENGTH_SHORT).show();
             }
         });
     }
+    private void addToBag() {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setProduct(product);
+        orderItem.setQuantity(1);
+        orderItem.setItemId(product.getProductId());
+        for(OrderItem tmp: cartItems){
+            if(tmp.getProduct().getProductId().equals(pid)){
+                Toast.makeText(ProductDetailsActivity.this, "Product is already in cart", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+        userRef.child("userCart").child("cartItems").child(orderItem.getItemId()).setValue(orderItem);
+        addToCart_ProductDetailsPage.setText("Product added to cart");
+        Toast.makeText(this, "Product added to cart", Toast.LENGTH_SHORT).show();
+    }
     private void fetchUserCartData() {
-        usersRef.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+        userRef.child("userCart").child("cartItems").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                User currentUser = dataSnapshot.getValue(User.class);
-                if (currentUser != null && currentUser.getUserCart() != null) {
-                    for(OrderItem item : currentUser.getUserCart().getCartItems()) {
-                        if (item.getProduct().getProductId().equals(pid)) {
-                            addToCart_ProductDetailsPage.setText("Product is in cart");
-                            return;
-                        }
+                cartItems = new ArrayList<>();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    OrderItem orderItem = snapshot.getValue(OrderItem.class);
+                    cartItems.add(orderItem);
+                    if(orderItem.getProduct().getProductId().equals(pid)){
+                        addToCart_ProductDetailsPage.setText("Product is in cart");
                     }
                 }
             }
@@ -166,11 +206,18 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 totalLikes_productDetails.setText(String.valueOf(product.getLikesCount()));
                 productName_ProductDetailsPage.setText(product.getProductName());
                 productPrice_ProductDetailsPage.setText(product.getProductPrice() + product.getProductCurrency());
-                productPriceRaw_ProductDetailsPage.setText("" + product.getProductPriceRaw());
+                productPriceRaw_ProductDetailsPage.setText(product.getProductPriceRaw() + product.getProductCurrency());
                 productBrand_ProductDetailsPage.setText(product.getProductBrand());
                 productDes_ProductDetailsPage.setText(product.getProductDes());
                 RatingProductDetails.setText(String.valueOf(product.getProductRating()));
                 productRating_singleProduct.setRating(product.getProductRating());
+                for(Product tmp: userWishlist.getWishlistProducts()){
+                    if(tmp.getProductId().equals(product.getProductId())){
+                        likeButton_ProductDetailsPage.setImageDrawable(getResources().getDrawable(R.drawable.ic_fav_added));
+                        product.setProductLiked(true);
+                        break;
+                    }
+                }
             }
 
             @Override
@@ -181,14 +228,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
     public void getRecomProducts() {
-        productsRef.limitToFirst(10).addValueEventListener(new ValueEventListener() {
+        productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 recomProducts.clear();
+                int counter = 1;
                 for (DataSnapshot productSnapshot : dataSnapshot.getChildren()) {
+                    if(counter > 10) break;
                     Product p = productSnapshot.getValue(Product.class);
-                    if (p != null && p.getProductSubCategory().equals(product.getProductSubCategory())) {
+                    if (p != null && product != null && !p.getProductId().equals(product.getProductId()) && p.getProductBrand().equals(product.getProductBrand())) {
                         recomProducts.add(p);
+                        counter ++;
                     }
                 }
 

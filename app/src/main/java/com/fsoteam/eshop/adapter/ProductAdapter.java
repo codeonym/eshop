@@ -32,6 +32,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private ArrayList<Product> productList;
     private Context ctx;
     private DatabaseReference userRef = FirebaseDatabase.getInstance().getReference(DbCollections.USERS);
+    private DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference(DbCollections.PRODUCTS);
     private String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private User currentUser;
 
@@ -55,7 +56,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.productRating_singleProduct.setRating(product.getProductRating());
 
         Glide.with(ctx)
-                .load(product.getProductThumbnail())
+                .load(product.getProductImage())
                 .placeholder(R.drawable.no_product)
                 .into(holder.productImage_singleProduct);
 
@@ -109,11 +110,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                     currentUser.getUserWishlist().removeProductById(product.getProductId());
                     product.setProductLiked(false);
                     holder.productAddToFav_singleProduct.setImageResource(R.drawable.ic_fav);
+
+                    int total = product.getLikesCount();
+                    product.setLikesCount(total - 1);
+                    productsRef.child(product.getProductId()).child("likesCount").setValue(total - 1);
                 } else {
                     // The product is not in the wishlist, add it
                     currentUser.getUserWishlist().addProduct(product);
                     product.setProductLiked(true);
                     holder.productAddToFav_singleProduct.setImageResource(R.drawable.ic_fav_added);
+
+                    int total = product.getLikesCount();
+                    product.setLikesCount(total + 1);
+                    productsRef.child(product.getProductId()).child("likesCount").setValue(total + 1);
                 }
 
                 // Update the user in the database

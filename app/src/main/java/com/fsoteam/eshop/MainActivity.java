@@ -3,6 +3,8 @@ package com.fsoteam.eshop;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
+
 import com.fsoteam.eshop.fragment.*;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -14,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
         bottomNavigationView = findViewById(R.id.bottomNavMenu);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 

@@ -18,10 +18,13 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
+import com.fsoteam.eshop.LoginActivity;
 import com.fsoteam.eshop.R;
 import com.fsoteam.eshop.PaymentMethodActivity;
 import com.fsoteam.eshop.SettingsActivity;
-import com.fsoteam.eshop.ShipingAddressActivity;
+import com.fsoteam.eshop.ShippingAddressActivity;
+import com.fsoteam.eshop.model.User;
+import com.fsoteam.eshop.utils.DbCollections;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +32,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
@@ -46,10 +48,11 @@ public class ProfileFragment extends Fragment {
     private TextView profileName_profileFrag;
     private TextView profileEmail_profileFrag;
     private DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private String userUid = FirebaseAuth.getInstance().getUid();
     private LinearLayout linearLayout2;
     private LinearLayout linearLayout3;
     private LinearLayout linearLayout4;
+    private Button logoutBtn_profileFrag;
     private StorageReference storageReference;
 
     @Nullable
@@ -62,6 +65,8 @@ public class ProfileFragment extends Fragment {
         uploadImage_profileFrag = view.findViewById(R.id.uploadImage_profileFrag);
         profileName_profileFrag = view.findViewById(R.id.profileName_profileFrag);
         profileEmail_profileFrag = view.findViewById(R.id.profileEmail_profileFrag);
+        logoutBtn_profileFrag = view.findViewById(R.id.logoutBtn_profileFrag);
+
         animationView = view.findViewById(R.id.animationView);
         linearLayout2 = view.findViewById(R.id.linearLayout2);
         linearLayout3 = view.findViewById(R.id.linearLayout3);
@@ -69,7 +74,7 @@ public class ProfileFragment extends Fragment {
         CardView shippingAddressCard_ProfilePage = view.findViewById(R.id.shippingAddressCard_ProfilePage);
         CardView paymentMethod_ProfilePage = view.findViewById(R.id.paymentMethod_ProfilePage);
 
-        shippingAddressCard_ProfilePage.setOnClickListener(v -> startActivity(new Intent(getContext(), ShipingAddressActivity.class)));
+        shippingAddressCard_ProfilePage.setOnClickListener(v -> startActivity(new Intent(getContext(), ShippingAddressActivity.class)));
 
         paymentMethod_ProfilePage.setOnClickListener(v -> startActivity(new Intent(getContext(), PaymentMethodActivity.class)));
 
@@ -78,6 +83,16 @@ public class ProfileFragment extends Fragment {
         uploadImage_profileFrag.setVisibility(View.GONE);
 
         getUserData();
+
+        logoutBtn_profileFrag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
 
         uploadImage_profileFrag.setOnClickListener(v -> uploadImage());
 
@@ -121,25 +136,25 @@ public class ProfileFragment extends Fragment {
     }
 
     private void getUserData() {
-        db.child("Users").child(firebaseAuth.getUid())
+        db.child(DbCollections.USERS).child(userUid)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        String userImage = dataSnapshot.child("userImage").getValue(String.class);
-                        String userName = dataSnapshot.child("userName").getValue(String.class);
-                        String userEmail = dataSnapshot.child("userEmail").getValue(String.class);
+                        User user = dataSnapshot.getValue(User.class);
 
-                        if (userName != null) {
-                            profileName_profileFrag.setText(userName);
+                        if (user.getUserImage() != null) {
+                            profileName_profileFrag.setText(user.getUserName());
                         }
-                        if (userEmail != null) {
-                            profileEmail_profileFrag.setText(userEmail);
+                        if (user.getUserEmail() != null) {
+                            profileEmail_profileFrag.setText(user.getUserEmail());
                         }
-                        if (userImage != null) {
-                            Glide.with(ProfileFragment.this)
-                                    .load(userImage)
-                                    .placeholder(R.drawable.ic_profile)
-                                    .into(profileImage_profileFrag);
+                        if (user.getUserName() != null) {
+                            if (isAdded()) {
+                                Glide.with(ProfileFragment.this)
+                                        .load(user.getUserImage())
+                                        .placeholder(R.drawable.ic_profile)
+                                        .into(profileImage_profileFrag);
+                            }
                         }
 
                         showLayout();
@@ -207,7 +222,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void addUploadRecordToDb(String uri) {
-        db.child("Users").child(firebaseAuth.getUid()).child("userImage")
+        db.child(DbCollections.USERS).child(userUid).child("userImage")
                 .setValue(uri)
                 .addOnSuccessListener(aVoid -> Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e -> Toast.makeText(getContext(), "Failed to save: " + e.getMessage(), Toast.LENGTH_SHORT).show());

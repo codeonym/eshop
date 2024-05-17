@@ -171,7 +171,7 @@ public class CustomUtils {
             Random rand = new Random();
             for (CSVRecord record : records) {
                 if (count >= 50) break;
-                if(record.get("image_url").isEmpty() || record.get("variation_0_thumbnail").isEmpty() || record.get("variation_0_image").isEmpty() || record.get("variation_1_image").isEmpty()) continue;
+                if(record.get("image_url").isEmpty() || record.get("variation_0_thumbnail").isEmpty() || record.get("variation_0_image").isEmpty() || record.get("variation_1_image").isEmpty() || record.get("brand").isEmpty()) continue;
 
                 Product product = new Product();
                 product.setProductId(record.get("id"));
@@ -181,6 +181,7 @@ public class CustomUtils {
                 product.setProductModel(record.get("model"));
                 product.setProductCategory(category);
                 product.setProductNote(record.get("subcategory"));
+                product.setProductSubCategory(record.get("subcategory"));
                 float price = Float.parseFloat(record.get("current_price")) * 8.66f;
                 String formattedPrice = String.format("%.2f", price);
                 product.setProductPrice(Float.parseFloat(formattedPrice));

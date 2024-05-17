@@ -52,11 +52,12 @@
                         android:text=""
                         android:id="@+id/totalLikes_productDetails"/>
                     <ImageView
+                        android:id="@+id/productDetailsPageLikeBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
                         android:layout_marginLeft="10dp"
-                        android:src="@drawable/ic_fav_added"
+                        android:src="@drawable/ic_fav"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="10dp" />
                 </LinearLayout>

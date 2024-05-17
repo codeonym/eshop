@@ -2,8 +2,10 @@ package com.fsoteam.eshop.fragment;
 
 import static com.fsoteam.eshop.utils.CustomUtils.populateDB;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.fsoteam.eshop.LoginActivity;
+import com.fsoteam.eshop.SplashScreenActivity;
 import com.fsoteam.eshop.adapter.CoverOfferAdapter;
 import com.fsoteam.eshop.adapter.ProductAdapter;
 import com.fsoteam.eshop.R;
@@ -66,12 +70,11 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         //populateDB(getActivity());
-        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         coverOffer = new ArrayList<>();
         newProduct = new ArrayList<>();
         saleProduct = new ArrayList<>();
-        // populateDatabaseFromJson();
+
         coverRecView = view.findViewById(R.id.coverRecView);
         newRecView = view.findViewById(R.id.newRecView);
         saleRecView = view.findViewById(R.id.saleRecView);
@@ -83,6 +86,7 @@ public class HomeFragment extends Fragment {
         setCoverData();
         setNewProductData();
         setSaleProductData();
+        showLayout();
 
         coverRecView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         coverRecView.setHasFixedSize(true);
@@ -93,12 +97,10 @@ public class HomeFragment extends Fragment {
         newRecView.setHasFixedSize(true);
         newProductAdapter = new ProductAdapter(newProduct, getActivity());
         newRecView.setAdapter(newProductAdapter);
-
         saleRecView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         saleRecView.setHasFixedSize(true);
         saleProductAdapter = new ProductAdapter(saleProduct, getActivity());
         saleRecView.setAdapter(saleProductAdapter);
-        showLayout();
         View newProductsTv = view.findViewById(R.id.product_GroupViewAll);
         View saleProductsTv = view.findViewById(R.id.saleProduct_ViewAll);
         CustomUtils.setProductsFragmentFilter(getActivity(), newProductsTv, null, true, false);
@@ -148,7 +150,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setNewProductData() {
-        productsRef.orderByChild("productAddDate").limitToFirst(10)
+        productsRef.orderByChild("productAddDate").limitToLast(10)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -168,7 +170,7 @@ public class HomeFragment extends Fragment {
                 });
     }
     private void setSaleProductData() {
-        productsRef.orderByChild("likesCount").limitToFirst(10)
+        productsRef.orderByChild("likesCount").limitToLast(10)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -188,82 +190,5 @@ public class HomeFragment extends Fragment {
                         Log.d("HomeFragment", "Error getting documents: ", databaseError.toException());
                     }
                 });
-    }
-    public void populateDatabaseFromJson() {
-
-        // this function populates the database with some fake data
-        try {
-            // Get the JSON data from the file
-            InputStream is = getResources().openRawResource(R.raw.populatedb_raw);
-            byte[] buffer = new byte[is.available()];
-            is.read(buffer);
-            is.close();
-            String json = new String(buffer, "UTF-8");
-
-            // Parse the JSON data
-            JSONObject jsonObject = new JSONObject(json);
-            JSONArray categoriesArray = jsonObject.getJSONArray("categories");
-            JSONArray offersArray = jsonObject.getJSONArray("offers");
-            JSONArray productsArray = jsonObject.getJSONArray("products");
-
-            // Get a reference to the Firebase database
-            FirebaseDatabase db = FirebaseDatabase.getInstance();
-
-            // Populate the categories collection
-            DatabaseReference categoriesRef = db.getReference(DbCollections.CATEGORIES);
-            for (int i = 0; i < categoriesArray.length(); i++) {
-                JSONObject categoryObject = categoriesArray.getJSONObject(i);
-                Category category = new Category();
-                category.setCategoryId(categoryObject.getString("categoryId"));
-                category.setName(categoryObject.getString("name"));
-                category.setImage(categoryObject.getString("image"));
-                category.setCategoryDescription(categoryObject.getString("categoryDescription"));
-                categoriesRef.child(category.getCategoryId()).setValue(category);
-            }
-
-            // Populate the offers collection
-            DatabaseReference offersRef = db.getReference(DbCollections.OFFERS);
-            DateTimeFormatter formatter = null;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-            }
-            for (int i = 0; i < offersArray.length(); i++) {
-                JSONObject offerObject = offersArray.getJSONObject(i);
-                Offer offer = new Offer();
-                offer.setOfferId(offerObject.getString("offerId"));
-                offer.setOfferTitle(offerObject.getString("offerTitle"));
-                offer.setOfferDescription(offerObject.getString("offerDescription"));
-                offer.setOfferImage(offerObject.getString("offerImage"));
-                offer.setOfferStartDate(Long.parseLong(offerObject.getString("offerStartDate")));
-                offer.setOfferEndDate(Long.parseLong(offerObject.getString("offerEndDate")));
-                offersRef.child(offer.getOfferId()).setValue(offer);
-            }
-
-            // Populate the products collection
-            DatabaseReference productsRef = db.getReference(DbCollections.PRODUCTS);
-            for (int i = 0; i < productsArray.length(); i++) {
-                JSONObject productObject = productsArray.getJSONObject(i);
-                Product product = new Product();
-                product.setProductName(productObject.getString("productName"));
-                product.setProductId(productObject.getString("productId"));
-                product.setProductPrice((float) productObject.getDouble("productPrice"));
-                product.setProductDes(productObject.getString("productDes"));
-                product.setProductRating((float) productObject.getDouble("productRating"));
-                product.setProductDisCount(productObject.getString("productDisCount"));
-                product.setProductHave(productObject.getBoolean("productHave"));
-                product.setProductBrand(productObject.getString("productBrand"));
-                product.setProductImages(new ArrayList<ProductImage>());
-                Category cat = new Category();
-                cat.setCategoryId(productObject.getString("productCategoryId"));
-                product.setProductCategory(cat);
-                product.setProductNote(productObject.getString("productNote"));
-                product.setProductQuantity(productObject.getInt("productQuantity"));
-                product.setProductSales(productObject.getInt("productSales"));
-                productsRef.child(product.getProductId()).setValue(product);
-            }
-
-        } catch (Exception e) {
-            Log.e("HomeFragment", "Error populating database", e);
-        }
     }
 }

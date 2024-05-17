@@ -34,8 +34,8 @@ public class FavFragment extends Fragment {
     private LottieAnimationView animationView;
     private FavProductAdapter favProductAdapter;
     private Wishlist userWishlist;
-    private DatabaseReference userRef;
-    private String currentUserId = FirebaseAuth.getInstance().getUid(); // get the current user's ID
+    private String currentUserId = FirebaseAuth.getInstance().getUid();
+    private DatabaseReference userRef = FirebaseDatabase.getInstance().getReference(DbCollections.USERS).child(currentUserId);
 
     @Nullable
     @Override
@@ -46,7 +46,6 @@ public class FavFragment extends Fragment {
         favRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         animationView = view.findViewById(R.id.animationViewFavPage);
 
-        userRef = FirebaseDatabase.getInstance().getReference(DbCollections.USERS);
 
         loadFavProducts();
 
@@ -54,7 +53,7 @@ public class FavFragment extends Fragment {
     }
 
     private void loadFavProducts() {
-        userRef.child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User currentUser = dataSnapshot.getValue(User.class);

@@ -47,7 +47,6 @@ public class ShopFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shop, container, false);
-        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         RecyclerView coverRecView_shopFrag = view.findViewById(R.id.coverRecView_shopFrag);
         RecyclerView categoriesRecView = view.findViewById(R.id.categoriesRecView);
@@ -92,21 +91,6 @@ public class ShopFragment extends Fragment {
         });
     }
 
-    private String getJsonData(Context context, String fileName) {
-        String jsonString;
-        try {
-            InputStream is = context.getAssets().open(fileName);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            jsonString = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return jsonString;
-    }
 
     private void setCoverData() {
         offersRef.addValueEventListener(new ValueEventListener() {

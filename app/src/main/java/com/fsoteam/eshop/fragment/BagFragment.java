@@ -1,10 +1,12 @@
 package com.fsoteam.eshop.fragment;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
@@ -16,6 +18,7 @@ import com.fsoteam.eshop.adapter.CartAdapter;
 import com.fsoteam.eshop.R;
 import com.fsoteam.eshop.model.Cart;
 import com.fsoteam.eshop.model.OrderItem;
+import com.fsoteam.eshop.model.ShipmentDetails;
 import com.fsoteam.eshop.model.User;
 import com.fsoteam.eshop.utils.DbCollections;
 import com.fsoteam.eshop.viewmodel.CartViewModel;
@@ -39,15 +42,18 @@ public class BagFragment extends Fragment {
     private float sum;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private String userId = FirebaseAuth.getInstance().getUid();
-    private DatabaseReference userRef = database.getReference(DbCollections.USERS).child(userId);
+    private DatabaseReference dbRef = database.getReference();
+    private DatabaseReference userRef = dbRef.child(DbCollections.USERS).child(userId);
+    private DatabaseReference addressesRef = dbRef.child(DbCollections.USERS).child(userId).child("userShipmentAddress");
     private LinearLayout bottomCartLayout;
+    private ArrayList<ShipmentDetails> shippingAddresses;
     private LinearLayout emptyBagMsgLayout;
     private TextView MybagText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bag, container, false);
-
+        shippingAddresses = new ArrayList<>();
         cartRecView = view.findViewById(R.id.cartRecView);
         animationView = view.findViewById(R.id.animationViewCartPage);
         totalPriceBagFrag = view.findViewById(R.id.totalPriceBagFrag);
@@ -65,42 +71,76 @@ public class BagFragment extends Fragment {
         cartRecView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         fetchCartItems();
+        // Find the checkout button
+        Button checkoutButton = view.findViewById(R.id.checkOut_BagPage);
+
+        checkoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Create a new CheckoutDialogFragment
+                CheckoutDialogFragment dialogFragment = new CheckoutDialogFragment(getContext(), cartItems, sum, shippingAddresses);
+
+                // Show the dialog
+                dialogFragment.show(getChildFragmentManager(), "CheckoutDialogFragment");
+            }
+        });
 
         return view;
     }
 
     private void fetchCartItems() {
-        userRef.addValueEventListener(new ValueEventListener() {
+        userRef.child("userCart").child("cartItems").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                User currentUser = dataSnapshot.getValue(User.class);
-                if(currentUser != null && currentUser.getUserCart() != null){
-                    cartItems.clear();
-                    cartItems.addAll(currentUser.getUserCart().getCartItems());
+                cartItems.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    OrderItem orderItem = snapshot.getValue(OrderItem.class);
+                    cartItems.add(orderItem);
+                }
 
+                if (cartAdapter == null) {
                     cartAdapter = new CartAdapter(getActivity(), cartItems);
                     cartRecView.setAdapter(cartAdapter);
-
-                    if (cartItems.isEmpty()) {
-                        animationView.playAnimation();
-                        animationView.loop(true);
-                        bottomCartLayout.setVisibility(View.GONE);
-                        MybagText.setVisibility(View.GONE);
-                        emptyBagMsgLayout.setVisibility(View.VISIBLE);
-                    } else {
-                        emptyBagMsgLayout.setVisibility(View.GONE);
-                        bottomCartLayout.setVisibility(View.VISIBLE);
-                        MybagText.setVisibility(View.VISIBLE);
-                        animationView.pauseAnimation();
-                    }
-                    String currency = "DH";
-                    sum = 0.0f;
-                    for (OrderItem item : cartItems) {
-                        sum += item.getQuantity() * item.getProduct().getProductPrice();
-                        currency = item.getProduct().getProductCurrency();
-                    }
-                    totalPriceBagFrag.setText(sum + currency);
+                } else {
                     cartAdapter.notifyDataSetChanged();
+                }
+
+                if (cartItems.isEmpty()) {
+                    animationView.playAnimation();
+                    animationView.loop(true);
+                    bottomCartLayout.setVisibility(View.GONE);
+                    MybagText.setVisibility(View.GONE);
+                    emptyBagMsgLayout.setVisibility(View.VISIBLE);
+                } else {
+                    emptyBagMsgLayout.setVisibility(View.GONE);
+                    bottomCartLayout.setVisibility(View.VISIBLE);
+                    MybagText.setVisibility(View.VISIBLE);
+                    animationView.pauseAnimation();
+                }
+
+                String currency = "DH";
+                sum = 0.0f;
+                for (OrderItem item : cartItems) {
+                    sum += item.getQuantity() * item.getProduct().getProductPrice();
+                    currency = item.getProduct().getProductCurrency();
+                }
+                totalPriceBagFrag.setText(sum + currency);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.e("BagFragment", "Failed to read value.", error.toException());
+            }
+        });
+        addressesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                shippingAddresses.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    ShipmentDetails shipmentDetails = snapshot.getValue(ShipmentDetails.class);
+                    shippingAddresses.add(shipmentDetails);
                 }
             }
 

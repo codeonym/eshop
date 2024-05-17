@@ -1,20 +1,22 @@
 package com.fsoteam.eshop.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class Cart {
     private String cartId;
-    private List<OrderItem> cartItems;
+    private Map<String, OrderItem> cartItems;
     private float cartTotal;
 
     public Cart() {
         this.cartId = UUID.randomUUID().toString();
-        this.cartItems = new ArrayList<OrderItem>();
+        this.cartItems = new HashMap<String, OrderItem>();
         this.cartTotal = 0.0f;
     }
-    public Cart(String cartId, List<OrderItem> cartItems, float cartTotal) {
+    public Cart(String cartId, Map<String, OrderItem> cartItems, float cartTotal) {
         this.cartId = cartId;
         this.cartItems = cartItems;
         this.cartTotal = cartTotal;
@@ -28,25 +30,11 @@ public class Cart {
         this.cartId = cartId;
     }
 
-    public List<OrderItem> getCartItems() {
+    public Map<String, OrderItem> getCartItems() {
         return cartItems;
     }
-    public boolean addProduct(OrderItem product) {
-        return this.cartItems.add(product);
-    }
 
-    public boolean removeProduct(Product product) {
-        return this.cartItems.remove(product);
-    }
-    public boolean removeProductById(String productId) {
-        for (OrderItem item : this.cartItems) {
-            if (item.getProduct().getProductId().equals(productId)) {
-                return this.cartItems.remove(item);
-            }
-        }
-        return false;
-    }
-    public void setCartItems(List<OrderItem> cartItems) {
+    public void setCartItems(Map<String, OrderItem> cartItems) {
         this.cartItems = cartItems;
     }
 

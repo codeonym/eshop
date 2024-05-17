@@ -34,11 +34,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() != null) {
+
             // User is signed in, redirect to MainActivity
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
             return;
         }
+
         TextView signUpTv = findViewById(R.id.signUpTv);
         signInBtn = findViewById(R.id.loginBtn);
         emailEt = findViewById(R.id.emailEt);

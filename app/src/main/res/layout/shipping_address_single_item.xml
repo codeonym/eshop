@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/backgroundAd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/shippingAddress_shipmentTitleTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Home address"
+                        android:textSize="18sp"
+                        android:maxLines="1"
+                        android:textColor="@color/mainText"
+                        android:fontFamily="@font/metropolis_semibold"
+                        android:maxEms="12"
+                        android:layout_marginBottom="5dp"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_user_address"
+                        android:layout_marginEnd="5dp"/>
+                    <TextView
+                        android:id="@+id/shippingAddress_receiverNameTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="joe doe"
+                        android:gravity="center_vertical"
+                        android:textSize="14sp"
+                        android:textColor="@color/textAd"
+                        android:fontFamily="@font/metropolis_semibold"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_email_address"
+                        android:layout_marginEnd="5dp"/>
+                    <TextView
+                        android:id="@+id/shippingAddress_receiverEmailTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="joe@example.com"
+                        android:gravity="center_vertical"
+                        android:textSize="14sp"
+                        android:textColor="@color/textAd"
+                        android:fontFamily="@font/metropolis_semibold"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_phone_address"
+                        android:layout_marginEnd="5dp"/>
+                    <TextView
+                        android:id="@+id/shippingAddress_receiverPhoneTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="+XXXXXXXXXXX"
+                        android:gravity="center_vertical"
+                        android:textSize="14sp"
+                        android:textColor="@color/textAd"
+                        android:fontFamily="@font/metropolis_semibold"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:gravity="start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_map_address"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"/>
+                    <TextView
+                        android:id="@+id/shippingAddress_receiverCountryTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/metropolis_semibold"
+                        android:text="Any country"
+                        android:textColor="@color/textAd"
+                        android:textSize="14sp"
+                        android:layout_marginEnd="10dp"/>
+
+                    <TextView
+                        android:id="@+id/shippingAddress_receiverCityTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Any city"
+                        android:textSize="14sp"
+                        android:textColor="@color/textAd"
+                        android:fontFamily="@font/metropolis_semibold"
+                        android:layout_marginEnd="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/shippingAddress_receiverZipTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="123456"
+                        android:textSize="14sp"
+                        android:textColor="@color/textAd"
+                        android:fontFamily="@font/metropolis_semibold"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/shippingAddress_receiverAddressTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/metropolis_semibold"
+                    android:text="123 any street, anywhere, any country"
+                    android:textColor="@color/secondaryText"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="40dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/cartRemove"
+                    android:src="@drawable/ic_baseline_clear_24"
+                    app:tint="@color/mainText"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,17 +1,20 @@
 package com.fsoteam.eshop.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User {
     private String userName;
     private String userImage;
     private String userUid;
     private String userEmail;
-    private String userAddress;
+
+    private Map<String, ShipmentDetails> userShipmentAddress;
     private String userPhone;
     private Cart userCart;
-    private List<Order> userOrders;
+    private Map<String, Order> userOrders;
     private List<PaymentMethod> userPaymentMethods;
     private Wishlist userWishlist;
     private List<CreditCard> userCreditCard;
@@ -21,20 +24,20 @@ public class User {
         this.userImage = "";
         this.userUid = "";
         this.userEmail = "";
-        this.userAddress = "";
+        this.userShipmentAddress = new HashMap<String, ShipmentDetails>();
         this.userPhone = "";
         this.userCart = new Cart();
-        this.userOrders = new ArrayList<Order>();
+        this.userOrders = new HashMap<String, Order>();
         this.userPaymentMethods = new ArrayList<PaymentMethod>();
         this.userWishlist = new Wishlist();
         this.userCreditCard = new ArrayList<CreditCard>();
     }
-    public User(String userName, String userImage, String userUid, String userEmail, String userAddress, String userPhone, Cart userCart, List<Order> userOrders, List<PaymentMethod> userPaymentMethods, Wishlist userWishlist, List<CreditCard> userCreditCard) {
+    public User(String userName, String userImage, String userUid, String userEmail, Map<String, ShipmentDetails> userShipmentAddress, String userPhone, Cart userCart, HashMap<String, Order> userOrders, List<PaymentMethod> userPaymentMethods, Wishlist userWishlist, List<CreditCard> userCreditCard) {
         this.userName = userName;
         this.userImage = userImage;
         this.userUid = userUid;
         this.userEmail = userEmail;
-        this.userAddress = userAddress;
+        this.userShipmentAddress = userShipmentAddress;
         this.userPhone = userPhone;
         this.userCart = userCart;
         this.userOrders = userOrders;
@@ -75,12 +78,12 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    public String getUserAddress() {
-        return userAddress;
+    public Map<String, ShipmentDetails> getUserShipmentAddress() {
+        return userShipmentAddress;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public void setUserShipmentAddress(Map<String, ShipmentDetails> userShipmentAddress) {
+        this.userShipmentAddress = userShipmentAddress;
     }
 
     public String getUserPhone() {
@@ -99,18 +102,11 @@ public class User {
         this.userCart = userCart;
     }
 
-    public List<Order> getUserOrders() {
+    public Map<String, Order> getUserOrders() {
         return userOrders;
     }
-    public boolean addUserOrder(Order order) {
-        return this.userOrders.add(order);
-    }
 
-    public boolean removeUserOrder(Order order) {
-        return this.userOrders.remove(order);
-    }
-
-    public void setUserOrders(List<Order> userOrders) {
+    public void setUserOrders(Map<String, Order> userOrders) {
         this.userOrders = userOrders;
     }
 
