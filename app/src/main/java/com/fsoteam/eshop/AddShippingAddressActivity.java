@@ -1,40 +1,27 @@
 package com.fsoteam.eshop;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
-import com.fsoteam.eshop.adapter.ShippingAddressAdapter;
+import androidx.lifecycle.ViewModelProvider;
 import com.fsoteam.eshop.model.ShipmentDetails;
-import com.fsoteam.eshop.utils.DbCollections;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.fsoteam.eshop.viewmodel.AddShippingAddressViewModel;
 
 public class AddShippingAddressActivity extends AppCompatActivity {
 
     private EditText shipmentTitleEt, receiverNameEt, receiverEmailEt, receiverPhoneEt ,receiverCountryEt, receiverCityEt, receiverZipCodeEt, receiverAddressEt;
     private TextView shipmentTitleError, receiverNameError, receiverEmailError, receiverPhoneError, receiverCountryError, receiverCityError, receiverZipCodeError, receiverAddressError;
     private Button addShippingAddressBtn;
-    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    private String userUid = FirebaseAuth.getInstance().getUid();
+
+    private AddShippingAddressViewModel addShippingAddressViewModel;
 
 
     @Override
@@ -69,8 +56,9 @@ public class AddShippingAddressActivity extends AppCompatActivity {
         textAutoCheck(receiverZipCodeEt, receiverZipCodeError);
         textAutoCheck(receiverAddressEt, receiverAddressError);
 
-
         addShippingAddressBtn = findViewById(R.id.addShippingAddressBtn);
+
+        addShippingAddressViewModel = new ViewModelProvider(this).get(AddShippingAddressViewModel.class);
 
         addShippingAddressBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,7 +151,7 @@ public class AddShippingAddressActivity extends AppCompatActivity {
         shipmentDetails.setReceiverZipCode(receiverZipCodeEt.getText().toString());
         shipmentDetails.setReceiverAddress(receiverAddressEt.getText().toString());
 
-        databaseReference.child(DbCollections.USERS).child(userUid).child("userShipmentAddress").child(shipmentDetails.getShipmentId()).setValue(shipmentDetails);
+        addShippingAddressViewModel.addShippingAddress(shipmentDetails);
 
         Toast.makeText(this, "Shipment Address Added Successfully", Toast.LENGTH_SHORT).show();
         finish();

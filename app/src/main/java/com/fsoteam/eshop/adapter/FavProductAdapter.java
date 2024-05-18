@@ -8,37 +8,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.fsoteam.eshop.ProductDetailsActivity;
 import com.fsoteam.eshop.R;
 import com.fsoteam.eshop.model.Product;
-import com.fsoteam.eshop.model.User;
-import com.fsoteam.eshop.utils.DbCollections;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
+import com.fsoteam.eshop.viewmodel.FavViewModel;
 import java.util.List;
 
 public class FavProductAdapter extends RecyclerView.Adapter<FavProductAdapter.ViewHolder> {
 
     private Context context;
     private List<Product> favProductList;
-    private DatabaseReference userRef;
-    private String currentUserId = FirebaseAuth.getInstance().getUid(); // get the current user's ID
+    private FavViewModel favViewModel;
 
-    public FavProductAdapter(Context context, List<Product> favProductList) {
+    public FavProductAdapter(Context context, List<Product> favProductList, FavViewModel favViewModel) {
         this.context = context;
         this.favProductList = favProductList;
-        userRef = FirebaseDatabase.getInstance().getReference(DbCollections.USERS);
+        this.favViewModel = favViewModel;
     }
 
     @NonNull
@@ -69,7 +57,7 @@ public class FavProductAdapter extends RecyclerView.Adapter<FavProductAdapter.Vi
             public void onClick(View v) {
                 // Open the product details activity
                 Intent intent = new Intent(context, ProductDetailsActivity.class);
-                intent.putExtra("productID", product.getProductId());
+                intent.putExtra("ProductID", product.getProductId());
                 context.startActivity(intent);
             }
         });
@@ -84,27 +72,7 @@ public class FavProductAdapter extends RecyclerView.Adapter<FavProductAdapter.Vi
                 }
 
                 Product currentProduct = favProductList.get(currentPosition);
-                Log.d("Current Product to delete ", currentProduct.toString());
-                // Remove the product from the wishlist
-                userRef.child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        User currentUser = dataSnapshot.getValue(User.class);
-
-                        currentUser.getUserWishlist().removeProductById(currentProduct.getProductId());
-                        // Update the user's wishlist in the database
-                        userRef.child(currentUserId).child("userWishlist").setValue(currentUser.getUserWishlist());
-
-                        // Remove the product from the list and notify the adapter
-                        favProductList.remove(currentPosition);
-                        notifyItemRemoved(currentPosition);
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Toast.makeText(context, "Failed to remove product from wishlist.", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                favViewModel.removeProductFromWishlist(currentProduct);
             }
         });
     }

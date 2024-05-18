@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.fsoteam.eshop.LoginActivity;
@@ -23,20 +24,14 @@ import com.fsoteam.eshop.R;
 import com.fsoteam.eshop.PaymentMethodActivity;
 import com.fsoteam.eshop.SettingsActivity;
 import com.fsoteam.eshop.ShippingAddressActivity;
-import com.fsoteam.eshop.model.User;
-import com.fsoteam.eshop.utils.DbCollections;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.util.UUID;
 import de.hdodenhof.circleimageview.CircleImageView;
+import com.fsoteam.eshop.viewmodel.ProfileViewModel;
 
 public class ProfileFragment extends Fragment {
 
@@ -47,13 +42,13 @@ public class ProfileFragment extends Fragment {
     private Button uploadImage_profileFrag;
     private TextView profileName_profileFrag;
     private TextView profileEmail_profileFrag;
-    private DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-    private String userUid = FirebaseAuth.getInstance().getUid();
     private LinearLayout linearLayout2;
     private LinearLayout linearLayout3;
     private LinearLayout linearLayout4;
     private Button logoutBtn_profileFrag;
     private StorageReference storageReference;
+
+    private ProfileViewModel profileViewModel;
 
     @Nullable
     @Override
@@ -82,7 +77,27 @@ public class ProfileFragment extends Fragment {
 
         uploadImage_profileFrag.setVisibility(View.GONE);
 
-        getUserData();
+        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+        profileViewModel.getUserLiveData().observe(getViewLifecycleOwner(), user -> {
+            if (user.getUserImage() != null) {
+                profileName_profileFrag.setText(user.getUserName());
+            }
+            if (user.getUserEmail() != null) {
+                profileEmail_profileFrag.setText(user.getUserEmail());
+            }
+            if (user.getUserName() != null) {
+                if (isAdded()) {
+                    Glide.with(ProfileFragment.this)
+                            .load(user.getUserImage())
+                            .placeholder(R.drawable.ic_profile)
+                            .into(profileImage_profileFrag);
+                }
+            }
+
+            showLayout();
+        });
+
+        profileViewModel.loadUserData();
 
         logoutBtn_profileFrag.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,38 +150,6 @@ public class ProfileFragment extends Fragment {
         linearLayout4.setVisibility(View.VISIBLE);
     }
 
-    private void getUserData() {
-        db.child(DbCollections.USERS).child(userUid)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        User user = dataSnapshot.getValue(User.class);
-
-                        if (user.getUserImage() != null) {
-                            profileName_profileFrag.setText(user.getUserName());
-                        }
-                        if (user.getUserEmail() != null) {
-                            profileEmail_profileFrag.setText(user.getUserEmail());
-                        }
-                        if (user.getUserName() != null) {
-                            if (isAdded()) {
-                                Glide.with(ProfileFragment.this)
-                                        .load(user.getUserImage())
-                                        .placeholder(R.drawable.ic_profile)
-                                        .into(profileImage_profileFrag);
-                            }
-                        }
-
-                        showLayout();
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Toast.makeText(getContext(), "Failed to load user data", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
     private void launchGallery() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -188,7 +171,9 @@ public class ProfileFragment extends Fragment {
                 if (task.isSuccessful()) {
                     Uri downloadUri = task.getResult();
                     if (downloadUri != null) {
-                        addUploadRecordToDb(downloadUri.toString());
+                        profileViewModel.updateUserImage(downloadUri.toString())
+                                .addOnSuccessListener(aVoid -> Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show())
+                                .addOnFailureListener(e -> Toast.makeText(getContext(), "Failed to save: " + e.getMessage(), Toast.LENGTH_SHORT).show());
                     }
                 } else {
                     Toast.makeText(getContext(), "Upload failed", Toast.LENGTH_SHORT).show();
@@ -219,12 +204,5 @@ public class ProfileFragment extends Fragment {
                 e.printStackTrace();
             }
         }
-    }
-
-    private void addUploadRecordToDb(String uri) {
-        db.child(DbCollections.USERS).child(userUid).child("userImage")
-                .setValue(uri)
-                .addOnSuccessListener(aVoid -> Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show())
-                .addOnFailureListener(e -> Toast.makeText(getContext(), "Failed to save: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 }

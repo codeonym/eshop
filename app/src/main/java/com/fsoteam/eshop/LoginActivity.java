@@ -10,9 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
+import com.fsoteam.eshop.viewmodel.LoginViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
@@ -27,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView emailError;
     TextView passwordError;
+
+    private LoginViewModel loginViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,16 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkInput();
+            }
+        });
+
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        loginViewModel.getResultLiveData().observe(this, result -> {
+            loadingDialog.dismissDialog();
+            Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+            if (result.equals("signed in successfully")) {
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();
             }
         });
     }
@@ -148,26 +161,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void signInUser() {
-        // Start your loading dialog here
         loadingDialog.startLoadingDialog();
         signInEmail = emailEt.getText().toString().trim();
         signInPassword = passEt.getText().toString().trim();
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(signInEmail, signInPassword)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        loadingDialog.dismissDialog();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        // Replace with your actual toast method
-                        // toast("signed in successfully");
-                        Toast.makeText(this, "signed in successfully", Toast.LENGTH_SHORT).show();
-                        finish();
-                    } else {
-                        // Replace with your actual toast method
-                        // toast("sign in failed");
-                        // Dismiss your loading dialog here
-                        loadingDialog.dismissDialog();
-                        Toast.makeText(this, "Failed to signIn", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        loginViewModel.signInUser(signInEmail, signInPassword);
     }
 }

@@ -9,18 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
-import com.fsoteam.eshop.model.User;
-import com.fsoteam.eshop.utils.DbCollections;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
+import androidx.lifecycle.ViewModelProvider;
+import com.fsoteam.eshop.viewmodel.SignUpViewModel;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -29,12 +21,11 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText passEt;
     private EditText CpassEt;
 
-    private DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-
     private ProgressDialog progressDialog;
 
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+    private SignUpViewModel signUpViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +49,17 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
         signUpBtn.setOnClickListener(v -> checkInput());
+
+        signUpViewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
+        signUpViewModel.getResultLiveData().observe(this, result -> {
+            progressDialog.dismiss();
+            toast(result);
+            if (result.equals("Data Saved")) {
+                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void textAutoCheck() {
@@ -185,10 +187,10 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
-        signIn();
+        signUp();
     }
 
-    private void signIn() {
+    private void signUp() {
         progressDialog.setTitle("Please Wait");
         progressDialog.setMessage("Creating Account");
         progressDialog.show();
@@ -197,35 +199,7 @@ public class SignUpActivity extends AppCompatActivity {
         String passV = passEt.getText().toString();
         String fullname = fullName.getText().toString();
 
-        firebaseAuth.createUserWithEmailAndPassword(emailV, passV)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        progressDialog.setMessage("Save User Data");
-
-                        User user = new User();
-                        user.setUserName(fullname);
-                        user.setUserEmail(emailV);
-                        user.setUserUid(firebaseAuth.getUid());
-
-                        db.child(DbCollections.USERS).child(firebaseAuth.getUid())
-                                .setValue(user)
-                                .addOnCompleteListener(task1 -> {
-                                    if (task1.isSuccessful()) {
-                                        progressDialog.dismiss();
-                                        toast("Data Saved");
-                                        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        progressDialog.dismiss();
-                                        toast("Data not Saved");
-                                    }
-                                });
-                    } else {
-                        progressDialog.dismiss();
-                        toast("failed to Authenticate !");
-                    }
-                });
+        signUpViewModel.signUpUser(emailV, passV, fullname);
     }
 
     private void toast(String message) {

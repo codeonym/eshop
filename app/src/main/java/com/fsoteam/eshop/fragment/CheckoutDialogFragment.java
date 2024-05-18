@@ -16,34 +16,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.fsoteam.eshop.R;
-import com.fsoteam.eshop.model.Order;
 import com.fsoteam.eshop.model.OrderItem;
 import com.fsoteam.eshop.model.ShipmentDetails;
-import com.fsoteam.eshop.utils.DbCollections;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
+import com.fsoteam.eshop.viewmodel.CheckoutViewModel;
 import java.util.ArrayList;
 
 public class CheckoutDialogFragment extends DialogFragment {
 
     private ArrayList<OrderItem> cartItems;
     private float sum;
-    private String userId = FirebaseAuth.getInstance().getUid();
-    private DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
-    private Order order;
     private ArrayList<ShipmentDetails> shippingAddresses;
     private ArrayList<String> shippingAddressesNames;
     private Context ctx;
+
+    private CheckoutViewModel checkoutViewModel;
 
     public CheckoutDialogFragment(Context ctx, ArrayList<OrderItem> cartItems, float sum, ArrayList<ShipmentDetails> shippingAddresses) {
         this.cartItems = cartItems;
         this.ctx = ctx;
         this.sum = sum;
-        this.order = new Order();
         this.shippingAddresses = shippingAddresses;
         this.shippingAddressesNames = new ArrayList<>();
         for (ShipmentDetails address : shippingAddresses) {
@@ -83,28 +77,20 @@ public class CheckoutDialogFragment extends DialogFragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         shippingAddress.setAdapter(adapter);
 
+        checkoutViewModel = new ViewModelProvider(this).get(CheckoutViewModel.class);
+
         dialogPositiveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 // Get the selected shipping address
                 String selectedAddress = (String) shippingAddress.getSelectedItem();
-                Order order = new Order();
-
-                order.setShipmentDetails(shippingAddresses.get(shippingAddressesNames.indexOf(selectedAddress)));
-                order.setOrderProducts(cartItems);
-                order.setOrderTotalAmount(sum);
-
-                // Submit the selected shipping address to the database
-                dbRef.child(DbCollections.USERS).child(userId).child("userOrders").child(order.getOrderId()).setValue(order).onSuccessTask(task -> {
-                    // Clear the cart
-                    Toast.makeText(ctx, "Order submitted successfully", Toast.LENGTH_SHORT).show();
-                    return dbRef.child(DbCollections.USERS).child(userId).child("userCart").child("cartItems").removeValue();
-                }).addOnCompleteListener(task -> {
+                int selectedAddressIndex = shippingAddresses.indexOf(selectedAddress);
+                checkoutViewModel.submitOrder(cartItems, sum, shippingAddresses, selectedAddressIndex).addOnCompleteListener(task -> {
                     // Dismiss the dialog
+                    Toast.makeText(ctx, "Order is being processed", Toast.LENGTH_SHORT).show();
                     dismiss();
                 });
-                dismiss();
             }
         });
         dialogNegativeBtn.setOnClickListener(new View.OnClickListener() {

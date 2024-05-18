@@ -10,11 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.fsoteam.eshop.R;
 import com.fsoteam.eshop.model.OrderItem;
-import com.fsoteam.eshop.model.Product;
-import com.fsoteam.eshop.utils.DbCollections;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.fsoteam.eshop.viewmodel.BagViewModel;
 
 import java.util.List;
 
@@ -22,14 +18,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     private Context ctx;
     private List<OrderItem> cartItemsList;
+    private BagViewModel bagViewModel;
 
-    private String userId = FirebaseAuth.getInstance().getUid();
-    private FirebaseDatabase db = FirebaseDatabase.getInstance();
-    private DatabaseReference cartRef = db.getReference(DbCollections.USERS).child(userId).child("userCart").child("cartItems");
-
-    public CartAdapter(Context ctx, List<OrderItem> cartItemsList) {
+    public CartAdapter(Context ctx, List<OrderItem> cartItemsList, BagViewModel bagViewModel) {
         this.ctx = ctx;
         this.cartItemsList = cartItemsList;
+        this.bagViewModel = bagViewModel;
     }
 
     @Override
@@ -45,23 +39,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.cartName.setText(cartItem.getProduct().getProductName());
         holder.cartPrice.setText(cartItem.getProduct().getProductPrice() + cartItem.getProduct().getProductCurrency());
         holder.cartItemPLus.setOnClickListener(v -> {
-
-            Product product = cartItem.getProduct();
-            float availableQuantity = product.getProductQuantity() - product.getProductSales();
-            if(cartItem.getQuantity() < product.getProductMaxPurchasePerUser() && availableQuantity > 0){
-                cartItem.setQuantity(cartItem.getQuantity() + 1);
-                holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));
-                updateCartItem(holder, cartItem);
-            }
+            bagViewModel.increaseQuantity(cartItem);
+            holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));
+            holder.cartPrice.setText(cartItem.getProduct().getProductPrice() * cartItem.getQuantity() + "DH");
         });
         holder.cartItemMinus.setOnClickListener(v -> {
-
-            if(cartItem.getQuantity() > 1){
-                cartItem.setQuantity(cartItem.getQuantity() - 1);
-                holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));
-                holder.cartPrice.setText(cartItem.getProduct().getProductPrice() * cartItem.getQuantity() + "DH");
-                updateCartItem(holder, cartItem);
-            }
+            bagViewModel.decreaseQuantity(cartItem);
+            holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));
+            holder.cartPrice.setText(cartItem.getProduct().getProductPrice() * cartItem.getQuantity() + "DH");
         });
 
         holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));
@@ -74,23 +59,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             int pos = holder.getAdapterPosition();
             if(pos != -1){
                 OrderItem removedItem = cartItemsList.remove(pos);
-                cartRef.child(removedItem.getItemId()).removeValue();
+                bagViewModel.removeCartItem(removedItem);
                 notifyItemRemoved(pos);
             }
         });
-    }
-
-    private void updateCartItem(CartViewHolder holder, OrderItem cartItem){
-
-        holder.cartPrice.setText(cartItem.getProduct().getProductPrice() * cartItem.getQuantity() + "DH");
-        cartRef.child(cartItem.getItemId()).setValue(cartItem);
     }
 
     @Override
     public int getItemCount() {
         return cartItemsList.size();
     }
-
 
     public static class CartViewHolder extends RecyclerView.ViewHolder {
         ImageView cartImage;
