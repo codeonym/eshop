@@ -8,25 +8,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.fsoteam.eshop.R;
 import com.fsoteam.eshop.model.ShipmentDetails;
-import com.fsoteam.eshop.utils.DbCollections;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.fsoteam.eshop.viewmodel.ShippingAddressViewModel;
 import java.util.List;
 
 public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddressAdapter.ShippingAddressViewHolder> {
 
     private List<ShipmentDetails> shipmentDetailsList;
     private Context ctx;
-    private String userUid = FirebaseAuth.getInstance().getUid();
-    private DatabaseReference userRef = FirebaseDatabase.getInstance().getReference(DbCollections.USERS);
+    private ShippingAddressViewModel shipmentDetailsViewModel;
 
-    public ShippingAddressAdapter(List<ShipmentDetails> shipmentDetailsList, Context ctx) {
+    public ShippingAddressAdapter(List<ShipmentDetails> shipmentDetailsList, Context ctx, ShippingAddressViewModel shipmentDetailsViewModel) {
         this.shipmentDetailsList = shipmentDetailsList;
         this.ctx = ctx;
+        this.shipmentDetailsViewModel = shipmentDetailsViewModel;
     }
 
     @NonNull
@@ -56,8 +52,7 @@ public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddress
             // Remove the item from the list
             shipmentDetailsList.remove(holder.getAdapterPosition());
 
-            // Notify the adapter
-            userRef.child(userUid).child("userShipmentAddress").child(shipmentDetails.getShipmentId()).removeValue();
+            shipmentDetailsViewModel.removeShipmentDetails(shipmentDetails.getShipmentId());
         });
     }
 

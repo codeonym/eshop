@@ -13,8 +13,6 @@ import com.bumptech.glide.Glide;
 import com.fsoteam.eshop.OfferDetailsActivity;
 import com.fsoteam.eshop.R;
 import com.fsoteam.eshop.model.Offer;
-import com.fsoteam.eshop.model.Product;
-import com.fsoteam.eshop.ProductDetailsActivity;
 import java.util.ArrayList;
 
 public class CoverOfferAdapter extends RecyclerView.Adapter<CoverOfferAdapter.ViewHolder> {

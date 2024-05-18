@@ -9,36 +9,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.fsoteam.eshop.ProductDetailsActivity;
 import com.fsoteam.eshop.R;
 import com.fsoteam.eshop.model.Product;
-import com.fsoteam.eshop.model.User;
-import com.fsoteam.eshop.utils.DbCollections;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
+import com.fsoteam.eshop.viewmodel.ProductViewModel;
 import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     private ArrayList<Product> productList;
     private Context ctx;
-    private DatabaseReference userRef = FirebaseDatabase.getInstance().getReference(DbCollections.USERS);
-    private DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference(DbCollections.PRODUCTS);
-    private String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    private User currentUser;
+    private ProductViewModel productViewModel;
+    private LifecycleOwner lifecycleOwner;
 
-    public ProductAdapter(ArrayList<Product> productList, Context ctx) {
+    public ProductAdapter(ArrayList<Product> productList, Context ctx, ProductViewModel productViewModel, LifecycleOwner lifecycleOwner) {
         this.productList = productList;
         this.ctx = ctx;
+        this.productViewModel = productViewModel;
+        this.lifecycleOwner = lifecycleOwner;
     }
 
     @Override
@@ -80,24 +71,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             }
         });
 
-        userRef.child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                currentUser = user;
-                if (currentUser.getUserWishlist().containsProduct(product)) {
-                    product.setProductLiked(true);
-                    holder.productAddToFav_singleProduct.setImageResource(R.drawable.ic_fav_added);
-                } else {
-                    product.setProductLiked(false);
-                    holder.productAddToFav_singleProduct.setImageResource(R.drawable.ic_fav);
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ctx, "Failed to load user.", Toast.LENGTH_SHORT).show();
+        productViewModel.getCurrentUser().observe(lifecycleOwner, user -> {
+            if (user.getUserWishlist().containsProduct(product)) {
+                product.setProductLiked(true);
+                holder.productAddToFav_singleProduct.setImageResource(R.drawable.ic_fav_added);
+            } else {
+                product.setProductLiked(false);
+                holder.productAddToFav_singleProduct.setImageResource(R.drawable.ic_fav);
             }
         });
 
@@ -107,26 +87,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             public void onClick(View v) {
                 if (product.isProductLiked()) {
                     // The product is in the wishlist, remove it
-                    currentUser.getUserWishlist().removeProductById(product.getProductId());
+                    productViewModel.removeProductFromWishlist(product);
                     product.setProductLiked(false);
                     holder.productAddToFav_singleProduct.setImageResource(R.drawable.ic_fav);
-
-                    int total = product.getLikesCount();
-                    product.setLikesCount(total - 1);
-                    productsRef.child(product.getProductId()).child("likesCount").setValue(total - 1);
                 } else {
                     // The product is not in the wishlist, add it
-                    currentUser.getUserWishlist().addProduct(product);
+                    productViewModel.addProductToWishlist(product);
                     product.setProductLiked(true);
                     holder.productAddToFav_singleProduct.setImageResource(R.drawable.ic_fav_added);
-
-                    int total = product.getLikesCount();
-                    product.setLikesCount(total + 1);
-                    productsRef.child(product.getProductId()).child("likesCount").setValue(total + 1);
                 }
-
-                // Update the user in the database
-                userRef.child(currentUserId).child("userWishlist").setValue(currentUser.getUserWishlist());
             }
         });
     }
@@ -162,11 +131,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private void goDetailsPage(int position) {
         Product product = productList.get(position);
         Intent intent = new Intent(ctx, ProductDetailsActivity.class);
-        intent.putExtra("productID", product.getProductId());
+        intent.putExtra("ProductID", product.getProductId());
         intent.putExtra("ProductFrom", "New");
         ctx.startActivity(intent);
     }
     public void filterList(ArrayList<Product> filteredList) {
-        productList = filteredList;
+        this.productList = filteredList;
     }
 }

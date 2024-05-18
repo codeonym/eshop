@@ -1,12 +1,7 @@
 package com.fsoteam.eshop.model;
 
-import android.os.Build;
-
 import com.fsoteam.eshop.utils.OrderStatus;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 

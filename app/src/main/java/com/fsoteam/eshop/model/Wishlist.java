@@ -1,18 +1,20 @@
 package com.fsoteam.eshop.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class Wishlist {
     private String wishlistId;
-    private List<Product> wishlistProducts;
+    private Map<String, Product> wishlistProducts;
     public Wishlist() {
         this.wishlistId = UUID.randomUUID().toString();
-        this.wishlistProducts = new ArrayList<Product>();
+        this.wishlistProducts = new HashMap<String, Product>();
     }
 
-    public Wishlist(String wishlistId, List<Product> wishlistProducts) {
+    public Wishlist(String wishlistId, Map<String, Product> wishlistProducts) {
         this.wishlistId = wishlistId;
         this.wishlistProducts = wishlistProducts;
     }
@@ -25,34 +27,39 @@ public class Wishlist {
         this.wishlistId = wishlistId;
     }
 
-    public List<Product> getWishlistProducts() {
+    public Map<String, Product> getWishlistProducts() {
+        return wishlistProducts;
+    }
+
+    public Map<String, Product> getWishlistProductsMap() {
         return wishlistProducts;
     }
 
     public boolean containsProduct(Product product) {
-        for(Product p: wishlistProducts){
-            if(product.getProductId() != null && product.getProductId().equals(p.getProductId())){
-                return true;
-            }
-        }
-        return false;
+        return wishlistProducts.containsKey(product.getProductId());
     }
 
-    public boolean addProduct(Product product) {
-        return this.wishlistProducts.add(product);
+    public void addProduct(Product product) {
+        this.wishlistProducts.put(product.getProductId(), product);
     }
-    public boolean removeProduct(Product product) {
-        return this.wishlistProducts.remove(product);
+    public void removeProduct(Product product) {
+        this.wishlistProducts.remove(product.getProductId());
     }
-    public boolean removeProductById(String productId) {
-        for(Product p: wishlistProducts){
-            if(productId != null && productId.equals(p.getProductId())){
-                return wishlistProducts.remove(p);
-            }
+    public void removeProductById(String productId) {
+        wishlistProducts.remove(productId);
+    }
+    public void setWishlistProductsByList(List<Product> products) {
+
+        this.wishlistProducts.clear();
+        Map<String, Product> tmpWishlistProducts= new HashMap<String, Product>();
+        for(Product p: products){
+            if(p.getProductId() != null)
+                tmpWishlistProducts.put(p.getProductId(), p);
         }
-        return false;
+        this.wishlistProducts.putAll(tmpWishlistProducts);
     }
-    public void setWishlistProducts(List<Product> wishlistProducts) {
+    public void setWishlistProducts(Map<String, Product> wishlistProducts) {
         this.wishlistProducts = wishlistProducts;
     }
+
 }
