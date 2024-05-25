@@ -37,16 +37,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         OrderItem cartItem = cartItemsList.get(holder.getAdapterPosition());
 
         holder.cartName.setText(cartItem.getProduct().getProductName());
-        holder.cartPrice.setText(cartItem.getProduct().getProductPrice() + cartItem.getProduct().getProductCurrency());
+        holder.cartPrice.setText((cartItem.getProduct().getProductPrice() * cartItem.getQuantity()) + cartItem.getProduct().getProductCurrency());
         holder.cartItemPLus.setOnClickListener(v -> {
             bagViewModel.increaseQuantity(cartItem);
             holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));
-            holder.cartPrice.setText(cartItem.getProduct().getProductPrice() * cartItem.getQuantity() + "DH");
+            holder.cartPrice.setText((cartItem.getProduct().getProductPrice() * cartItem.getQuantity()) + cartItem.getProduct().getProductCurrency());
         });
         holder.cartItemMinus.setOnClickListener(v -> {
             bagViewModel.decreaseQuantity(cartItem);
             holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));
-            holder.cartPrice.setText(cartItem.getProduct().getProductPrice() * cartItem.getQuantity() + "DH");
+            holder.cartPrice.setText((cartItem.getProduct().getProductPrice() * cartItem.getQuantity()) + cartItem.getProduct().getProductCurrency());
         });
 
         holder.quantityTvCart.setText(String.valueOf(cartItem.getQuantity()));

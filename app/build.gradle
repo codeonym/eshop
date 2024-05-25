@@ -56,17 +56,9 @@ dependencies {
 
     implementation libs.legacy.support.v4
 
-    implementation libs.tensorflow.lite
-    implementation libs.tensorflow.lite.support
-    implementation libs.tensorflow.lite.metadata
-
-    implementation libs.tensorflow.lite
-    implementation libs.tensorflow.lite.gpu
-    implementation libs.tensorflow.lite.support
-
-    implementation libs.tensorflow.lite.support.v020
-    implementation libs.tensorflow.lite.task.vision
-    annotationProcessor libs.tensorflow.lite.support
-
     implementation libs.commons.csv
+
+    implementation libs.core
+    implementation libs.android.core
+    implementation libs.android.integration
 }

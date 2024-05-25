@@ -45,7 +45,7 @@
             android:layout_height="match_parent"
             android:padding="15dp"
             android:src="@drawable/ic_fav"
-            app:tint="@color/mainText" />
+            />
 
     </LinearLayout>
 

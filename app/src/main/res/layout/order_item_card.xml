@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/background">
+
+        <ImageView
+            android:id="@+id/orderItem_itemThumbnail"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/no_product" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/orderItem_itemName"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="2.5GHz Wireless Game Controller For PS3" />
+
+            <TextView
+                android:id="@+id/orderItem_itemBrand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logitech"
+                android:textSize="12sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/orderItem_itemPrice"
+                    android:layout_width="0dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/mainText"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="150.5DH" />
+
+                <TextView
+                    android:id="@+id/orderItem_itemQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="x1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

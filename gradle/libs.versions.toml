@@ -1,7 +1,9 @@
 [versions]
 agp = "8.3.2"
+androidCore = "3.3.0"
 circleimageview = "3.1.0"
 commonsCsv = "1.8"
+core = "3.4.1"
 firebaseBom = "32.8.1"
 firebaseDatabase = "20.3.1"
 firebaseFirestore = "24.11.1"
@@ -25,8 +27,11 @@ tensorflowLiteSupportVersion = "0.2.0"
 firebaseStorage = "21.0.0"
 
 [libraries]
+android-core = { module = "com.google.zxing:android-core", version.ref = "androidCore" }
+android-integration = { module = "com.google.zxing:android-integration", version.ref = "androidCore" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
 commons-csv = { module = "org.apache.commons:commons-csv", version.ref = "commonsCsv" }
+core = { module = "com.google.zxing:core", version.ref = "core" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-common = { module = "com.google.firebase:firebase-common", version.ref = "firebaseStorage" }
 firebase-database = { module = "com.google.firebase:firebase-database", version.ref = "firebaseDatabase" }

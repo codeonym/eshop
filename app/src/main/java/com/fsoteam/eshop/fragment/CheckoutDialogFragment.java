@@ -3,6 +3,7 @@ package com.fsoteam.eshop.fragment;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,8 +18,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.fsoteam.eshop.R;
+import com.fsoteam.eshop.adapter.OrderItemAdapter;
 import com.fsoteam.eshop.model.OrderItem;
 import com.fsoteam.eshop.model.ShipmentDetails;
 import com.fsoteam.eshop.viewmodel.CheckoutViewModel;
@@ -31,6 +35,8 @@ public class CheckoutDialogFragment extends DialogFragment {
     private ArrayList<ShipmentDetails> shippingAddresses;
     private ArrayList<String> shippingAddressesNames;
     private Context ctx;
+    private RecyclerView orderItemsRecView;
+    private OrderItemAdapter orderItemAdapter;
 
     private CheckoutViewModel checkoutViewModel;
 
@@ -53,27 +59,19 @@ public class CheckoutDialogFragment extends DialogFragment {
         View dialogView = inflater.inflate(R.layout.dialog_checkout, null);
 
         // Find the dialog elements and set their values
-        TextView dialogTitle = dialogView.findViewById(R.id.dialogTitle);
-        TextView dialogMessage = dialogView.findViewById(R.id.dialogMessage);
         TextView totalPrice = dialogView.findViewById(R.id.totalPrice);
-        LinearLayout orderedItems = dialogView.findViewById(R.id.orderedItems);
         Spinner shippingAddress = dialogView.findViewById(R.id.shippingAddress);
         Button dialogPositiveBtn = dialogView.findViewById(R.id.dialogPositiveBtn);
         Button dialogNegativeBtn = dialogView.findViewById(R.id.dialogNegativeBtn);
+        orderItemsRecView = dialogView.findViewById(R.id.orderedItemsRecycler);
+        orderItemsRecView.setLayoutManager(new LinearLayoutManager(ctx));
+        orderItemAdapter = new OrderItemAdapter(ctx, cartItems);
+        orderItemsRecView.setAdapter(orderItemAdapter);
 
-        dialogTitle.setText("Checkout Confirmation");
-        dialogMessage.setText("Please select your shipping address");
-        totalPrice.setText("Total Price: " + sum);
-
-        // Add ordered items to the orderedItems LinearLayout
-        for (OrderItem item : cartItems) {
-            TextView itemTextView = new TextView(ctx);
-            itemTextView.setText(item.getProduct().getProductName() + " x" + item.getQuantity() + " - " + item.getProduct().getProductPrice() + item.getProduct().getProductCurrency());
-            orderedItems.addView(itemTextView);
-        }
+        totalPrice.setText(sum + "");
 
         // Populate the shippingAddress Spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, shippingAddressesNames);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(ctx, android.R.layout.simple_spinner_item, shippingAddressesNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         shippingAddress.setAdapter(adapter);
 
@@ -85,8 +83,23 @@ public class CheckoutDialogFragment extends DialogFragment {
 
                 // Get the selected shipping address
                 String selectedAddress = (String) shippingAddress.getSelectedItem();
-                int selectedAddressIndex = shippingAddresses.indexOf(selectedAddress);
-                checkoutViewModel.submitOrder(cartItems, sum, shippingAddresses, selectedAddressIndex).addOnCompleteListener(task -> {
+                int selectedAddressIndex = -1;
+
+                for(int i = 0; i < shippingAddresses.size(); i++) {
+                    if(shippingAddresses.get(i).getShipmentTitle().equals(selectedAddress)) {
+                        selectedAddressIndex = i;
+                        break;
+                    }
+                }
+
+                ShipmentDetails shipmentDetails = shippingAddresses.get(selectedAddressIndex);
+                if(shipmentDetails == null || selectedAddressIndex == -1) {
+                    Toast.makeText(ctx, "Please select a shipping address", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                checkoutViewModel.submitOrder(cartItems, shipmentDetails, sum).addOnCompleteListener(task -> {
+
                     // Dismiss the dialog
                     Toast.makeText(ctx, "Order is being processed", Toast.LENGTH_SHORT).show();
                     dismiss();

@@ -51,14 +51,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 .placeholder(R.drawable.no_product)
                 .into(holder.productImage_singleProduct);
 
-        if (product.isProductHave()) {
-            holder.discountTv_singleProduct.setText(product.getProductDisCount());
+        if (product.getProductDisCount().isEmpty() || product.getProductDisCount().equals("0")) {
+            holder.discount_singleProduct.setVisibility(View.GONE);
+        } else {
             holder.discount_singleProduct.setVisibility(View.VISIBLE);
-        }
-
-        if (!product.isProductHave()) {
-            holder.discount_singleProduct.setVisibility(View.VISIBLE);
-            holder.discountTv_singleProduct.setText("New");
+            holder.discountTv_singleProduct.setText("-" + product.getProductDisCount() + "%");
         }
 
         holder.productImage_singleProduct.setOnClickListener(new View.OnClickListener() {

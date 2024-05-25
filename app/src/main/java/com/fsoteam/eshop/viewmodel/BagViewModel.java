@@ -3,6 +3,7 @@ package com.fsoteam.eshop.viewmodel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.fsoteam.eshop.adapter.CartAdapter;
 import com.fsoteam.eshop.model.OrderItem;
 import com.fsoteam.eshop.model.Product;
 import com.fsoteam.eshop.model.ShipmentDetails;

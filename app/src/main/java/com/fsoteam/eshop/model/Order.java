@@ -73,6 +73,10 @@ public class Order {
         return orderStatus;
     }
 
+    public CharSequence getOrderStatusString() {
+        return orderStatus.toString();
+    }
+
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }

@@ -11,6 +11,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class ProfileViewModel extends ViewModel {
     private MutableLiveData<User> userLiveData = new MutableLiveData<>();
@@ -38,6 +40,13 @@ public class ProfileViewModel extends ViewModel {
     }
 
     public Task<Void> updateUserImage(String uri) {
+
+        String ancientUri = userLiveData.getValue().getUserImage();
+        if (ancientUri != null && !ancientUri.isEmpty()) {
+            StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(ancientUri);
+            storageReference.delete();
+            userLiveData.getValue().setUserImage(uri);
+        }
         return db.child(DbCollections.USERS).child(userUid).child("userImage")
                 .setValue(uri);
     }
