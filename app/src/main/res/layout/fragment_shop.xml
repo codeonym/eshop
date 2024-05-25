@@ -20,7 +20,8 @@
             android:layout_height="480dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/cover_single">
 
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -77,7 +78,8 @@
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout12"
+            tools:listitem="@layout/category_single"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

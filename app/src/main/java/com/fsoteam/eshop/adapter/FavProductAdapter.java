@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,7 +48,14 @@ public class FavProductAdapter extends RecyclerView.Adapter<FavProductAdapter.Vi
         holder.productName_favProduct.setText(product.getProductName());
         holder.productPrice_favProduct.setText(String.valueOf(product.getProductPrice()));
         holder.productDiscount_favProduct.setText(product.getProductDisCount());
+        holder.productRating_favProduct.setRating(product.getProductRating());
 
+        if(product.getProductDisCount().isEmpty() || product.getProductDisCount().equals("0")) {
+            holder.favProductDiscountLayout.setVisibility(View.GONE);
+        } else {
+            holder.favProductDiscountLayout.setVisibility(View.VISIBLE);
+            holder.productDiscount_favProduct.setText("-" + product.getProductDisCount() + "%");
+        }
         Glide.with(context)
                 .load(product.getProductThumbnail())
                 .placeholder(R.drawable.no_product)
@@ -90,6 +99,8 @@ public class FavProductAdapter extends RecyclerView.Adapter<FavProductAdapter.Vi
         TextView productName_favProduct;
         TextView productPrice_favProduct;
         TextView productDiscount_favProduct;
+        LinearLayout favProductDiscountLayout;
+        RatingBar productRating_favProduct;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -100,6 +111,8 @@ public class FavProductAdapter extends RecyclerView.Adapter<FavProductAdapter.Vi
             productName_favProduct = itemView.findViewById(R.id.productName_favProduct);
             productPrice_favProduct = itemView.findViewById(R.id.productPrice_favProduct);
             productDiscount_favProduct = itemView.findViewById(R.id.discountTv_favProduct);
+            favProductDiscountLayout = itemView.findViewById(R.id.discountLayout_favProduct);
+            productRating_favProduct = itemView.findViewById(R.id.productRating_favProduct);
 
         }
     }

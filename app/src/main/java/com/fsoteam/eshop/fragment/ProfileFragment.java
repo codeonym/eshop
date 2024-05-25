@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
@@ -26,6 +27,7 @@ import com.fsoteam.eshop.SettingsActivity;
 import com.fsoteam.eshop.ShippingAddressActivity;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
@@ -46,32 +48,42 @@ public class ProfileFragment extends Fragment {
     private LinearLayout linearLayout3;
     private LinearLayout linearLayout4;
     private Button logoutBtn_profileFrag;
-    private StorageReference storageReference;
+    StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
     private ProfileViewModel profileViewModel;
-
+    private CardView myOrdersCard_profileFrag, PurchaseHistoryCard_profileFrag, settingCd_profileFrag, shippingAddressCard_ProfilePage, paymentMethod_ProfilePage;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         profileImage_profileFrag = view.findViewById(R.id.profileImage_profileFrag);
-        CardView settingCd_profileFrag = view.findViewById(R.id.settingCd_profileFrag);
+        settingCd_profileFrag = view.findViewById(R.id.settingCd_profileFrag);
         uploadImage_profileFrag = view.findViewById(R.id.uploadImage_profileFrag);
         profileName_profileFrag = view.findViewById(R.id.profileName_profileFrag);
         profileEmail_profileFrag = view.findViewById(R.id.profileEmail_profileFrag);
         logoutBtn_profileFrag = view.findViewById(R.id.logoutBtn_profileFrag);
-
+        myOrdersCard_profileFrag = view.findViewById(R.id.myOrdersCard_ProfilePage);
+        PurchaseHistoryCard_profileFrag = view.findViewById(R.id.PurchaseHistoryCard_profileFrag);
         animationView = view.findViewById(R.id.animationView);
         linearLayout2 = view.findViewById(R.id.linearLayout2);
         linearLayout3 = view.findViewById(R.id.linearLayout3);
         linearLayout4 = view.findViewById(R.id.linearLayout4);
-        CardView shippingAddressCard_ProfilePage = view.findViewById(R.id.shippingAddressCard_ProfilePage);
-        CardView paymentMethod_ProfilePage = view.findViewById(R.id.paymentMethod_ProfilePage);
+        shippingAddressCard_ProfilePage = view.findViewById(R.id.shippingAddressCard_ProfilePage);
+        //paymentMethod_ProfilePage = view.findViewById(R.id.paymentMethod_ProfilePage);
 
+        myOrdersCard_profileFrag.setOnClickListener(v -> {
+            FragmentManager fragmentManager = getParentFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_fragment, new OrdersFragment()).addToBackStack(null).commit();
+        });
         shippingAddressCard_ProfilePage.setOnClickListener(v -> startActivity(new Intent(getContext(), ShippingAddressActivity.class)));
 
-        paymentMethod_ProfilePage.setOnClickListener(v -> startActivity(new Intent(getContext(), PaymentMethodActivity.class)));
+        //paymentMethod_ProfilePage.setOnClickListener(v -> startActivity(new Intent(getContext(), PaymentMethodActivity.class)));
+
+        PurchaseHistoryCard_profileFrag.setOnClickListener(v -> {
+            FragmentManager fragmentManager = getParentFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_fragment, new PurchaseHistoryFragment()).addToBackStack(null).commit();
+        });
 
         hideLayout();
 
@@ -79,6 +91,7 @@ public class ProfileFragment extends Fragment {
 
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         profileViewModel.getUserLiveData().observe(getViewLifecycleOwner(), user -> {
+
             if (user.getUserImage() != null) {
                 profileName_profileFrag.setText(user.getUserName());
             }
@@ -159,7 +172,7 @@ public class ProfileFragment extends Fragment {
 
     private void uploadImage() {
         if (filePath != null) {
-            StorageReference ref = storageReference.child("profile_Image/" + UUID.randomUUID().toString());
+            StorageReference ref = storageReference.child("Users/profiles/" + UUID.randomUUID().toString());
             UploadTask uploadTask = ref.putFile(filePath);
 
             Task<Uri> urlTask = uploadTask.continueWithTask(task -> {
@@ -172,7 +185,11 @@ public class ProfileFragment extends Fragment {
                     Uri downloadUri = task.getResult();
                     if (downloadUri != null) {
                         profileViewModel.updateUserImage(downloadUri.toString())
-                                .addOnSuccessListener(aVoid -> Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show())
+                                .addOnSuccessListener(aVoid -> {
+                                    Toast.makeText(getContext(), "Image uploaded", Toast.LENGTH_SHORT).show();
+                                    uploadImage_profileFrag.setVisibility(View.GONE);
+
+                                })
                                 .addOnFailureListener(e -> Toast.makeText(getContext(), "Failed to save: " + e.getMessage(), Toast.LENGTH_SHORT).show());
                     }
                 } else {

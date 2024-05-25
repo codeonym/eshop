@@ -17,19 +17,15 @@ public class CheckoutViewModel extends ViewModel {
     private String userId = FirebaseAuth.getInstance().getUid();
     private DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
 
-    public Task<Void> submitOrder(ArrayList<OrderItem> cartItems, float sum, ArrayList<ShipmentDetails> shippingAddresses, int selectedAddressIndex) {
+    public Task<Void> submitOrder(ArrayList<OrderItem> cartItems, ShipmentDetails shipmentDetails, float sum) {
         Order order = new Order();
-
-        if (selectedAddressIndex != -1) {
-            order.setShipmentDetails(shippingAddresses.get(selectedAddressIndex));
-        } else {
-            // Handle the case where the selected address is not found in the list
-        }
 
         order.setOrderProducts(cartItems);
         order.setOrderTotalAmount(sum);
+        order.setShipmentDetails(shipmentDetails);
 
         return dbRef.child(DbCollections.USERS).child(userId).child("userOrders").child(order.getOrderId()).setValue(order).onSuccessTask(task -> {
+
             // Clear the cart
             return dbRef.child(DbCollections.USERS).child(userId).child("userCart").child("cartItems").removeValue();
         });

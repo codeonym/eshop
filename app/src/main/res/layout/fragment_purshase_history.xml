@@ -9,70 +9,71 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-
+        android:padding="16dp">
 
         <TextView
-            android:id="@+id/favTitle"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="@font/metropolis_semibold"
-            android:text="Your favorite products"
-            android:textColor="@color/mainText"
-            android:textSize="24sp"
+            android:layout_marginTop="24dp"
+            android:text="My purshase history"
+            android:textSize="26sp"
+            android:textStyle="bold"
             app:layout_constraintBaseline_toBottomOf="parent"
             app:layout_constraintBaseline_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
         <LinearLayout
-            android:id="@+id/emptyBagMsgLayout"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
             android:visibility="gone"
+            android:gravity="center"
+            android:id="@+id/purshaseHistoryFragment_emptyOrdersMsgLayout"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/favTitle"
+            android:layout_width="150dp"
+            android:layout_height="250dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title">
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/animationViewFavPage"
+                android:layout_marginTop="32dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/animationViewPurchaseHistoryPage"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
                 app:lottie_rawRes="@raw/empty" />
 
             <TextView
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/metropolis_semibold"
-                android:gravity="center"
-                android:text="@string/empty_favourite"
+                android:text="No orders"
                 android:textColor="@color/textAd"
-                android:textSize="20sp">
+                android:fontFamily="@font/metropolis_semibold"
+                android:textSize="18dp"
+                >
 
             </TextView>
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/favRecyclerView"
+            android:id="@+id/purshaseHistoryFragment_ordersRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="40dp"
-            android:padding="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@+id/title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/favTitle"
-            tools:listitem="@layout/favorite_product_item_single" />
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="16dp"
+            tools:listitem="@layout/order_item_single" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

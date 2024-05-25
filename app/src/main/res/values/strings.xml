@@ -13,4 +13,18 @@
     <string name="empty_favourite">Empty Favourite</string>
     <string name="add_to_bag">Add To Bag</string>
     <string name="card_number_star">**** **** **** </string>
+
+    <string name="status_pending">Your order has been placed and is awaiting processing. You have the option to cancel your order at this stage. If there are any issues with your order, it may be rejected.</string>
+    <string name="status_processing">Your order is currently being processed. Once processing is complete, your order will be packaged and prepared for shipping.</string>
+    <string name="status_packaged">Your order has been packaged and is ready for shipping. You will receive a notification once your order has been shipped.</string>
+    <string name="status_shipped">Your order has been shipped and is on its way to you. You will receive a notification once your order has been delivered.</string>
+    <string name="status_on_hold">Your order is currently on hold. We will notify you once the order status changes.</string>
+    <string name="status_delivered">Your order has been delivered. Please confirm receipt of your order. If you don\'t confirm the item status within 60 days, it will be auto confirmed.</string>
+    <string name="status_confirmed">You have confirmed receipt of your order. You can request a refund within 1 month of confirmation. If no refund is requested within this period, your order will be marked as completed.</string>
+    <string name="status_completed">Your order has been completed. No further actions can be taken at this stage. Thank you for shopping with us.</string>
+    <string name="status_refund_requested">Your refund request has been registered successfully, once it\'s done processing we will reach to you soon. Thank you for your fidelity</string>
+    <string name="status_returned">Your refund request has been accepted and the order has been returned. Your refund will be processed shortly.</string>
+    <string name="status_refunded">Your refund has been processed. The amount should reflect in your account soon.</string>
+    <string name="status_cancelled">Your order has been cancelled. If you have any questions or concerns, please contact our customer service.</string>
+    <string name="status_rejected">Your order or refund request has been rejected. For more details, please contact our customer service.</string>
 </resources>
