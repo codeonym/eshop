@@ -75,7 +75,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/metropolis_semibold"
-                            android:text="What's new"
+                            android:text="@string/fragment_home_what_s_new"
                             android:textColor="@color/mainText"
                             android:textSize="25sp" />
 
@@ -90,7 +90,7 @@
                             android:layout_height="match_parent"
                             android:fontFamily="@font/metropolis_regular"
                             android:gravity="center"
-                            android:text="View all"
+                            android:text="@string/fragment_home_view_all"
                             android:textColor="@color/mainText"
                             android:textSize="12sp" />
 
@@ -103,7 +103,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/metropolis_regular"
-                        android:text="You Never seen Before"
+                        android:text="@string/fragment_home_you_never_seen_before"
                         android:textColor="@color/textAd"
                         android:textSize="11sp" />
 
@@ -152,7 +152,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/metropolis_semibold"
-                            android:text="Best selling"
+                            android:text="@string/fragment_home_most_liked"
                             android:textColor="@color/mainText"
                             android:textSize="25sp" />
 
@@ -167,7 +167,7 @@
                             android:layout_height="match_parent"
                             android:fontFamily="@font/metropolis_regular"
                             android:gravity="center"
-                            android:text="View all"
+                            android:text="@string/fragment_home_view_all"
                             android:textColor="@color/mainText"
                             android:textSize="12sp" />
 
@@ -180,7 +180,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/metropolis_regular"
-                        android:text="Top rated products"
+                        android:text="@string/fragment_home_most_liked_products"
                         android:textColor="@color/textAd"
                         android:textSize="11sp" />
 

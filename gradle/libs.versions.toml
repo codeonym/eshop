@@ -25,6 +25,7 @@ tensorflowLiteMetadata = "0.1.0-rc2"
 tensorflowLiteSupport = "0.4.3"
 tensorflowLiteSupportVersion = "0.2.0"
 firebaseStorage = "21.0.0"
+preference = "1.2.0"
 
 [libraries]
 android-core = { module = "com.google.zxing:android-core", version.ref = "androidCore" }
@@ -56,6 +57,7 @@ tensorflow-lite-support = { module = "org.tensorflow:tensorflow-lite-support", v
 tensorflow-lite-support-v020 = { module = "org.tensorflow:tensorflow-lite-support", version.ref = "tensorflowLiteSupportVersion" }
 tensorflow-lite-task-vision = { module = "org.tensorflow:tensorflow-lite-task-vision", version.ref = "tensorflowLiteSupportVersion" }
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
+preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

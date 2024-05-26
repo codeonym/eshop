@@ -1,166 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background"
-    >
-
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/topBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <ImageView
-            android:id="@+id/backIv_ProfileFrag"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_back"
-            app:tint="@color/mainText"
-            />
-
-        <androidx.legacy.widget.Space
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
-        <ImageView
-            android:id="@+id/searchIv_ProfileFrag"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_search"
-            app:tint="@color/mainText"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topBarLayout">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <TextView
-
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:fontFamily="@font/metropolis_regular"
-            android:text="Settings"
-            android:textColor="@color/mainText"
-            android:textSize="25sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:id="@+id/fragment_settings_back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_left"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="16dp"/>
+            <TextView
+                android:id="@+id/settings_title"
+                android:textColor="@color/mainText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_settings_settings"
+                android:textSize="24sp"
+                android:fontFamily="@font/metropolis_bold" />
+        </LinearLayout>
 
-
-<!--        <LinearLayout-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:fontFamily="@font/metropolis_regular"-->
-<!--            android:text="Dark Mode"-->
-<!--            android:textColor="@color/mainText"-->
-<!--            android:textSize="15sp"-->
-<!--             />-->
-
-<!--            <androidx.legacy.widget.Space-->
-<!--                android:layout_weight="1"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="match_parent"/>-->
-
-<!--            <com.google.android.material.switchmaterial.SwitchMaterial-->
-<!--                android:id="@+id/darkMode_Switch"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:paddingTop="10dp"-->
-<!--                android:paddingRight="10dp"-->
-<!--                android:paddingBottom="10dp" />-->
-
-<!--        </LinearLayout>-->
-
-        <TextView
+        <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="10dp"
-            android:fontFamily="@font/metropolis_regular"
-            android:text="Personal Information"
-            android:textColor="@color/mainText"
-            android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:dividerThickness="1dp" />
 
-
-
-        <EditText
-            android:id="@+id/nameEt_SettingsPage"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textSize="15sp"
-            android:paddingLeft="20dp"
-            android:drawableRight="@null"
-            android:paddingRight="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/mainText"
-            android:background="@drawable/edit_text_bg"
-            android:fontFamily="@font/metropolis_regular"
-            android:hint="Full Name"
-            android:inputType="textPersonName"
-            android:maxLines="1" />
-
-        <EditText
-            android:id="@+id/EmailEt_SettingsPage"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textSize="15sp"
-            android:paddingLeft="20dp"
-            android:drawableRight="@null"
-            android:paddingRight="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/mainText"
-            android:background="@drawable/edit_text_bg"
-            android:fontFamily="@font/metropolis_regular"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:maxLines="1" />
-
-        <Button
-            android:visibility="gone"
-            android:id="@+id/saveSetting_SettingsBtn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_bg"
-            android:text="Save"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:elevation="10dp"
-            />
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/fragment_settings_language_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:layout_marginBottom="4dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_translate_variant"
+                    android:layout_gravity="center_vertical"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/activity_settings_language"
+                        android:textColor="@color/mainText"
+                        android:fontFamily="@font/metropolis_semibold"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/activity_settings_app_language"
+                        android:textColor="@color/textAd"
+                        android:fontFamily="@font/metropolis_light"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_settings_appearance_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:layout_marginBottom="4dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_palette"
+                    android:layout_gravity="center_vertical"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/activity_settings_appearance"
+                        android:textColor="@color/mainText"
+                        android:fontFamily="@font/metropolis_semibold"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/activity_settings_theme"
+                        android:textColor="@color/textAd"
+                        android:fontFamily="@font/metropolis_light"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_settings_about_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:layout_marginBottom="4dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_information_outline"
+                    android:layout_gravity="center_vertical"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/activity_settings_about"
+                        android:textColor="@color/mainText"
+                        android:fontFamily="@font/metropolis_semibold"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:id="@+id/activity_settings_version"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/activity_settings_eshop_version"
+                        android:textColor="@color/textAd"
+                        android:fontFamily="@font/metropolis_light"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_settings_help_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:layout_marginBottom="4dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_help_circle_outline"
+                    android:layout_gravity="center_vertical"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/activity_settings_help"
+                        android:textColor="@color/mainText"
+                        android:fontFamily="@font/metropolis_semibold"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/activity_settings_eshop_manual"
+                        android:textColor="@color/textAd"
+                        android:fontFamily="@font/metropolis_light"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Add more settings here -->
+
     </LinearLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

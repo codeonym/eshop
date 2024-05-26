@@ -18,7 +18,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
 
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/productDetailsImagesRecyclerView"
@@ -120,7 +120,7 @@
                     style="@style/Widget.AppCompat.RatingBar.Indicator"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:numStars="5"
                     android:rating="3"
                     android:scaleX=".5"
@@ -135,7 +135,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/metropolis_regular"
-                    android:text="Product Details"
+                    android:text="@string/activity_product_details_product_details"
                     android:textColor="@color/mainText"
                     android:textSize="15sp" />
 
@@ -173,7 +173,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/metropolis_regular"
-                            android:text="Shipping info"
+                            android:text="@string/activity_product_details_shipping_info"
                             android:textColor="@color/mainText"
                             android:textSize="16sp" />
 
@@ -183,7 +183,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:fontFamily="@font/metropolis_regular"
-                            android:text="Add Your Cart"
+                            android:text=""
                             android:textColor="@color/textAd"
                             android:textSize="12sp" />
 
@@ -192,7 +192,7 @@
                     <ImageView
                         android:layout_width="22dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
                 </LinearLayout>
                 <LinearLayout
@@ -213,7 +213,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/metropolis_regular"
-                            android:text="Ratings"
+                            android:text="@string/activity_product_details_ratings"
                             android:textColor="@color/mainText"
                             android:textSize="16sp" />
 
@@ -231,7 +231,7 @@
                     <ImageView
                         android:layout_width="22dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
                 </LinearLayout>
             </LinearLayout>
@@ -265,7 +265,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/metropolis_semibold"
-                            android:text="You can also Like this "
+                            android:text="@string/activity_product_details_you_may_also_like_this"
                             android:textColor="@color/mainText"
                             android:textSize="25sp" />
 
@@ -280,7 +280,7 @@
                             android:layout_height="match_parent"
                             android:fontFamily="@font/metropolis_regular"
                             android:gravity="center"
-                            android:text="View all"
+                            android:text="@string/activity_product_details_view_all"
                             android:textColor="@color/mainText"
                             android:textSize="12sp" />
 
@@ -293,7 +293,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/metropolis_regular"
-                        android:text="Recommended"
+                        android:text="@string/activity_product_details_recommended"
                         android:textColor="@color/textAd"
                         android:textSize="11sp" />
 
@@ -334,7 +334,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_bg"
-            android:text="Add To Bag" />
+            android:text="@string/activity_product_details_add_to_bag" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

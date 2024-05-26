@@ -25,7 +25,7 @@
         android:gravity="center"
         android:layout_marginTop="100dp"
         android:textSize="20sp"
-        android:text="@string/card_number"
+        android:text="@string/single_card_cc"
         android:maxEms="19"
         android:fontFamily="@font/metropolis_regular"
         android:layout_marginRight="30dp"
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/metropolis_regular"
                 android:maxLines="1"
-                android:text="@string/card_holder_name"
+                android:text="@string/single_card_card_holder_name"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/metropolis_semibold"
                 android:maxLines="2"
-                android:text="Jahid Hasan"
+                android:text=""
                 android:maxEms="18"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/metropolis_regular"
                 android:maxLines="1"
-                android:text="@string/expiry_date"
+                android:text="@string/single_card_expiry_date"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/metropolis_semibold"
                 android:maxLines="2"
-                android:text="05/23"
+                android:text=""
                 android:maxEms="5"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
@@ -140,7 +140,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/use_as_default_payment_method"
+            android:text="@string/single_card_use_as_default_payment_method"
             android:textColor="@color/mainText"
             android:fontFamily="@font/metropolis_regular"
             />

@@ -48,7 +48,8 @@
                     android:scaleY=".4"
                     android:transformPivotX="0dp"
                     android:transformPivotY="15dp"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp"
+                    android:gravity="start"/>
 
                 <TextView
                     android:id="@+id/productBrandName_favProduct"
@@ -57,9 +58,10 @@
                     android:fontFamily="@font/metropolis_light"
                     android:textColor="@color/textAd"
                     android:maxLines="1"
-                    android:text="Brand Name"
+                    android:text=""
                     android:textSize="13sp"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginTop="4dp"
+                    android:gravity="start"/>
 
                 <TextView
                     android:id="@+id/productName_favProduct"
@@ -68,7 +70,7 @@
                     android:fontFamily="@font/metropolis_regular"
                     android:textColor="@color/mainText"
                     android:maxLines="1"
-                    android:text="Product Name"
+                    android:text=""
                     android:textSize="15sp"
                     android:layout_marginTop="4dp"/>
 
@@ -79,10 +81,11 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/metropolis_light"
                     android:maxLines="1"
-                    android:text="Product Price"
+                    android:text=""
                     android:textColor="@color/primary"
                     android:textSize="13sp"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginTop="4dp"
+                    android:gravity="start"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -92,7 +95,7 @@
     <LinearLayout
         android:elevation="5dp"
         android:layout_marginBottom="-25dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/circle_bg"
@@ -114,7 +117,7 @@
         android:id="@+id/discountLayout_favProduct"
         android:visibility="gone"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:layout_width="40dp"
         android:layout_height="20dp"
         android:background="@drawable/discount_bg"
@@ -124,7 +127,7 @@
             android:id="@+id/discountTv_favProduct"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="-10%"
+            android:text=""
             android:textSize="11sp"
             android:gravity="center"
             android:textColor="@color/white"

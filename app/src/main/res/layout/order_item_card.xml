@@ -30,13 +30,13 @@
                 android:id="@+id/orderItem_itemName"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="2.5GHz Wireless Game Controller For PS3" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/orderItem_itemBrand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Logitech"
+                android:text=""
                 android:textSize="12sp"/>
 
             <LinearLayout
@@ -52,13 +52,13 @@
                     android:textColor="@color/mainText"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="150.5DH" />
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/orderItem_itemQuantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="x1" />
+                    android:text="" />
 
             </LinearLayout>
 

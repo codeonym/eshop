@@ -5,6 +5,7 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -21,6 +22,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eshop"
         tools:targetApi="31">
+        <activity
+            android:name=".HelpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AppearanceSettingsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".LanguageSettingsActivity"
+            android:exported="false"/>
         <activity
             android:name=".OrderDetailsActivity"
             android:exported="false" />

@@ -14,6 +14,7 @@
     <color name="golden">#FFC107</color>
     <color name="textAd">#9B9B9B</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="selected_text_color">#33DB3022</color>
 
     <!--ORDER STATUS-->
     <color name="pending">#FFC107</color>

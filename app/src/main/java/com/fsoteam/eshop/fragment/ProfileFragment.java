@@ -51,14 +51,14 @@ public class ProfileFragment extends Fragment {
     StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
     private ProfileViewModel profileViewModel;
-    private CardView myOrdersCard_profileFrag, PurchaseHistoryCard_profileFrag, settingCd_profileFrag, shippingAddressCard_ProfilePage, paymentMethod_ProfilePage;
+    private CardView myOrdersCard_profileFrag, PurchaseHistoryCard_profileFrag, settingCd_profileAct, shippingAddressCard_ProfilePage, paymentMethod_ProfilePage;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         profileImage_profileFrag = view.findViewById(R.id.profileImage_profileFrag);
-        settingCd_profileFrag = view.findViewById(R.id.settingCd_profileFrag);
+        settingCd_profileAct = view.findViewById(R.id.settingCd_profileAct);
         uploadImage_profileFrag = view.findViewById(R.id.uploadImage_profileFrag);
         profileName_profileFrag = view.findViewById(R.id.profileName_profileFrag);
         profileEmail_profileFrag = view.findViewById(R.id.profileEmail_profileFrag);
@@ -85,6 +85,11 @@ public class ProfileFragment extends Fragment {
             fragmentManager.beginTransaction().replace(R.id.nav_fragment, new PurchaseHistoryFragment()).addToBackStack(null).commit();
         });
 
+        settingCd_profileAct.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), SettingsActivity.class);
+            startActivity(intent);
+
+        });
         hideLayout();
 
         uploadImage_profileFrag.setVisibility(View.GONE);
@@ -124,7 +129,7 @@ public class ProfileFragment extends Fragment {
 
         uploadImage_profileFrag.setOnClickListener(v -> uploadImage());
 
-        settingCd_profileFrag.setOnClickListener(v -> startActivity(new Intent(getContext(), SettingsActivity.class)));
+        settingCd_profileAct.setOnClickListener(v -> startActivity(new Intent(getContext(), SettingsActivity.class)));
 
         profileImage_profileFrag.setOnClickListener(v -> {
             PopupMenu popupMenu = new PopupMenu(getContext(), profileImage_profileFrag);

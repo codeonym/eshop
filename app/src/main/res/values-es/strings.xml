@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">E-Shop</string>
+
+    <string name="hello_blank_fragment">Hola, página en blanco</string>
+    <string name="new_product">Nuevo</string>
+    <string name="expiry_date">Fecha de vencimiento</string>
+    <string name="payment_methods">Métodos de pago</string>
+    <string name="add_new_card">Agregar una nueva tarjeta</string>
+    <string name="add_card">Agregar tarjeta</string>
+    <string name="empty_favourite">Favoritos vacíos</string>
+    <string name="add_to_bag">Agregar al carrito</string>
+    <string name="card_number_star">**** **** **** </string>
+
+    <string name="status_pending">Su pedido ha sido enviado y está pendiente de procesamiento. Puede cancelar su pedido en esta etapa. Si hay algún problema con su pedido, podría ser rechazado.</string>
+    <string name="status_processing">Su pedido está siendo procesado. Una vez completado el procesamiento, su pedido será empaquetado y preparado para el envío.</string>
+    <string name="status_packaged">Su pedido ha sido empaquetado y está listo para ser enviado. Recibirá una notificación una vez que su pedido sea enviado.</string>
+    <string name="status_shipped">Su pedido ha sido enviado y está en camino. Recibirá una notificación una vez que su pedido sea entregado.</string>
+    <string name="status_on_hold">Su pedido está en espera. Le informaremos cuando cambie el estado de su pedido.</string>
+    <string name="status_delivered">Su pedido ha sido entregado. Por favor confirme la recepción del pedido. Si no confirma el estado del artículo en 60 días, la confirmación será automática.</string>
+    <string name="status_confirmed">Ha confirmado la recepción de su pedido. Puede solicitar un reembolso dentro de un mes después de la confirmación. Si no se solicita un reembolso dentro de este período, su pedido será marcado como completado.</string>
+    <string name="status_completed">Su pedido ha sido completado. No se puede realizar ninguna otra acción en este punto. Gracias por comprar con nosotros.</string>
+    <string name="status_refund_requested">Su solicitud de reembolso ha sido registrada con éxito, en cuanto se complete el procesamiento nos pondremos en contacto con usted. Gracias por su fidelidad.</string>
+    <string name="status_returned">La solicitud de reembolso ha sido aceptada y el pedido ha sido devuelto. El reembolso se procesará pronto.</string>
+    <string name="status_refunded">Su reembolso ha sido procesado. El monto debería reflejarse en su cuenta en breve.</string>
+    <string name="status_cancelled">Su pedido ha sido cancelado. Si tiene alguna pregunta o inquietud, por favor contacte a nuestro servicio al cliente.</string>
+    <string name="status_rejected">Su pedido o solicitud de reembolso ha sido rechazado. Para más detalles, por favor contacte a nuestro servicio al cliente.</string>
+
+    <!--add_address.xml-->
+    <string name="add_address_shipping_address">Dirección de envío</string>
+    <string name="add_address_title">Título</string>
+    <string name="add_address_reciever_name">Nombre del receptor</string>
+    <string name="add_address_email">Correo electrónico</string>
+    <string name="add_address_phone">Teléfono</string>
+    <string name="add_address_country">País</string>
+    <string name="add_address_city">Ciudad</string>
+    <string name="add_address_zip">Código postal</string>
+    <string name="add_address_address">Dirección</string>
+    <string name="add_address_invalid_title">Título inválido</string>
+    <string name="add_address_invalid_name">Nombre inválido</string>
+    <string name="add_address_invalid_email_address">Dirección de correo electrónico inválida</string>
+    <string name="add_address_invalid_phone_number">Número de teléfono inválido</string>
+    <string name="add_address_invalid_country">País inválido</string>
+    <string name="add_address_invalid_city">Ciudad inválida</string>
+    <string name="add_address_invalid_zip_code">Código postal inválido</string>
+    <string name="add_address_email_error">Error de correo electrónico</string>
+    <string name="add_address_add_address_btn">Agregar dirección</string>
+
+    <!--activity_email_verify.xml-->
+    <string name="activity_email_verify_verify_your_email">Verifique su correo electrónico</string>
+    <string name="activity_email_verify_verify_your_email_sm">Verifique su correo electrónico</string>
+    <string name="activity_email_verify_try_again">Intentar de nuevo</string>
+    <string name="activity_email_verify_resend_e_mail">Reenviar correo electrónico</string>
+
+    <!--bottom_nav_menu.xml-->
+    <string name="bottom_nav_menu_home">Inicio</string>
+    <string name="bottom_nav_menu_shop">Tienda</string>
+    <string name="bottom_nav_menu_bag">Carrito</string>
+    <string name="bottom_nav_menu_favorites">Favoritos</string>
+    <string name="bottom_nav_menu_profile">Perfil</string>
+
+    <!--login_activity.xml-->
+    <string name="login_activity_login">Iniciar sesión</string>
+    <string name="login_activity_email">Correo electrónico</string>
+    <string name="login_activity_email_error">Error de correo electrónico</string>
+    <string name="login_activity_password">Contraseña</string>
+    <string name="login_activity_password_error">Error de contraseña</string>
+    <string name="login_activity_forgotten_password">¿Olvidó su contraseña?</string>
+    <string name="login_activity_login_btn">Iniciar sesión</string>
+    <string name="login_activity_don_t_have_an_account">¿No tiene una cuenta?</string>
+    <string name="login_activity_sign_up">Registrarse</string>
+
+    <!--activity_offer_details.xml-->
+    <string name="activity_offer_details_ends_in">Termina en:</string>
+    <string name="activity_offer_details_discount">Descuento:</string>
+    <string name="activity_offer_details_start_date">Fecha de inicio</string>
+    <string name="activity_offer_details_end_date">Fecha de finalización</string>
+    <string name="activity_offer_details_products">Productos</string>
+
+    <!--activity_order_details.xml-->
+    <string name="activity_order_details_status">Estado</string>
+    <string name="activity_order_details_total_items">Total de artículos</string>
+    <string name="activity_order_details_subtotal">Subtotal:</string>
+    <string name="activity_order_details_order_info">Información del pedido</string>
+    <string name="activity_order_details_shipping_address">Dirección de envío</string>
+    <string name="activity_order_details_order_id">Número de pedido</string>
+    <string name="activity_order_details_order_placed_on">Fecha de pedido</string>
+    <string name="activity_order_details_payment_method">Método de pago</string>
+    <string name="activity_order_details_at_delivery">A la entrega</string>
+    <string name="activity_order_details_what_do_you_want_to_do">¿Qué quiere hacer?</string>
+    <string name="activity_order_details_print_invoice">Imprimir factura</string>
+    <string name="activity_order_details_cancel">Cancelar</string>
+    <string name="activity_order_details_request_refund">Solicitar reembolso</string>
+    <string name="activity_order_details_confrim_received">Confirmar recepción</string>
+
+    <!--activity_product_details.xml-->
+    <string name="activity_product_details_product_details">Detalles del producto</string>
+    <string name="activity_product_details_shipping_info">Información de envío</string>
+    <string name="activity_product_details_ratings">Calificaciones</string>
+    <string name="activity_product_details_you_may_also_like_this">También te puede gustar</string>
+    <string name="activity_product_details_view_all">Ver todo</string>
+    <string name="activity_product_details_recommended">Recomendado</string>
+    <string name="activity_product_details_add_to_bag">Agregar al carrito</string>
+
+    <!--activity_shipping_address.xml-->
+    <string name="activity_shipping_address_my_shipping_addresses">Mis direcciones de envío</string>
+    <string name="activity_shipping_address_no_address_added">No se ha agregado ninguna dirección</string>
+
+    <!--activity_sign_up.xml-->
+    <string name="activity_sign_up_sign_up">Registrarse</string>
+    <string name="activity_sign_up_full_name">Nombre completo</string>
+    <string name="activity_sign_up_email">Correo electrónico</string>
+    <string name="activity_sign_up_password">Contraseña</string>
+    <string name="activity_sign_up_confirm_password">Confirmar contraseña</string>
+    <string name="activity_sign_up_sign_up_btn">Registrarse</string>
+    <string name="activity_sign_up_have_an_account">¿Tiene una cuenta?</string>
+    <string name="activity_sign_up_sign_in">Iniciar sesión</string>
+
+    <!--add_card_bottom.xml-->
+    <string name="add_card_bottom_card_holder_name">Nombre del titular de la tarjeta</string>
+    <string name="add_card_bottom_link_a_new_card">Vincular una nueva tarjeta</string>
+    <string name="add_card_bottom_card_number">Número de tarjeta</string>
+    <string name="add_card_bottom_expiry_date">Fecha de vencimiento</string>
+    <string name="add_card_bottom_cvv">Código CVV</string>
+    <string name="add_card_bottom_add_card">Agregar tarjeta</string>
+
+    <!--cover_single.xml-->
+    <string name="cover_single_check">Verificar</string>
+
+    <!--custom_dialog.xml-->
+    <string name="custom_dialog_please_wait">Por favor espere</string>
+
+    <!--dialog_checkout.xml-->
+    <string name="dialog_checkout_place_your_order">Realizar pedido</string>
+    <string name="dialog_checkout_please_select_your_shipping_address">Seleccione su dirección de envío</string>
+    <string name="dialog_checkout_total_amount">Monto total</string>
+    <string name="dialog_checkout_cancel">Cancelar</string>
+    <string name="dialog_checkout_confirm_order">Confirmar pedido</string>
+
+    <!--fragment_add_to_bag.xml-->
+    <string name="fragment_add_to_bag_quantity">Cantidad</string>
+
+    <!--fragment_bag.xml-->
+    <string name="fragment_bag_my_bag">Mi carrito</string>
+    <string name="fragment_bag_total_amount">Monto total:</string>
+    <string name="fragment_bag_check_out">Pagar</string>
+    <string name="fragment_bag_empty_bag">Carrito vacío</string>
+
+    <!--fragment_fav.xml-->
+    <string name="fragment_fav_your_favorite_products">Sus productos favoritos</string>
+
+    <!--fragment_home.xml-->
+    <string name="fragment_home_what_s_new">Novedades</string>
+    <string name="fragment_home_view_all">Ver todo</string>
+    <string name="fragment_home_you_never_seen_before">Nunca antes visto</string>
+    <string name="fragment_home_most_liked">Los más gustados</string>
+    <string name="fragment_home_most_liked_products">Productos más gustados</string>
+
+    <!--fragment_orders.xml-->
+    <string name="fragment_orders_my_orders">Mis pedidos</string>
+    <string name="fragment_orders_all_orders">Todos los pedidos</string>
+    <string name="fragment_orders_pending">Pendiente</string>
+    <string name="fragment_orders_processing">En proceso</string>
+    <string name="fragment_orders_packaged">Empaquetado</string>
+    <string name="fragment_orders_shipped">Enviado</string>
+    <string name="fragment_orders_onholde">En espera</string>
+    <string name="fragment_orders_delivered">Entregado</string>
+    <string name="fragment_orders_confirmed">Confirmado</string>
+    <string name="fragment_orders_refund_requested">Reembolso solicitado</string>
+    <string name="fragment_orders_returned">Devuelto</string>
+    <string name="fragment_orders_refunded">Reembolsado</string>
+    <string name="fragment_orders_cancelled">Cancelado</string>
+    <string name="fragment_orders_rejected">Rechazado</string>
+    <string name="fragment_orders_no_orders">No hay pedidos</string>
+
+    <!--fragment_products_list.xml-->
+    <string name="fragment_products_list_search_products">Buscar productos</string>
+
+    <!--fragment_profile.xml-->
+    <string name="fragment_profile_my_profile">Mi perfil</string>
+    <string name="fragment_profile_upload_image">Subir imagen</string>
+    <string name="fragment_profile_my_orders">Mis pedidos</string>
+    <string name="fragment_profile_your_current_orders">Sus pedidos actuales</string>
+    <string name="fragment_profile_shipping_addresses">Direcciones de envío</string>
+    <string name="fragment_profile_your_shipping_addresses">Sus direcciones de envío</string>
+    <string name="fragment_profile_your_purchase_history">Su historial de compras</string>
+    <string name="fragment_profile_follow_your_purchase_history">Siga su historial de compras</string>
+    <string name="fragment_profile_settings">Configuración</string>
+    <string name="fragment_profile_your_settings">Su configuración</string>
+    <string name="fragment_profile_logout">Cerrar sesión</string>
+
+    <!--fragment_purchase_history.xml-->
+    <string name="fragment_purchase_history_my_purshase_history">Mi historial de compras</string>
+    <string name="fragment_purchase_history_no_orders">No hay pedidos</string>
+
+    <!--fragment_shop.xml-->
+    <string name="fragment_shop_categories">Categorías</string>
+    <string name="fragment_shop_all_products">Todos los productos</string>
+
+    <!--order_item_single.xml-->
+    <string name="order_item_single_status">Estado:</string>
+    <string name="order_item_single_details">Detalles</string>
+
+    <!--single_card.xml-->
+    <string name="single_card_cc">* * * * * * * * * * * * 3947</string>
+    <string name="single_card_card_holder_name">Nombre del titular de la tarjeta</string>
+    <string name="single_card_expiry_date">Fecha de vencimiento</string>
+    <string name="single_card_use_as_default_payment_method">Usar como método de pago predeterminado</string>
+
+    <!--profile_photo_storage.xml-->
+    <string name="profile_photo_storage_take_a_photo">Tomar una foto</string>
+    <string name="profile_photo_storage_choose_from_gallery">Elegir de la galería</string>
+
+    <!--activity_settings.xml-->
+    <string name="activity_settings_settings">Configuración</string>
+    <string name="activity_settings_language">Idioma</string>
+    <string name="activity_settings_app_language">Idioma de la aplicación</string>
+    <string name="activity_settings_appearance">Apariencia</string>
+    <string name="activity_settings_theme">Tema</string>
+    <string name="activity_settings_about">Acerca de</string>
+    <string name="activity_settings_help">Ayuda</string>
+    <string name="activity_settings_eshop_manual">Manual de Eshop</string>
+
+    <!--activity_settings_extended_language.xml-->
+    <string name="activity_settings_extended_language_language_settings">Configuración de idioma</string>
+    <string name="activity_settings_extended_language_system_default">Predeterminado del sistema</string>
+    <string name="activity_settings_extended_language_arabic">Árabe</string>
+    <string name="activity_settings_extended_language_english">Inglés</string>
+    <string name="activity_settings_extended_language_french">Francés</string>
+    <string name="activity_settings_extended_language_spanish">Español</string>
+
+</resources>

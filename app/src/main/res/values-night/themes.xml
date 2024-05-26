@@ -21,5 +21,9 @@
     <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/background_dark</item>
     </style>
-
+    <style name="MyRadioButtonStyleChecked" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/radio_button_selector</item>
+        <item name="android:textColor">@color/selected_text_color</item>
+        <item name="android:gravity">center_vertical|start</item>
+    </style>
 </resources>

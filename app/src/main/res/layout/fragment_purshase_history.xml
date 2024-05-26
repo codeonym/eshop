@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="My purshase history"
+            android:text="@string/fragment_purchase_history_my_purshase_history"
             android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintBaseline_toBottomOf="parent"
@@ -53,10 +53,10 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No orders"
+                android:text="@string/fragment_purchase_history_no_orders"
                 android:textColor="@color/textAd"
                 android:fontFamily="@font/metropolis_semibold"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 >
 
             </TextView>
