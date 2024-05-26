@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="My Orders"
+            android:text="@string/fragment_orders_my_orders"
             android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintBaseline_toBottomOf="parent"
@@ -48,67 +48,67 @@
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="All orders"
+                    android:text="@string/fragment_orders_all_orders"
                     android:id="@+id/orders_tabAll"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pending"
+                    android:text="@string/fragment_orders_pending"
                     android:id="@+id/orders_tabPending"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Processing"
+                    android:text="@string/fragment_orders_processing"
                     android:id="@+id/orders_tabProcessed"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Packaged"
+                    android:text="@string/fragment_orders_packaged"
                     android:id="@+id/orders_tabPackaged"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Shipped"
+                    android:text="@string/fragment_orders_shipped"
                     android:id="@+id/orders_tabShipped"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="onholde"
+                    android:text="@string/fragment_orders_onholde"
                     android:id="@+id/orders_tabOnHold"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="delivered"
+                    android:text="@string/fragment_orders_delivered"
                     android:id="@+id/orders_tabDelivered"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="confirmed"
+                    android:text="@string/fragment_orders_confirmed"
                     android:id="@+id/orders_tabConfirmed"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="refund requested"
+                    android:text="@string/fragment_orders_refund_requested"
                     android:id="@+id/orders_tabRefundRequested"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="returned"
+                    android:text="@string/fragment_orders_returned"
                     android:id="@+id/orders_tabReturned"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="refunded"
+                    android:text="@string/fragment_orders_refunded"
                     android:id="@+id/orders_tabRefunded"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="cancelled"
+                    android:text="@string/fragment_orders_cancelled"
                     android:id="@+id/orders_tabCancelled"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="rejected"
+                    android:text="@string/fragment_orders_rejected"
                     android:id="@+id/orders_tabRejected"/>
 
             </com.google.android.material.tabs.TabLayout>
@@ -142,10 +142,10 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No orders"
+                android:text="@string/fragment_orders_no_orders"
                 android:textColor="@color/textAd"
                 android:fontFamily="@font/metropolis_semibold"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 >
 
             </TextView>

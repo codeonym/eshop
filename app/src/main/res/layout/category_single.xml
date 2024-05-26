@@ -39,7 +39,7 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/metropolis_regular"
             android:maxLines="2"
-            android:text="Fashion Sale"
+            android:text=""
             android:textColor="@color/mainText"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"

@@ -13,6 +13,7 @@
         android:id="@+id/image_emailVerifyPage"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:contentDescription="TODO"
         android:src="@drawable/ic_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,9 +37,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/metropolis_bold"
             android:gravity="center"
-            android:text="Verify Your Email"
+            android:text="@string/activity_email_verify_verify_your_email"
             android:textColor="@color/mainText"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/msg_emailVerifyPage"
@@ -48,8 +49,8 @@
             android:fontFamily="@font/metropolis_regular"
             android:gravity="center"
             android:textColor="@color/textAd"
-            android:text="Verify Your Email"
-            android:textSize="15dp" />
+            android:text="@string/activity_email_verify_verify_your_email_sm"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -72,7 +73,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/btn_bg"
             android:elevation="10dp"
-            android:text="Try Again"
+            android:text="@string/activity_email_verify_try_again"
             android:layout_marginBottom="10dp"
             />
 
@@ -80,7 +81,7 @@
             android:id="@+id/reSendEmail_emailVerifyPage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Resend E-mail"
+            android:text="@string/activity_email_verify_resend_e_mail"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/metropolis_regular"
             android:textColor="@color/mainText"

@@ -16,7 +16,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/metropolis_semibold"
         android:gravity="center"
-        android:text="Quantity"
+        android:text="@string/fragment_add_to_bag_quantity"
         android:textColor="@color/mainText"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
             android:fontFamily="@font/metropolis_regular"
             android:gravity="center"
             android:inputType="numberDecimal"
-            android:text="1"
+            android:text=""
             android:textColor="@color/mainText"
             android:textSize="18sp" />
 

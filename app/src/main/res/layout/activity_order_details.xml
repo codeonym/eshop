@@ -26,7 +26,7 @@
                     android:id="@+id/order_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Status"
+                    android:text="@string/activity_order_details_status"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:textColor="@color/mainText"/>
@@ -34,7 +34,7 @@
                     android:id="@+id/orderDetails_orderStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Delivered"
+                    android:text=""
                     android:textStyle="bold"
                     android:layout_marginStart="17dp"/>
             </LinearLayout>
@@ -43,7 +43,7 @@
                 android:id="@+id/orderDetails_orderParagraph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="If you don't confirm the item status within 60 days delay, it will be auto confirmed."
+                android:text=""
                 android:layout_marginTop="8dp" />
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -75,7 +75,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total items"
+                        android:text="@string/activity_order_details_total_items"
                         android:textStyle="bold"
                         android:textSize="13sp"
                         android:textColor="@color/mainText"/>
@@ -83,7 +83,7 @@
                         android:id="@+id/orderDetails_orderQuantity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="x12"
+                        android:text=""
                         android:gravity="end"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -98,7 +98,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Subtotal: "
+                        android:text="@string/activity_order_details_subtotal"
                         android:textStyle="bold"
                         android:textSize="16sp"
                         android:textColor="@color/mainText"/>
@@ -106,7 +106,7 @@
                         android:id="@+id/orderDetails_orderTotalAmount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="150.5DH"
+                        android:text=""
                         android:gravity="end"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -123,7 +123,7 @@
                 android:id="@+id/order_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order Info"
+                android:text="@string/activity_order_details_order_info"
                 android:textColor="@color/mainText"
                 android:textStyle="bold"
                 android:textSize="18sp"
@@ -137,7 +137,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Shipping Address"
+                    android:text="@string/activity_order_details_shipping_address"
                     android:textSize="14sp"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -148,24 +148,24 @@
                         android:id="@+id/orderDetails_orderRecipientName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="BOUAROUR AYOUB"/>
+                        android:text=""/>
                     <TextView
                         android:id="@+id/orderDetails_orderRecipientPhone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+212627049264"/>
+                        android:text=""/>
 
                     <TextView
                         android:id="@+id/orderDetails_orderRecipientEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="bouarourayoub0@gmail.com" />
+                        android:text="" />
 
                     <TextView
                         android:id="@+id/orderDetails_orderRecipientAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="enassr immo 157 apt 18" />
+                        android:text="" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -175,19 +175,19 @@
                             android:id="@+id/orderDetails_orderRecipientCountry"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="morocco" />
+                            android:text="" />
                         <TextView
                             android:id="@+id/orderDetails_orderRecipientCity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
-                            android:text="oujda" />
+                            android:text="" />
                         <TextView
                             android:id="@+id/orderDetails_orderRecipientZipCode"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="60000" />
+                            android:text="" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -200,12 +200,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Order ID"/>
+                    android:text="@string/activity_order_details_order_id"/>
                 <TextView
                     android:id="@+id/orderDetails_orderId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="zeer-7898t-gg44-tt78-45447"
+                    android:text=""
                     android:layout_marginStart="16dp"/>
             </LinearLayout>
             <LinearLayout
@@ -216,12 +216,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Order placed on" />
+                    android:text="@string/activity_order_details_order_placed_on" />
                 <TextView
                     android:id="@+id/orderDetails_orderDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Apr 20, 2024, 3:32"
+                    android:text=""
                     android:layout_marginStart="16dp"/>
             </LinearLayout>
 
@@ -233,12 +233,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Payment method" />
+                    android:text="@string/activity_order_details_payment_method" />
                 <TextView
                     android:id="@+id/orderDetails_orderPaymentMethod"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="At Delivery"
+                    android:text="@string/activity_order_details_at_delivery"
                     android:layout_marginStart="16dp"/>
             </LinearLayout>
 
@@ -257,7 +257,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="What do you want to do"
+            android:text="@string/activity_order_details_what_do_you_want_to_do"
             android:layout_marginBottom="5dp"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -267,7 +267,7 @@
                 android:id="@+id/printInvoiceBtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Print Invoice"
+                android:text="@string/activity_order_details_print_invoice"
                 android:backgroundTint="@color/mainText"
                 android:textColor="@color/background"
                 android:layout_weight="2"/>
@@ -280,7 +280,7 @@
                     android:id="@+id/cancelOrderBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cancel"
+                    android:text="@string/activity_order_details_cancel"
                     android:layout_marginStart="5dp"
                     android:backgroundTint="@color/primary"
                     android:textColor="@color/white"
@@ -289,7 +289,7 @@
                     android:id="@+id/requestRefundBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Return product"
+                    android:text="@string/activity_order_details_request_refund"
                     android:layout_marginStart="5dp"
                     android:backgroundTint="@color/primary"
                     android:textColor="@color/white"
@@ -298,7 +298,7 @@
                     android:id="@+id/confirmReceivedBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Confrim Received"
+                    android:text="@string/activity_order_details_confrim_received"
                     android:layout_marginStart="5dp"
                     android:backgroundTint="@color/primary"
                     android:textColor="@color/white"

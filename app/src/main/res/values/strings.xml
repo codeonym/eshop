@@ -1,12 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <resources>
     <string name="app_name">Eshop</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="new_product">New</string>
-    <string name="card_number">* * * * * * * * * * * * 3947</string>
-    <string name="card_holder_name">Card Holder Name</string>
     <string name="expiry_date">Expiry Date</string>
-    <string name="use_as_default_payment_method">Use as default payment method</string>
     <string name="payment_methods">Payment Methods</string>
     <string name="add_new_card">Add new Card</string>
     <string name="add_card">Add Card</string>
@@ -27,4 +25,209 @@
     <string name="status_refunded">Your refund has been processed. The amount should reflect in your account soon.</string>
     <string name="status_cancelled">Your order has been cancelled. If you have any questions or concerns, please contact our customer service.</string>
     <string name="status_rejected">Your order or refund request has been rejected. For more details, please contact our customer service.</string>
+
+    <!--add_address.xml-->
+    <string name="add_address_shipping_address">Shipping address</string>
+    <string name="add_address_title">Title</string>
+    <string name="add_address_reciever_name">Reciever name</string>
+    <string name="add_address_email">Email</string>
+    <string name="add_address_phone">Phone</string>
+    <string name="add_address_country">Country</string>
+    <string name="add_address_city">City</string>
+    <string name="add_address_zip">ZIP</string>
+    <string name="add_address_address">Address</string>
+    <string name="add_address_invalid_title">invalid title</string>
+    <string name="add_address_invalid_name">invalid name</string>
+    <string name="add_address_invalid_email_address">invalid email address</string>
+    <string name="add_address_invalid_phone_number">invalid phone number</string>
+    <string name="add_address_invalid_country">invalid country</string>
+    <string name="add_address_invalid_city">invalid city</string>
+    <string name="add_address_invalid_zip_code">invalid zip code</string>
+    <string name="add_address_email_error">Email Error</string>
+    <string name="add_address_add_address_btn">Add Address</string>
+
+    <!--activity_email_verify.xml-->
+    <string name="activity_email_verify_verify_your_email">Verify Your Email</string>
+    <string name="activity_email_verify_verify_your_email_sm">Verify Your Email</string>
+    <string name="activity_email_verify_try_again">Try Again</string>
+    <string name="activity_email_verify_resend_e_mail">Resend E-mail</string>
+
+    <!--bottom_nav_menu.xml-->
+    <string name="bottom_nav_menu_home">Home</string>
+    <string name="bottom_nav_menu_shop">Shop</string>
+    <string name="bottom_nav_menu_bag">Bag</string>
+    <string name="bottom_nav_menu_favorites">Favorites</string>
+    <string name="bottom_nav_menu_profile">Profile</string>
+
+    <!--login_activity.xml-->
+    <string name="login_activity_login">Login</string>
+    <string name="login_activity_email">Email</string>
+    <string name="login_activity_email_error">Email Error</string>
+    <string name="login_activity_password">Password</string>
+    <string name="login_activity_password_error">Password Error</string>
+    <string name="login_activity_forgotten_password">Forgotten Password?</string>
+    <string name="login_activity_login_btn">Login</string>
+    <string name="login_activity_don_t_have_an_account">Don\'t Have an Account?</string>
+    <string name="login_activity_sign_up">Sign up</string>
+
+    <!--activity_offer_details.xml-->
+    <string name="activity_offer_details_ends_in">Ends in:</string>
+    <string name="activity_offer_details_discount">Discount:</string>
+    <string name="activity_offer_details_start_date">Start date</string>
+    <string name="activity_offer_details_end_date">End date</string>
+    <string name="activity_offer_details_products">Products</string>
+
+    <!--activity_order_details.xml-->
+    <string name="activity_order_details_status">Status</string>
+    <string name="activity_order_details_total_items">Total items</string>
+    <string name="activity_order_details_subtotal">Subtotal:</string>
+    <string name="activity_order_details_order_info">Order Info</string>
+    <string name="activity_order_details_shipping_address">Shipping Address</string>
+    <string name="activity_order_details_order_id">Order ID</string>
+    <string name="activity_order_details_order_placed_on">Order placed on</string>
+    <string name="activity_order_details_payment_method">Payment method</string>
+    <string name="activity_order_details_at_delivery">At Delivery</string>
+    <string name="activity_order_details_what_do_you_want_to_do">What do you want to do</string>
+    <string name="activity_order_details_print_invoice">Print Invoice</string>
+    <string name="activity_order_details_cancel">Cancel</string>
+    <string name="activity_order_details_request_refund">Request refund</string>
+    <string name="activity_order_details_confrim_received">Confrim Received</string>
+
+    <!--activity_product_details.xml-->
+    <string name="activity_product_details_product_details">Product Details</string>
+    <string name="activity_product_details_shipping_info">Shipping info</string>
+    <string name="activity_product_details_ratings">Ratings</string>
+    <string name="activity_product_details_you_may_also_like_this">You may also like this</string>
+    <string name="activity_product_details_view_all">View all</string>
+    <string name="activity_product_details_recommended">Recommended</string>
+    <string name="activity_product_details_add_to_bag">Add To Bag</string>
+
+    <!--activity_shipping_address.xml-->
+    <string name="activity_shipping_address_my_shipping_addresses">My shipping addresses</string>
+    <string name="activity_shipping_address_no_address_added">No address added</string>
+
+    <!--activity_sign_up.xml-->
+    <string name="activity_sign_up_sign_up">Sign up</string>
+    <string name="activity_sign_up_full_name">Full Name</string>
+    <string name="activity_sign_up_email">Email</string>
+    <string name="activity_sign_up_password">Password</string>
+    <string name="activity_sign_up_confirm_password">Confirm Password</string>
+    <string name="activity_sign_up_sign_up_btn">Sign Up</string>
+    <string name="activity_sign_up_have_an_account">Have an Account?</string>
+    <string name="activity_sign_up_sign_in">Sign in</string>
+
+    <!--add_card_bottom.xml-->
+    <string name="add_card_bottom_card_holder_name">Card Holder Name</string>
+    <string name="add_card_bottom_link_a_new_card">Link a new card</string>
+    <string name="add_card_bottom_card_number">Card Number</string>
+    <string name="add_card_bottom_expiry_date">Expiry Date</string>
+    <string name="add_card_bottom_cvv">Cvv</string>
+    <string name="add_card_bottom_add_card">Add card</string>
+
+    <!--cover_single.xml-->
+    <string name="cover_single_check">Check</string>
+
+    <!--custom_dialog.xml-->
+    <string name="custom_dialog_please_wait">Please Wait</string>
+
+    <!--dialog_checkout.xml-->
+    <string name="dialog_checkout_place_your_order">Place your order</string>
+    <string name="dialog_checkout_please_select_your_shipping_address">Please select your shipping address</string>
+    <string name="dialog_checkout_total_amount">Total Amount</string>
+    <string name="dialog_checkout_cancel">Cancel</string>
+    <string name="dialog_checkout_confirm_order">confirm order</string>
+
+    <!--fragment_add_to_bag.xml-->
+    <string name="fragment_add_to_bag_quantity">Quantity</string>
+
+    <!--fragment_bag.xml-->
+    <string name="fragment_bag_my_bag">My Bag</string>
+    <string name="fragment_bag_total_amount">Total amount:</string>
+    <string name="fragment_bag_check_out">CHECK OUT</string>
+    <string name="fragment_bag_empty_bag">Empty Bag</string>
+
+    <!--fragment_fav.xml-->
+    <string name="fragment_fav_your_favorite_products">Your favorite products</string>
+
+    <!--fragment_home.xml-->
+    <string name="fragment_home_what_s_new">What\'s new</string>
+    <string name="fragment_home_view_all">View all</string>
+    <string name="fragment_home_you_never_seen_before">You Never seen Before</string>
+    <string name="fragment_home_most_liked">Most liked</string>
+    <string name="fragment_home_most_liked_products">Most liked products</string>
+
+    <!--fragment_orders.xml-->
+    <string name="fragment_orders_my_orders">My Orders</string>
+    <string name="fragment_orders_all_orders">All orders</string>
+    <string name="fragment_orders_pending">Pending</string>
+    <string name="fragment_orders_processing">Processing</string>
+    <string name="fragment_orders_packaged">Packaged</string>
+    <string name="fragment_orders_shipped">Shipped</string>
+    <string name="fragment_orders_onholde">onholde</string>
+    <string name="fragment_orders_delivered">delivered</string>
+    <string name="fragment_orders_confirmed">confirmed</string>
+    <string name="fragment_orders_refund_requested">refund requested</string>
+    <string name="fragment_orders_returned">returned</string>
+    <string name="fragment_orders_refunded">refunded</string>
+    <string name="fragment_orders_cancelled">cancelled</string>
+    <string name="fragment_orders_rejected">rejected</string>
+    <string name="fragment_orders_no_orders">No orders</string>
+
+    <!--fragment_products_list.xml-->
+    <string name="fragment_products_list_search_products">Search products</string>
+
+    <!--fragment_profile.xml-->
+    <string name="fragment_profile_my_profile">My Profile</string>
+    <string name="fragment_profile_upload_image">Upload Image</string>
+    <string name="fragment_profile_my_orders">My Orders</string>
+    <string name="fragment_profile_your_current_orders">Your current orders</string>
+    <string name="fragment_profile_shipping_addresses">Shipping addresses</string>
+    <string name="fragment_profile_your_shipping_addresses">Your shipping addresses</string>
+    <string name="fragment_profile_your_purchase_history">Your purchase history</string>
+    <string name="fragment_profile_follow_your_purchase_history">Follow your purchase history</string>
+    <string name="fragment_profile_settings">Settings</string>
+    <string name="fragment_profile_your_settings">Your settings</string>
+    <string name="fragment_profile_logout">Logout</string>
+
+    <!--fragment_purchase_history.xml-->
+    <string name="fragment_purchase_history_my_purshase_history">My purchase history</string>
+    <string name="fragment_purchase_history_no_orders">No orders</string>
+
+    <!--fragment_shop.xml-->
+    <string name="fragment_shop_categories">Categories</string>
+    <string name="fragment_shop_all_products">All products</string>
+
+    <!--order_item_single.xml-->
+    <string name="order_item_single_status">Status:</string>
+    <string name="order_item_single_details">Details</string>
+
+    <!--single_card.xml-->
+    <string name="single_card_cc">* * * * * * * * * * * * 3947</string>
+    <string name="single_card_card_holder_name">Card Holder Name</string>
+    <string name="single_card_expiry_date">Expiry Date</string>
+    <string name="single_card_use_as_default_payment_method">Use as default payment method</string>
+
+    <!--profile_photo_storage.xml-->
+    <string name="profile_photo_storage_take_a_photo">Take a Photo</string>
+    <string name="profile_photo_storage_choose_from_gallery">Choose from Gallery</string>
+
+    <!--activity_settings.xml-->
+    <string name="activity_settings_settings">Settings</string>
+    <string name="activity_settings_language">Language</string>
+    <string name="activity_settings_app_language">App language</string>
+    <string name="activity_settings_appearance">Appearance</string>
+    <string name="activity_settings_theme">Theme</string>
+    <string name="activity_settings_about">About</string>
+    <string name="activity_settings_help">Help</string>
+    <string name="activity_settings_eshop_manual">Eshop manual</string>
+
+    <!--activity_settings_extended_language.xml-->
+    <string name="activity_settings_extended_language_language_settings">Language settings</string>
+    <string name="activity_settings_extended_language_system_default">System default</string>
+    <string name="activity_settings_extended_language_arabic">Arabic</string>
+    <string name="activity_settings_extended_language_english">English</string>
+    <string name="activity_settings_extended_language_french">French</string>
+    <string name="activity_settings_extended_language_spanish">Spanish</string>
+
+
 </resources>

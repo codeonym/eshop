@@ -46,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/metropolis_semibold"
-                    android:text="Categories"
+                    android:text="@string/fragment_shop_categories"
                     android:textColor="@color/mainText"
                     android:textSize="25sp" />
 
@@ -61,7 +61,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/metropolis_regular"
                     android:gravity="center"
-                    android:text="All products"
+                    android:text="@string/fragment_shop_all_products"
                     android:textColor="@color/mainText"
                     android:textSize="12sp" />
 

@@ -37,18 +37,18 @@
             android:layout_marginRight="20dp"
             android:fontFamily="@font/metropolis_semibold"
             android:maxLines="2"
-            android:text="E-shop Top Offers"
+            android:text=""
             android:textColor="@color/white"
-            android:textSize="32dp"></TextView>
+            android:textSize="32sp"/>
 
         <Button
             android:id="@+id/offerCheck_coverPage"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_bg"
-            android:text="Check" />
+            android:text="@string/cover_single_check" />
     </LinearLayout>
 
 

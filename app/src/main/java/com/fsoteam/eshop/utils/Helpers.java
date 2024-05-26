@@ -1,12 +1,15 @@
 package com.fsoteam.eshop.utils;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
 import com.fsoteam.eshop.R;
+
+import java.util.Locale;
 
 public class Helpers {
 
@@ -153,6 +156,15 @@ public class Helpers {
                 textView.setTextColor(ContextCompat.getColor(ctx, R.color.rejected));
                 break;
         }
+    }
+
+    public static void setLocale(Context ctx, String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        ctx.getResources().updateConfiguration(config,
+                ctx.getResources().getDisplayMetrics());
     }
 
 }

@@ -32,7 +32,7 @@
     <LinearLayout
         android:elevation="5dp"
         android:layout_marginBottom="88dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/circle_bg"
@@ -70,7 +70,8 @@
             android:scaleY=".4"
             style="@style/Widget.AppCompat.RatingBar.Indicator"
             android:transformPivotX="0dp"
-            android:transformPivotY="15dp" />
+            android:transformPivotY="15dp"
+            android:gravity="start"/>
 
         <TextView
             android:id="@+id/productBrandName_singleProduct"
@@ -79,8 +80,9 @@
             android:fontFamily="@font/metropolis_light"
             android:textColor="@color/textAd"
             android:maxLines="1"
-            android:text="Brand Name"
-            android:textSize="13sp" />
+            android:text=""
+            android:textSize="13sp"
+            android:gravity="start"/>
 
         <TextView
             android:id="@+id/productName_singleProduct"
@@ -89,8 +91,9 @@
             android:fontFamily="@font/metropolis_regular"
             android:textColor="@color/mainText"
             android:maxLines="1"
-            android:text="Product Name"
-            android:textSize="15sp" />
+            android:text=""
+            android:textSize="15sp"
+            android:gravity="start"/>
 
         <TextView
             android:id="@+id/productPrice_singleProduct"
@@ -99,9 +102,10 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/metropolis_light"
             android:maxLines="1"
-            android:text="Product Price"
+            android:text=""
             android:textColor="@color/primary"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            android:gravity="start"/>
 
     </LinearLayout>
 
@@ -110,7 +114,7 @@
         android:id="@+id/discount_singleProduct"
         android:visibility="gone"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:layout_width="40dp"
         android:layout_height="20dp"
         android:background="@drawable/discount_bg"
@@ -120,7 +124,7 @@
             android:id="@+id/discountTv_singleProduct"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="-10%"
+            android:text=""
             android:textSize="11sp"
             android:gravity="center"
             android:textColor="@color/white"

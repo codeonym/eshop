@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">إي شوب</string>
+
+    <string name="hello_blank_fragment">مرحبا، صفحة فارغة</string>
+    <string name="new_product">جديد</string>
+    <string name="expiry_date">تاريخ الانتهاء</string>
+    <string name="payment_methods">طرق الدفع</string>
+    <string name="add_new_card">إضافة بطاقة جديدة</string>
+    <string name="add_card">إضافة بطاقة</string>
+    <string name="empty_favourite">المفضلة فارغة</string>
+    <string name="add_to_bag">أضف إلى الحقيبة</string>
+    <string name="card_number_star">**** **** **** </string>
+
+    <string name="status_pending">تم تقديم طلبك وهو في انتظار المعالجة. يمكنك إلغاء طلبك في هذه المرحلة. إذا كانت هناك أي مشاكل مع طلبك، فقد يتم رفضه.</string>
+    <string name="status_processing">طلبك قيد المعالجة حاليًا. بمجرد الانتهاء من المعالجة، سيتم تعبئة طلبك وتجهيزه للشحن.</string>
+    <string name="status_packaged">تم تعبئة طلبك وهو جاهز للشحن. ستتلقى إشعارًا بمجرد شحن طلبك.</string>
+    <string name="status_shipped">تم شحن طلبك وهو في طريقه إليك. ستتلقى إشعارًا بمجرد تسليم طلبك.</string>
+    <string name="status_on_hold">طلبك حاليًا قيد الانتظار. سنقوم بإبلاغك بمجرد تغيير حالة الطلب.</string>
+    <string name="status_delivered">تم تسليم طلبك. يرجى تأكيد استلام الطلب. إذا لم تقم بتأكيد حالة العنصر في غضون 60 يومًا، فسيتم التأكيد تلقائيًا.</string>
+    <string name="status_confirmed">لقد أكدت استلام طلبك. يمكنك طلب استرداد الأموال في غضون شهر واحد من التأكيد. إذا لم يتم طلب استرداد الأموال خلال هذه الفترة، فسيتم وضع علامة على طلبك كمكتمل.</string>
+    <string name="status_completed">تم إكمال طلبك. لا يمكن اتخاذ أي إجراءات أخرى في هذه المرحلة. شكرًا لتسوقك معنا.</string>
+    <string name="status_refund_requested">تم تسجيل طلب الاسترداد الخاص بك بنجاح، بمجرد اكتمال المعالجة سنتواصل معك قريبًا. شكرًا لولائك</string>
+    <string name="status_returned">تم قبول طلب الاسترداد وتم إرجاع الطلب. سيتم معالجة استرداد الأموال قريبًا.</string>
+    <string name="status_refunded">تم معالجة استرداد أموالك. يجب أن ينعكس المبلغ في حسابك قريبًا.</string>
+    <string name="status_cancelled">تم إلغاء طلبك. إذا كان لديك أي أسئلة أو مخاوف، يرجى الاتصال بخدمة العملاء لدينا.</string>
+    <string name="status_rejected">تم رفض طلبك أو طلب الاسترداد الخاص بك. لمزيد من التفاصيل، يرجى الاتصال بخدمة العملاء لدينا.</string>
+
+    <!--add_address.xml-->
+    <string name="add_address_shipping_address">عنوان الشحن</string>
+    <string name="add_address_title">العنوان</string>
+    <string name="add_address_reciever_name">اسم المستلم</string>
+    <string name="add_address_email">البريد الإلكتروني</string>
+    <string name="add_address_phone">الهاتف</string>
+    <string name="add_address_country">البلد</string>
+    <string name="add_address_city">المدينة</string>
+    <string name="add_address_zip">الرمز البريدي</string>
+    <string name="add_address_address">العنوان</string>
+    <string name="add_address_invalid_title">عنوان غير صالح</string>
+    <string name="add_address_invalid_name">اسم غير صالح</string>
+    <string name="add_address_invalid_email_address">عنوان بريد إلكتروني غير صالح</string>
+    <string name="add_address_invalid_phone_number">رقم هاتف غير صالح</string>
+    <string name="add_address_invalid_country">بلد غير صالح</string>
+    <string name="add_address_invalid_city">مدينة غير صالحة</string>
+    <string name="add_address_invalid_zip_code">رمز بريدي غير صالح</string>
+    <string name="add_address_email_error">خطأ في البريد الإلكتروني</string>
+    <string name="add_address_add_address_btn">إضافة عنوان</string>
+
+    <!--activity_email_verify.xml-->
+    <string name="activity_email_verify_verify_your_email">تحقق من بريدك الإلكتروني</string>
+    <string name="activity_email_verify_verify_your_email_sm">تحقق من بريدك الإلكتروني</string>
+    <string name="activity_email_verify_try_again">حاول مرة أخرى</string>
+    <string name="activity_email_verify_resend_e_mail">إعادة إرسال البريد الإلكتروني</string>
+
+    <!--bottom_nav_menu.xml-->
+    <string name="bottom_nav_menu_home">الرئيسية</string>
+    <string name="bottom_nav_menu_shop">التسوق</string>
+    <string name="bottom_nav_menu_bag">الحقيبة</string>
+    <string name="bottom_nav_menu_favorites">المفضلة</string>
+    <string name="bottom_nav_menu_profile">الملف الشخصي</string>
+
+    <!--login_activity.xml-->
+    <string name="login_activity_login">تسجيل الدخول</string>
+    <string name="login_activity_email">البريد الإلكتروني</string>
+    <string name="login_activity_email_error">خطأ في البريد الإلكتروني</string>
+    <string name="login_activity_password">كلمة المرور</string>
+    <string name="login_activity_password_error">خطأ في كلمة المرور</string>
+    <string name="login_activity_forgotten_password">هل نسيت كلمة المرور؟</string>
+    <string name="login_activity_login_btn">تسجيل الدخول</string>
+    <string name="login_activity_don_t_have_an_account">ليس لديك حساب؟</string>
+    <string name="login_activity_sign_up">إنشاء حساب</string>
+
+    <!--activity_offer_details.xml-->
+    <string name="activity_offer_details_ends_in">ينتهي في:</string>
+    <string name="activity_offer_details_discount">الخصم:</string>
+    <string name="activity_offer_details_start_date">تاريخ البدء</string>
+    <string name="activity_offer_details_end_date">تاريخ الانتهاء</string>
+    <string name="activity_offer_details_products">المنتجات</string>
+
+    <!--activity_order_details.xml-->
+    <string name="activity_order_details_status">الحالة</string>
+    <string name="activity_order_details_total_items">إجمالي العناصر</string>
+    <string name="activity_order_details_subtotal">المجموع الفرعي:</string>
+    <string name="activity_order_details_order_info">معلومات الطلب</string>
+    <string name="activity_order_details_shipping_address">عنوان الشحن</string>
+    <string name="activity_order_details_order_id">رقم الطلب</string>
+    <string name="activity_order_details_order_placed_on">تاريخ تقديم الطلب</string>
+    <string name="activity_order_details_payment_method">طريقة الدفع</string>
+    <string name="activity_order_details_at_delivery">عند التسليم</string>
+    <string name="activity_order_details_what_do_you_want_to_do">ماذا تريد أن تفعل</string>
+    <string name="activity_order_details_print_invoice">طباعة الفاتورة</string>
+    <string name="activity_order_details_cancel">إلغاء</string>
+    <string name="activity_order_details_request_refund">طلب استرداد</string>
+    <string name="activity_order_details_confrim_received">تأكيد الاستلام</string>
+
+    <!--activity_product_details.xml-->
+    <string name="activity_product_details_product_details">تفاصيل المنتج</string>
+    <string name="activity_product_details_shipping_info">معلومات الشحن</string>
+    <string name="activity_product_details_ratings">التقييمات</string>
+    <string name="activity_product_details_you_may_also_like_this">قد يعجبك أيضًا</string>
+    <string name="activity_product_details_view_all">عرض الكل</string>
+    <string name="activity_product_details_recommended">موصى به</string>
+    <string name="activity_product_details_add_to_bag">أضف إلى الحقيبة</string>
+
+    <!--activity_shipping_address.xml-->
+    <string name="activity_shipping_address_my_shipping_addresses">عناويني للشحن</string>
+    <string name="activity_shipping_address_no_address_added">لم يتم إضافة أي عنوان</string>
+
+    <!--activity_sign_up.xml-->
+    <string name="activity_sign_up_sign_up">إنشاء حساب</string>
+    <string name="activity_sign_up_full_name">الاسم الكامل</string>
+    <string name="activity_sign_up_email">البريد الإلكتروني</string>
+    <string name="activity_sign_up_password">كلمة المرور</string>
+    <string name="activity_sign_up_confirm_password">تأكيد كلمة المرور</string>
+    <string name="activity_sign_up_sign_up_btn">إنشاء حساب</string>
+    <string name="activity_sign_up_have_an_account">لديك حساب؟</string>
+    <string name="activity_sign_up_sign_in">تسجيل الدخول</string>
+
+    <!--add_card_bottom.xml-->
+    <string name="add_card_bottom_card_holder_name">اسم حامل البطاقة</string>
+    <string name="add_card_bottom_link_a_new_card">ربط بطاقة جديدة</string>
+    <string name="add_card_bottom_card_number">رقم البطاقة</string>
+    <string name="add_card_bottom_expiry_date">تاريخ الانتهاء</string>
+    <string name="add_card_bottom_cvv">رمز التحقق</string>
+    <string name="add_card_bottom_add_card">إضافة البطاقة</string>
+
+    <!--cover_single.xml-->
+    <string name="cover_single_check">تحقق</string>
+
+    <!--custom_dialog.xml-->
+    <string name="custom_dialog_please_wait">يرجى الانتظار</string>
+
+    <!--dialog_checkout.xml-->
+    <string name="dialog_checkout_place_your_order">قدم طلبك</string>
+    <string name="dialog_checkout_please_select_your_shipping_address">يرجى اختيار عنوان الشحن الخاص بك</string>
+    <string name="dialog_checkout_total_amount">المبلغ الإجمالي</string>
+    <string name="dialog_checkout_cancel">إلغاء</string>
+    <string name="dialog_checkout_confirm_order">تأكيد الطلب</string>
+
+    <!--fragment_add_to_bag.xml-->
+    <string name="fragment_add_to_bag_quantity">الكمية</string>
+
+    <!--fragment_bag.xml-->
+    <string name="fragment_bag_my_bag">حقيبتي</string>
+    <string name="fragment_bag_total_amount">المبلغ الإجمالي:</string>
+    <string name="fragment_bag_check_out">إتمام الشراء</string>
+    <string name="fragment_bag_empty_bag">الحقيبة فارغة</string>
+
+    <!--fragment_fav.xml-->
+    <string name="fragment_fav_your_favorite_products">منتجاتك المفضلة</string>
+
+    <!--fragment_home.xml-->
+    <string name="fragment_home_what_s_new">ما الجديد</string>
+    <string name="fragment_home_view_all">عرض الكل</string>
+    <string name="fragment_home_you_never_seen_before">لم تشاهدها من قبل</string>
+    <string name="fragment_home_most_liked">الأكثر إعجابًا</string>
+    <string name="fragment_home_most_liked_products">المنتجات الأكثر إعجابًا</string>
+
+    <!--fragment_orders.xml-->
+    <string name="fragment_orders_my_orders">طلباتي</string>
+    <string name="fragment_orders_all_orders">كل الطلبات</string>
+    <string name="fragment_orders_pending">قيد الانتظار</string>
+    <string name="fragment_orders_processing">قيد المعالجة</string>
+    <string name="fragment_orders_packaged">معبأة</string>
+    <string name="fragment_orders_shipped">مشحونة</string>
+    <string name="fragment_orders_onholde">معلقة</string>
+    <string name="fragment_orders_delivered">تم التوصيل</string>
+    <string name="fragment_orders_confirmed">تم التأكيد</string>
+    <string name="fragment_orders_refund_requested">تم طلب الاسترداد</string>
+    <string name="fragment_orders_returned">تمت الإعادة</string>
+    <string name="fragment_orders_refunded">تم الاسترداد</string>
+    <string name="fragment_orders_cancelled">تم الإلغاء</string>
+    <string name="fragment_orders_rejected">مرفوض</string>
+    <string name="fragment_orders_no_orders">لا توجد طلبات</string>
+
+    <!--fragment_products_list.xml-->
+    <string name="fragment_products_list_search_products">ابحث عن المنتجات</string>
+
+    <!--fragment_profile.xml-->
+    <string name="fragment_profile_my_profile">ملفي الشخصي</string>
+    <string name="fragment_profile_upload_image">تحميل صورة</string>
+    <string name="fragment_profile_my_orders">طلباتي</string>
+    <string name="fragment_profile_your_current_orders">طلباتك الحالية</string>
+    <string name="fragment_profile_shipping_addresses">عناوين الشحن</string>
+    <string name="fragment_profile_your_shipping_addresses">عناوين الشحن الخاصة بك</string>
+    <string name="fragment_profile_your_purchase_history">تاريخ مشترياتك</string>
+    <string name="fragment_profile_follow_your_purchase_history">تابع تاريخ مشترياتك</string>
+    <string name="fragment_profile_settings">الإعدادات</string>
+    <string name="fragment_profile_your_settings">إعداداتك</string>
+    <string name="fragment_profile_logout">تسجيل الخروج</string>
+
+    <!--fragment_purchase_history.xml-->
+    <string name="fragment_purchase_history_my_purshase_history">تاريخ مشترياتي</string>
+    <string name="fragment_purchase_history_no_orders">لا توجد طلبات</string>
+
+    <!--fragment_shop.xml-->
+    <string name="fragment_shop_categories">الفئات</string>
+    <string name="fragment_shop_all_products">كل المنتجات</string>
+
+    <!--order_item_single.xml-->
+    <string name="order_item_single_status">الحالة:</string>
+    <string name="order_item_single_details">التفاصيل</string>
+
+    <!--single_card.xml-->
+    <string name="single_card_cc">* * * * * * * * * * * * 3947</string>
+    <string name="single_card_card_holder_name">اسم حامل البطاقة</string>
+    <string name="single_card_expiry_date">تاريخ الانتهاء</string>
+    <string name="single_card_use_as_default_payment_method">استخدم كطريقة الدفع الافتراضية</string>
+
+    <!--profile_photo_storage.xml-->
+    <string name="profile_photo_storage_take_a_photo">التقط صورة</string>
+    <string name="profile_photo_storage_choose_from_gallery">اختر من المعرض</string>
+
+    <!--activity_settings.xml-->
+    <string name="activity_settings_settings">الإعدادات</string>
+    <string name="activity_settings_language">اللغة</string>
+    <string name="activity_settings_app_language">لغة التطبيق</string>
+    <string name="activity_settings_appearance">المظهر</string>
+    <string name="activity_settings_theme">السمة</string>
+    <string name="activity_settings_about">حول</string>
+    <string name="activity_settings_help">مساعدة</string>
+    <string name="activity_settings_eshop_manual">دليل المتجر</string>
+
+    <!--activity_settings_extended_language.xml-->
+    <string name="activity_settings_extended_language_language_settings">إعدادات اللغة</string>
+    <string name="activity_settings_extended_language_system_default">افتراضي النظام</string>
+    <string name="activity_settings_extended_language_arabic">العربية</string>
+    <string name="activity_settings_extended_language_english">الإنجليزية</string>
+    <string name="activity_settings_extended_language_french">الفرنسية</string>
+    <string name="activity_settings_extended_language_spanish">الإسبانية</string>
+
+</resources>

@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:fontFamily="@font/metropolis_semibold"
-            android:text="Your favorite products"
+            android:text="@string/fragment_fav_your_favorite_products"
             android:textColor="@color/mainText"
             android:textSize="24sp"
             app:layout_constraintBaseline_toBottomOf="parent"

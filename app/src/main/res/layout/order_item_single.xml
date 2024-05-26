@@ -27,15 +27,15 @@
                 android:layout_weight="1"
                 android:textStyle="bold"
                 android:textSize="16sp"
-                android:text="Order #rrr-778-44f-yuhh" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/single_orderDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="12dp"
-                android:text="12/05/2024"
+                android:textSize="12sp"
+                android:text=""
                 android:gravity="end" />
         </LinearLayout>
         <com.google.android.material.divider.MaterialDivider
@@ -54,13 +54,13 @@
                 android:id="@+id/orderNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status:"
+                android:text="@string/order_item_single_status"
                 />
             <TextView
                 android:id="@+id/single_orderStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="completed"
+                android:text=""
                 android:layout_marginStart="10dp"
                 android:textColor="@color/completed"/>
         </LinearLayout>
@@ -76,14 +76,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Quantity 5" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/single_orderTotalPrice"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="347.55DH"
+                android:text=""
                 android:gravity="end" />
         </LinearLayout>
 
@@ -91,9 +91,9 @@
             android:id="@+id/single_orderDetailsBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Details"
+            android:text="@string/order_item_single_details"
             android:layout_marginTop="10dp"
-            android:textSize="12dp"
+            android:textSize="12sp"
             android:background="@drawable/rounded_button" />
     </LinearLayout>
 

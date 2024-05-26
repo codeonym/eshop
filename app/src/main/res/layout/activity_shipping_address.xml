@@ -34,11 +34,11 @@
                     android:id="@+id/myAddressTitle_ShippingPage"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="22dp"
+                    android:layout_marginStart="22dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/metropolis_regular"
                     android:gravity="center"
-                    android:text="My shipping addresses"
+                    android:text="@string/activity_shipping_address_my_shipping_addresses"
                     android:textColor="@color/mainText"
                     android:textSize="23sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -91,9 +91,9 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/metropolis_semibold"
                     android:gravity="center"
-                    android:text="No address added"
+                    android:text="@string/activity_shipping_address_no_address_added"
                     android:textColor="@color/textAd"
-                    android:textSize="25dp">
+                    android:textSize="25sp">
 
                 </TextView>
             </LinearLayout>

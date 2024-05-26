@@ -29,17 +29,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ends in: "
+                    android:text="@string/activity_offer_details_ends_in"
                     android:textStyle="bold" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/countdownTimer"
                     android:layout_marginStart="8dp"
-                    android:text="34:36:26"
                     android:textColor="@color/primary"
                     android:textStyle="bold"
-                    android:textSize="18dp"/>
+                    android:textSize="18sp"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -63,13 +62,13 @@
                     android:layout_height="match_parent"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:text="Summer sale"
+                    android:text=""
                     android:gravity="center_vertical"
                     android:textColor="@color/mainText"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fashion"
+                    android:text=""
                     android:textStyle="bold"
                     android:textColor="@color/primary"
                     android:layout_marginStart="8dp"
@@ -85,8 +84,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Discount:"
-                    android:textSize="18dp"
+                    android:text="@string/activity_offer_details_discount"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -94,9 +93,9 @@
                     android:id="@+id/discount"
                     android:layout_marginStart="8dp"
                     android:textColor="@color/primary"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:text="50%"/>
+                    android:text=""/>
             </LinearLayout>
 
             <TextView
@@ -105,8 +104,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:lineHeight="23dp"
-                android:textSize="17dp"
-                android:text="We care for our client so we Celebrate the approach of summer by saving up to 50% off on our store."/>
+                android:textSize="17sp"
+                android:text=""/>
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -125,10 +124,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Start date"
+                        android:text="@string/activity_offer_details_start_date"
                         android:gravity="center"
                         android:textStyle="bold"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textColor="@color/mainText"/>
                     <ImageView
                         android:layout_width="match_parent"
@@ -141,7 +140,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:gravity="center"
-                        android:text="26-04-2024: 16:00:00"/>
+                        android:text=""/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -152,10 +151,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="End date"
+                        android:text="@string/activity_offer_details_end_date"
                         android:gravity="center"
                         android:textStyle="bold"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textColor="@color/mainText"/>
                     <ImageView
                         android:layout_width="match_parent"
@@ -168,7 +167,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:gravity="center"
-                        android:text="26-04-2024: 16:00:00"/>
+                        android:text=""/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -184,7 +183,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Products"
+                    android:text="@string/activity_offer_details_products"
                     android:textStyle="bold" />
 
             </LinearLayout>

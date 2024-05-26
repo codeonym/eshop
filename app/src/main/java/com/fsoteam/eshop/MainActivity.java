@@ -1,11 +1,16 @@
 package com.fsoteam.eshop;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import com.fsoteam.eshop.fragment.*;
+import com.fsoteam.eshop.utils.Helpers;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -16,6 +21,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+
+        SharedPreferences preferences = getSharedPreferences("language_settings", MODE_PRIVATE);
+        String lang = preferences.getString("selected_language", "default");
+        Helpers.setLocale(getBaseContext(), lang);
+
         bottomNavigationView = findViewById(R.id.bottomNavMenu);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
