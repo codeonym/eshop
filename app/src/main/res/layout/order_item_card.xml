@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:background="@color/background">
+        android:background="?attr/colorOnBackground">
 
         <ImageView
             android:id="@+id/orderItem_itemThumbnail"

@@ -49,7 +49,9 @@ public class ProductsViewModel extends ViewModel {
                 for (DataSnapshot productSnapshot: dataSnapshot.getChildren()) {
                     Product product = productSnapshot.getValue(Product.class);
                     if (product != null) {
+
                         if(categoryId == null || categoryId.equals("000")){
+
                             productList.add(product);
                         } else {
                             if(product.getProductCategory() != null && product.getProductCategory().getCategoryId().equals(categoryId)){

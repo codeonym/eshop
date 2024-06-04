@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="?attr/backgroundColor"
     >
 
 
@@ -123,8 +123,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/metropolis_regular"
                 android:text="@string/activity_sign_up_sign_in"
-                android:textColor="@color/primary"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="14sp"
+                android:layout_marginStart="5dp"
                 />
         </LinearLayout>
 

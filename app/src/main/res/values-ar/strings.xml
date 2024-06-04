@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">إي شوب</string>
+    <string name="app_version">الإصدار</string>
 
     <string name="hello_blank_fragment">مرحبا، صفحة فارغة</string>
     <string name="new_product">جديد</string>
@@ -228,5 +229,43 @@
     <string name="activity_settings_extended_language_english">الإنجليزية</string>
     <string name="activity_settings_extended_language_french">الفرنسية</string>
     <string name="activity_settings_extended_language_spanish">الإسبانية</string>
+
+    <!--activity_settings_extended_appearance.xml-->
+        <string name="activity_settings_extended_appearance_appearance">المظهر</string>
+        <string name="activity_settings_extended_appearance_dark_mode">الوضع الداكن</string>
+        <string name="activity_settings_extended_appearance_default">الافتراضي</string>
+        <string name="activity_settings_extended_appearance_light">فاتح</string>
+        <string name="activity_settings_extended_appearance_dark">داكن</string>
+        <string name="activity_settings_extended_appearance_theme">السمة</string>
+
+    <!--_________________THEMES__________________-->
+    <string name="theme_default">افتراضي</string>
+    <string name="theme_lavender">لافندر</string>
+    <string name="theme_modern_minimalist">الحداثة البسيطة</string>
+    <string name="theme_nature_inspired">مستوحى من الطبيعة</string>
+    <string name="theme_luxury_chic">الأناقة الفاخرة</string>
+    <string name="theme_vibrant_playful">مرحة حيوية</string>
+
+    <!--activity_settings_extended_about.xml-->
+    <string name="activity_settings_extended_about_paragraph1">إي شوب هو تطبيق تجارة إلكترونية متطور مصمم لتقديم تجربة تسوق عبر الإنترنت سلسة. يجلب منصتنا مجموعة واسعة من المنتجات إلى متناول يديك، مما يجعل التسوق أكثر راحة ومتعة. من الإلكترونيات إلى الملابس، الأجهزة المنزلية إلى مستلزمات العناية الشخصية، يوفر لك إي شوب كل ما تحتاجه. تضمن واجهتنا سهلة الاستخدام وطرق الدفع الآمنة ونظام التوصيل الفعال تجربة تسوق خالية من المتاعب.</string>
+    <string name="activity_settings_extended_about_paragraph2">تم بناء إي شوب بالتزام بتقديم رضا العملاء، ويقدم مجموعة متنوعة من الميزات لتعزيز رحلتك التسوقية. تتيح لك وظيفة البحث المتقدمة لدينا العثور على ما تبحث عنه بالضبط، بينما تساعدك الأوصاف الشاملة للمنتجات والمراجعات العملاء على اتخاذ قرارات شراء مستنيرة. مع إي شوب، يمكنك تتبع طلباتك، وإنشاء قوائم الرغبات، والاستمتاع بعروض وخصومات مثيرة. انضم إلينا واختبر مستقبل التسوق عبر الإنترنت مع إي شوب.</string>
+    <string name="activity_settings_extended_about_about">حول</string>
+
+    <!--activity_settings_extended_help.xml-->
+    <string name="activity_settings_extended_help_help">مساعدة</string>
+    <string name="activity_settings_extended_help_most_frequent_question">أكثر الأسئلة شيوعاً</string>
+    <string name="activity_settings_extended_help__1_how_to_create_an_account">1. كيف يمكنني إنشاء حساب؟</string>
+    <string name="activity_settings_extended_help_answer_1">الإجابة: يمكنك إنشاء حساب عن طريق النقر على زر التسجيل في الصفحة الرئيسية. قم بملء البيانات المطلوبة وانقر على إرسال.</string>
+    <string name="activity_settings_extended_help__2_how_to_reset_my_password">2. كيف يمكنني إعادة تعيين كلمة المرور؟</string>
+    <string name="activity_settings_extended_help_answer_2">الإجابة: لإعادة تعيين كلمة المرور الخاصة بك، انقر على رابط نسيت كلمة المرور في صفحة تسجيل الدخول. أدخل عنوان بريدك الإلكتروني لتلقي رابط إعادة تعيين كلمة المرور.</string>
+    <string name="activity_settings_extended_help__3_how_can_i_track_my_order">3. كيف يمكنني تتبع طلبي؟</string>
+    <string name="activity_settings_extended_help_answer_3">الإجابة: يمكنك تتبع طلبك من خلال الذهاب إلى قسم طلباتي في حسابك. انقر على الطلب الذي تريد تتبعه لمشاهدة حالته.</string>
+    <string name="activity_settings_extended_help__4_what_are_the_payment_options_available">4. ما هي خيارات الدفع المتاحة؟</string>
+    <string name="activity_settings_extended_help_answer_4">الإجابة: يوفر إي شوب خيارات دفع متعددة بما في ذلك البطاقات الائتمانية/الخصم، باي بال، والخدمات المصرفية عبر الإنترنت. يمكنك اختيار طريقة الدفع المفضلة لديك عند الخروج.</string>
+    <string name="activity_settings_extended_help__5_how_can_i_return_a_product">5. كيف يمكنني إرجاع منتج؟</string>
+    <string name="activity_settings_extended_help_answer_5">الإجابة: لإرجاع منتج، اذهب إلى طلباتي، اختر المنتج الذي تريد إرجاعه، وانقر على إرجاع. اتبع التعليمات لإكمال عملية الإرجاع.</string>
+    <string name="activity_settings_extended_help__6_how_do_i_contact_customer_support">6. كيف يمكنني الاتصال بدعم العملاء؟</string>
+    <string name="activity_settings_extended_help_answer_6">الإجابة: يمكنك الاتصال بدعم العملاء عن طريق النقر على رابط اتصل بنا في أسفل الصفحة الرئيسية. يمكنك التواصل معنا عبر البريد الإلكتروني أو الهاتف.</string>
+    <string name="activity_settings_extended_help_you_can_reach_us_at">يمكنك الوصول إلينا عبر</string>
 
 </resources>

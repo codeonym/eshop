@@ -1,6 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundColor">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:id="@+id/fragment_settings_extended_help_back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_left"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="16dp"/>
+            <TextView
+                android:id="@+id/settings_title"
+                android:textColor="@color/mainText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_settings_extended_help_help"
+                android:textSize="24sp"
+                android:fontFamily="@font/metropolis_bold" />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerThickness="1dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="32dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_help"/>
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help_most_frequent_question"
+                    android:textColor="@color/mainText"
+                    android:textSize="20sp"
+                    android:lineHeight="25dp"
+                    android:fontFamily="@font/metropolis_bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp">
+
+                <!-- Question 1 -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help__1_how_to_create_an_account"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"
+                    android:lineHeight="25dp"
+                    android:fontFamily="@font/metropolis_bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help_answer_1"
+                    android:textColor="@color/textAd"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Question 2 -->
+                <TextView
+                    android:fontFamily="@font/metropolis_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help__2_how_to_reset_my_password"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="16sp"
+                    android:lineHeight="25dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help_answer_2"
+                    android:textColor="@color/textAd"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Question 3 -->
+                <TextView
+                    android:fontFamily="@font/metropolis_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help__3_how_can_i_track_my_order"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="16sp"
+                    android:lineHeight="25dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help_answer_3"
+                    android:textColor="@color/textAd"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Question 4 -->
+                <TextView
+                    android:fontFamily="@font/metropolis_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help__4_what_are_the_payment_options_available"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="16sp"
+                    android:lineHeight="25dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help_answer_4"
+                    android:textColor="@color/textAd"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Question 5 -->
+                <TextView
+                    android:fontFamily="@font/metropolis_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help__5_how_can_i_return_a_product"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="16sp"
+                    android:lineHeight="25dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help_answer_5"
+                    android:textColor="@color/textAd"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Question 6 -->
+                <TextView
+                    android:fontFamily="@font/metropolis_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help__6_how_do_i_contact_customer_support"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="16sp"
+                    android:lineHeight="25dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help_answer_6"
+                    android:textColor="@color/textAd"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="16dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chat_processing_outline"/>
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_settings_extended_help_you_can_reach_us_at"
+                    android:textColor="@color/mainText"
+                    android:textSize="20sp"
+                    android:lineHeight="25dp"
+                    android:fontFamily="@font/metropolis_bold"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

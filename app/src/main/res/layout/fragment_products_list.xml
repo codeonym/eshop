@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/products_fragment">
+    android:id="@+id/products_fragment"
+    android:background="?attr/backgroundColor">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/search_bar"
