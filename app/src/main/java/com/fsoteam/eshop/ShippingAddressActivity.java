@@ -1,6 +1,7 @@
 package com.fsoteam.eshop;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -26,6 +27,12 @@ public class ShippingAddressActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Retrieve the saved theme from SharedPreferences and apply it
+        SharedPreferences sharedPreferences = getSharedPreferences("ThemePref", MODE_PRIVATE);
+        int themeStyle = sharedPreferences.getInt("themeStyle", R.style.Theme_Eshop); // Default theme is Theme.Eshop
+        setTheme(themeStyle);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shipping_address);
 

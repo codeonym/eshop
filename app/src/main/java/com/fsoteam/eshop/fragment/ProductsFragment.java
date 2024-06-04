@@ -64,6 +64,19 @@ public class ProductsFragment extends Fragment {
             productRecyclerView.setAdapter(productAdapter);
         });
         productsViewModel.getCategoriesLiveData().observe(getViewLifecycleOwner(), categoryList -> {
+
+            String catId = categoryId == null ? "000": categoryId;
+            for (Category c : categoryList) {
+                if (c != null) {
+                    c.setSelected(false);
+                }
+            }
+
+            for(Category c : categoryList) {
+                if (c!= null && c.getCategoryId().equals(catId)) {
+                    c.setSelected(true);
+                }
+            }
             categoryAdapter = new ProductsListCategoryAdapter(getContext(), (ArrayList<Category>) categoryList);
             categoryAdapter.setOnCategoryClickListener(new ProductsListCategoryAdapter.OnCategoryClickListener() {
                 @Override

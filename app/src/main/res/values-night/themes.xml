@@ -3,17 +3,106 @@
     <style name="Theme.Eshop" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/background</item>
+        <item name="colorPrimaryVariant">@color/textAd</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="backgroundColor">#000914</item>
+        <item name="colorOnBackground">#010E1E</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/primary</item>
         <item name="colorSecondaryVariant">@color/sale</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowLightStatusBar" >false</item>
+    </style>
+
+    <!--Theme 2 -->
+    <style name="Theme.Eshop.Lavender" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#9C27B0</item>
+        <item name="colorPrimaryVariant">#DD9EE8</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="backgroundColor">#1B0C1E</item>
+        <item name="colorOnBackground">#241327</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#673AB7</item>
+        <item name="colorSecondaryVariant">#A47EE8</item>
+        <item name="colorOnSecondary">#fff</item>
+        <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
     </style>
+
+    <!-- Modern Minimalist Dark Mode -->
+    <style name="Theme.Eshop.ModernMinimalist" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#1E88E5</item>
+        <item name="colorPrimaryVariant">#1565C0</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="backgroundColor">#1E1E1E</item>
+        <item name="colorOnBackground">#232629</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#2196F3</item>
+        <item name="colorSecondaryVariant">#03A9F4</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- Nature Inspired Dark Mode -->
+    <style name="Theme.Eshop.NatureInspired" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#263238</item>
+        <item name="colorPrimaryVariant">#37474F</item>
+        <item name="colorOnPrimary">#E8F5E9</item>
+        <item name="backgroundColor">#071708</item>
+        <item name="colorOnBackground">#0A200B</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#FF7043</item>
+        <item name="colorSecondaryVariant">#FF5722</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- Luxury Chic Dark Mode -->
+    <style name="Theme.Eshop.LuxuryChic" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#3E2723</item>
+        <item name="colorPrimaryVariant">#5D4037</item>
+        <item name="colorOnPrimary">#FAF3E0</item>
+        <item name="backgroundColor">#1B1B1B</item>
+        <item name="colorOnBackground">#202020</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#D32F2F</item>
+        <item name="colorSecondaryVariant">#B71C1C</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- Vibrant Playful Dark Mode -->
+    <style name="Theme.Eshop.VibrantPlayful" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#303030</item>
+        <item name="colorPrimaryVariant">#424242</item>
+        <item name="colorOnPrimary">#FFF176</item>
+        <item name="backgroundColor">#121212</item>
+        <item name="colorOnBackground">#1C1C1C</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#0288D1</item>
+        <item name="colorSecondaryVariant">#0277BD</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
 
     <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/BottomSheetStyle</item>

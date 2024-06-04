@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="?attr/backgroundColor"
     >
 
 
@@ -13,7 +13,6 @@
         android:id="@+id/image_emailVerifyPage"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:contentDescription="TODO"
         android:src="@drawable/ic_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

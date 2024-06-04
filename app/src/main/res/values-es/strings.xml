@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">E-Shop</string>
+    <string name="app_version">versión</string>
 
     <string name="hello_blank_fragment">Hola, página en blanco</string>
     <string name="new_product">Nuevo</string>
@@ -228,5 +229,43 @@
     <string name="activity_settings_extended_language_english">Inglés</string>
     <string name="activity_settings_extended_language_french">Francés</string>
     <string name="activity_settings_extended_language_spanish">Español</string>
+
+    <!--activity_settings_extended_appearance.xml-->
+        <string name="activity_settings_extended_appearance_appearance">apariencia</string>
+        <string name="activity_settings_extended_appearance_dark_mode">Modo oscuro</string>
+        <string name="activity_settings_extended_appearance_default">Predeterminado</string>
+        <string name="activity_settings_extended_appearance_light">Claro</string>
+        <string name="activity_settings_extended_appearance_dark">Oscuro</string>
+        <string name="activity_settings_extended_appearance_theme">Tema</string>
+
+    <!--_________________THEMES__________________-->
+    <string name="theme_default">Predeterminado</string>
+    <string name="theme_lavender">Lavanda</string>
+    <string name="theme_modern_minimalist">Minimalista Moderno</string>
+    <string name="theme_nature_inspired">Inspirado en la Naturaleza</string>
+    <string name="theme_luxury_chic">Chic de Lujo</string>
+    <string name="theme_vibrant_playful">Vibrante y Divertido</string>
+
+    <!--activity_settings_extended_about.xml-->
+    <string name="activity_settings_extended_about_paragraph1">Eshop es una aplicación de comercio electrónico de última generación diseñada para proporcionar una experiencia de compra en línea sin problemas. Nuestra plataforma ofrece una amplia gama de productos al alcance de tu mano, haciendo que las compras sean más convenientes y agradables. Desde electrónica hasta ropa, electrodomésticos hasta artículos de cuidado personal, Eshop tiene todo cubierto. Nuestra interfaz fácil de usar, métodos de pago seguros y sistema de entrega eficiente aseguran una experiencia de compra sin complicaciones.</string>
+    <string name="activity_settings_extended_about_paragraph2">Construido con un compromiso con la satisfacción del cliente, Eshop ofrece una variedad de funciones para mejorar tu experiencia de compra. Nuestra función de búsqueda avanzada te permite encontrar exactamente lo que estás buscando, mientras que nuestras descripciones completas de productos y opiniones de clientes te ayudan a tomar decisiones de compra informadas. Con Eshop, puedes rastrear tus pedidos, crear listas de deseos y disfrutar de ofertas y descuentos emocionantes. Únete a nosotros y experimenta el futuro de las compras en línea con Eshop.</string>
+    <string name="activity_settings_extended_about_about">Acerca de</string>
+
+    <!--activity_settings_extended_help.xml-->
+    <string name="activity_settings_extended_help_help">ayuda</string>
+    <string name="activity_settings_extended_help_most_frequent_question">Pregunta más frecuente</string>
+    <string name="activity_settings_extended_help__1_how_to_create_an_account">1. ¿Cómo crear una cuenta?</string>
+    <string name="activity_settings_extended_help_answer_1">Respuesta: Puedes crear una cuenta haciendo clic en el botón \'Registrarse\' en la página de inicio. Rellena los detalles requeridos y haz clic en \'Enviar\'.</string>
+    <string name="activity_settings_extended_help__2_how_to_reset_my_password">2. ¿Cómo restablecer mi contraseña?</string>
+    <string name="activity_settings_extended_help_answer_2">Respuesta: Para restablecer tu contraseña, haz clic en el enlace \'Olvidé mi contraseña\' en la página de inicio de sesión. Ingresa tu dirección de correo electrónico para recibir un enlace de restablecimiento de contraseña.</string>
+    <string name="activity_settings_extended_help__3_how_can_i_track_my_order">3. ¿Cómo puedo rastrear mi pedido?</string>
+    <string name="activity_settings_extended_help_answer_3">Respuesta: Puedes rastrear tu pedido yendo a la sección \'Mis pedidos\' en tu cuenta. Haz clic en el pedido que deseas rastrear para ver su estado.</string>
+    <string name="activity_settings_extended_help__4_what_are_the_payment_options_available">4. ¿Cuáles son las opciones de pago disponibles?</string>
+    <string name="activity_settings_extended_help_answer_4">Respuesta: Eshop ofrece varias opciones de pago, incluidas tarjetas de crédito/débito, PayPal y banca en línea. Puedes elegir tu método de pago preferido al finalizar la compra.</string>
+    <string name="activity_settings_extended_help__5_how_can_i_return_a_product">5. ¿Cómo puedo devolver un producto?</string>
+    <string name="activity_settings_extended_help_answer_5">Respuesta: Para devolver un producto, ve a \'Mis pedidos\', selecciona el producto que deseas devolver y haz clic en \'Devolver\'. Sigue las instrucciones para completar el proceso de devolución.</string>
+    <string name="activity_settings_extended_help__6_how_do_i_contact_customer_support">6. ¿Cómo contacto con el soporte al cliente?</string>
+    <string name="activity_settings_extended_help_answer_6">Respuesta: Puedes contactar con el soporte al cliente haciendo clic en el enlace \'Contáctanos\' en la parte inferior de la página de inicio. Puedes comunicarte con nosotros por correo electrónico o teléfono.</string>
+    <string name="activity_settings_extended_help_you_can_reach_us_at">Puedes contactarnos en</string>
 
 </resources>

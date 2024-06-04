@@ -1,5 +1,6 @@
 package com.fsoteam.eshop;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -26,6 +27,12 @@ public class AddShippingAddressActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Retrieve the saved theme from SharedPreferences and apply it
+        SharedPreferences sharedPreferences = getSharedPreferences("ThemePref", MODE_PRIVATE);
+        int themeStyle = sharedPreferences.getInt("themeStyle", R.style.Theme_Eshop); // Default theme is Theme.Eshop
+        setTheme(themeStyle);
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_add_address);

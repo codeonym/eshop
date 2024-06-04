@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/background">
+    android:background="?attr/backgroundColor">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -253,7 +253,7 @@
         android:layout_alignParentBottom="true"
         android:padding="16dp"
         android:id="@+id/confirm_button"
-        android:background="@color/background">
+        android:background="?attr/colorOnBackground">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -282,7 +282,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/activity_order_details_cancel"
                     android:layout_marginStart="5dp"
-                    android:backgroundTint="@color/primary"
+                    android:backgroundTint="?attr/colorPrimary"
                     android:textColor="@color/white"
                     android:layout_weight="1"/>
                 <Button
@@ -291,7 +291,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/activity_order_details_request_refund"
                     android:layout_marginStart="5dp"
-                    android:backgroundTint="@color/primary"
+                    android:backgroundTint="?attr/colorPrimary"
                     android:textColor="@color/white"
                     android:layout_weight="1"/>
                 <Button
@@ -300,7 +300,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/activity_order_details_confrim_received"
                     android:layout_marginStart="5dp"
-                    android:backgroundTint="@color/primary"
+                    android:backgroundTint="?attr/colorPrimary"
                     android:textColor="@color/white"
                     android:layout_weight="1"/>
             </LinearLayout>

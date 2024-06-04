@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="?attr/backgroundColor"
     >
 
 <!--    Top Bar-->
@@ -101,7 +101,7 @@
             android:visibility="gone"
             android:layout_height="50dp"
             android:text="@string/fragment_profile_upload_image"
-            android:backgroundTint="@color/primary"
+            android:backgroundTint="?attr/colorPrimary"
             android:fontFamily="@font/metropolis_regular"/>
 
     </LinearLayout>
@@ -117,7 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="30dp"
-            app:cardBackgroundColor="@color/background"
+            app:cardBackgroundColor="?attr/backgroundColor"
             app:cardElevation="0dp"
             android:id="@+id/myOrdersCard_ProfilePage"
             app:layout_constraintEnd_toEndOf="parent"
@@ -168,7 +168,7 @@
             android:id="@+id/shippingAddressCard_ProfilePage"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            app:cardBackgroundColor="@color/background"
+            app:cardBackgroundColor="?attr/backgroundColor"
             app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -270,7 +270,7 @@
             android:id="@+id/PurchaseHistoryCard_profileFrag"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            app:cardBackgroundColor="@color/background"
+            app:cardBackgroundColor="?attr/backgroundColor"
             app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -323,7 +323,7 @@
             android:layout_height="70dp"
 
             android:layout_marginBottom="5dp"
-            app:cardBackgroundColor="@color/background"
+            app:cardBackgroundColor="?attr/backgroundColor"
             app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

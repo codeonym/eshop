@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="5dp"
+    android:background="?attr/colorOnBackground"
     android:layout_marginRight="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -12,7 +13,7 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        app:cardBackgroundColor="@color/backgroundAd"
+        app:cardBackgroundColor="?attr/colorOnBackground"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:background="@color/background">
+            android:background="?attr/colorOnBackground">
             <ImageView
                 android:id="@+id/productImage_favProduct"
                 android:src="@drawable/no_product"
@@ -35,7 +36,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_marginStart="8dp"
-                android:background="@color/background"
+                android:background="?attr/colorOnBackground"
                 >
                 <RatingBar
                     android:id="@+id/productRating_favProduct"
@@ -82,7 +83,7 @@
                     android:fontFamily="@font/metropolis_light"
                     android:maxLines="1"
                     android:text=""
-                    android:textColor="@color/primary"
+                    android:textColor="?attr/colorPrimary"
                     android:textSize="13sp"
                     android:layout_marginTop="4dp"
                     android:gravity="start"/>
@@ -130,7 +131,7 @@
             android:text=""
             android:textSize="11sp"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="?attr/colorOnPrimary"
             android:fontFamily="@font/metropolis_semibold"/>
     </LinearLayout>
 

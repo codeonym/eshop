@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
     <string name="app_name">Eshop</string>
+    <string name="app_version">version</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="new_product">New</string>
@@ -229,5 +230,42 @@
     <string name="activity_settings_extended_language_french">French</string>
     <string name="activity_settings_extended_language_spanish">Spanish</string>
 
+    <!--activity_settings_extended_appearance.xml-->
+    <string name="activity_settings_extended_appearance_appearance">appearance</string>
+    <string name="activity_settings_extended_appearance_dark_mode">Dark mode</string>
+    <string name="activity_settings_extended_appearance_default">Default</string>
+    <string name="activity_settings_extended_appearance_light">Light</string>
+    <string name="activity_settings_extended_appearance_dark">Dark</string>
+    <string name="activity_settings_extended_appearance_theme">Theme</string>
+
+    <!--_________________THEMES__________________-->
+    <string name="theme_default">Default</string>
+    <string name="theme_lavender">Lavender</string>
+    <string name="theme_modern_minimalist">Modern Minimalist</string>
+    <string name="theme_nature_inspired">Nature Inspired</string>
+    <string name="theme_luxury_chic">Luxury Chic</string>
+    <string name="theme_vibrant_playful">Vibrant Playful</string>
+
+    <!--activity_settings_extended_about.xml-->
+    <string name="activity_settings_extended_about_paragraph1">Eshop is a cutting-edge e-commerce application designed to provide a seamless online shopping experience. Our platform brings a wide range of products right at your fingertips, making shopping more convenient and enjoyable. From electronics to clothing, home appliances to personal care items, Eshop has got you covered. Our user-friendly interface, secure payment methods, and efficient delivery system ensure a hassle-free shopping experience.</string>
+    <string name="activity_settings_extended_about_paragraph2">Built with a commitment to customer satisfaction, Eshop offers a variety of features to enhance your shopping journey. Our advanced search function allows you to find exactly what you\'re looking for, while our comprehensive product descriptions and customer reviews help you make informed purchasing decisions. With Eshop, you can track your orders, create wish lists, and enjoy exciting deals and discounts. Join us and experience the future of online shopping with Eshop.</string>
+    <string name="activity_settings_extended_about_about">About</string>
+
+    <!--activity_settings_extended_help.xml-->
+    <string name="activity_settings_extended_help_help">help</string>
+    <string name="activity_settings_extended_help_most_frequent_question">Most frequent question</string>
+    <string name="activity_settings_extended_help__1_how_to_create_an_account">1. How to create an account?</string>
+    <string name="activity_settings_extended_help_answer_1">Answer: You can create an account by clicking on the \'Sign Up\' button on the home page. Fill in the required details and click \'Submit\'.</string>
+    <string name="activity_settings_extended_help__2_how_to_reset_my_password">2. How to reset my password?</string>
+    <string name="activity_settings_extended_help_answer_2">Answer: To reset your password, click on the \'Forgot Password\' link on the login page. Enter your email address to receive a password reset link.</string>
+    <string name="activity_settings_extended_help__3_how_can_i_track_my_order">3. How can I track my order?</string>
+    <string name="activity_settings_extended_help_answer_3">Answer: You can track your order by going to the \'My Orders\' section in your account. Click on the order you want to track to see its status.</string>
+    <string name="activity_settings_extended_help__4_what_are_the_payment_options_available">4. What are the payment options available?</string>
+    <string name="activity_settings_extended_help_answer_4">Answer: Eshop offers various payment options including credit/debit cards, PayPal, and net banking. You can choose your preferred payment method at checkout.</string>
+    <string name="activity_settings_extended_help__5_how_can_i_return_a_product">5. How can I return a product?</string>
+    <string name="activity_settings_extended_help_answer_5">Answer: To return a product, go to \'My Orders\', select the product you want to return, and click on \'Return\'. Follow the instructions to complete the return process.</string>
+    <string name="activity_settings_extended_help__6_how_do_i_contact_customer_support">6. How do I contact customer support?</string>
+    <string name="activity_settings_extended_help_answer_6">Answer: You can contact customer support by clicking on the \'Contact Us\' link at the bottom of the home page. You can reach us via email or phone.</string>
+    <string name="activity_settings_extended_help_you_can_reach_us_at">You can reach us at</string>
 
 </resources>

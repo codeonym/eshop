@@ -1,5 +1,6 @@
 package com.fsoteam.eshop;
 
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -42,6 +43,12 @@ public class OrderDetailsActivity extends AppCompatActivity {
     private OrderDetailsViewModel orderDetailsViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Retrieve the saved theme from SharedPreferences and apply it
+        SharedPreferences sharedPreferences = getSharedPreferences("ThemePref", MODE_PRIVATE);
+        int themeStyle = sharedPreferences.getInt("themeStyle", R.style.Theme_Eshop); // Default theme is Theme.Eshop
+        setTheme(themeStyle);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_details);
         orderIdTv = findViewById(R.id.orderDetails_orderId);
